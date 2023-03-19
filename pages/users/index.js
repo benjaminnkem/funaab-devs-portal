@@ -1,3 +1,4 @@
+import User from "@/components/Users";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -11,11 +12,7 @@ function Users({ users }) {
         <h1 className="text-3xl font-bold">List Of Users</h1>
         <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3">
           {users.map((user) => (
-            <div key={user.id} className="my-4 p-4 shadow-md rounded-md">
-              <p className="text-xl font-semibold py-3">{user.name}</p>
-              <p>Username: {user.username}</p>
-              <p>Email: {user.email}</p>
-            </div>
+            <User user={user}/>
           ))}
         </div>
 

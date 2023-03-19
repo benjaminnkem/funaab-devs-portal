@@ -8,10 +8,8 @@ export default function Navbar() {
     const scroll_function = () => {
       if (window.scrollY >= 50) {
         navbar.current.classList.add("scrollDown");
-        console.log("trying to add class");
       } else {
         navbar.current.classList.remove("scrollDown");
-        console.log("Trying to remove class");
       }
     };
     window.addEventListener("scroll", scroll_function);
@@ -22,7 +20,10 @@ export default function Navbar() {
 
   return (
     <div id="navbar" className="normal" ref={navbar}>
-      <div id="nav_con" className="w-9/12 mx-auto flex items-center justify-between">
+      <div
+        id="nav_con"
+        className="w-9/12 mx-auto flex items-center justify-between"
+      >
         <Link href="/" className="text-2xl font-bold">
           NGISONE
         </Link>
@@ -33,6 +34,9 @@ export default function Navbar() {
             <li>|</li>
             <li className="py-7">
               <Link href="/signup">Get Started</Link>
+            </li>
+            <li className="py-7">
+              <Link href="/users">Users</Link>
             </li>
             <li className="py-7">Login</li>
           </ul>

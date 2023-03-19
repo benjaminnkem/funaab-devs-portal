@@ -1,14 +1,12 @@
+import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import Script from "next/script";
-import Navbar from "./components/Navbar";
 import styles from "./LandPage.module.css";
 
 export default function Home() {
   return (
     <>
-      {/* <Script src="/js/Home.js" defer></Script> */}
       <Head>
         <title>NGISONE - The Home of Millions of Nigerians</title>
         <meta
