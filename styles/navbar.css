@@ -21,4 +21,19 @@
   background-color: rgb(189, 225, 189);
   box-shadow: 2px 3px 10px rgba(111, 111, 111, 0.448);
   color: #333;
+  transition: all .5s;
+  overflow: hidden;
+
+  animation-name: navbarSmooth;
+  animation-duration: .4s;
+  animation-timing-function: linear;
+}
+
+@keyframes navbarSmooth {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: auto;
+  }
 }

@@ -1,12 +1,14 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import Navbar from "./components/Navbar";
 import styles from "./LandPage.module.css";
 
 export default function Home() {
   return (
     <>
+      {/* <Script src="/js/Home.js" defer></Script> */}
       <Head>
         <title>NGISONE - The Home of Millions of Nigerians</title>
         <meta
@@ -20,39 +22,27 @@ export default function Home() {
         <section className={styles.hero}>
           <div>
             <Navbar />
-            <div
-              className="w-9/12 h-full py-6 mx-auto my-auto"
-              id="first__intro"
-            >
+            <div className="w-9/12 h-full py-6 mx-auto my-auto" id="first__intro">
               <div className="grid grid-cols-2 gap-2 pb-16 pt-24 place-items-center">
                 <div className="space-y-4">
                   <h1
                     className="text-3xl font-bold uppercase md:text-5xl forBottom"
                     id="intro__head"
                   >
-                    <span className="text-green-600">Welcome</span> to the home
-                    of millions of{" "}
+                    <span className="text-green-600">Welcome</span> to the home of millions of{" "}
                     <span className="text-green-600">Nigerians</span>!
                   </h1>
                   <p className="text-base md:text-xl sm:text-lg head-writeup forBottom">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Nostrum aspernatur temporibus atque! Consequuntur quaerat
-                    error eveniet illo reprehenderit fugit officia
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum aspernatur
+                    temporibus atque! Consequuntur quaerat error eveniet illo reprehenderit fugit
+                    officia
                   </p>
 
                   <div className="py-2 my-3 space-x-3">
-                    <Link
-                      href="/"
-                      className="py-2 transition rounded-md px-7"
-                      id="take__tuor"
-                    >
+                    <Link href="/" className="py-2 transition rounded-md px-7" id="take__tuor">
                       Take A Tour
                     </Link>
-                    <Link
-                      href="/signup"
-                      className="py-2 transition rounded-md px-7"
-                      id="sign__up"
-                    >
+                    <Link href="/signup" className="py-2 transition rounded-md px-7" id="sign__up">
                       Sign Up
                     </Link>
                   </div>
