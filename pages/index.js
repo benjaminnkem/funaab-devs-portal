@@ -8,7 +8,7 @@ import styles from "./LandPage.module.css";
 export default function Home() {
   return (
     <>
-      <Script src="/js/Home.js" defer></Script>
+      {/* <Script src="/js/Home.js" defer></Script> */}
       <Head>
         <title>NGISONE - The Home of Millions of Nigerians</title>
         <meta
