@@ -1,0 +1,24 @@
+.defContainer {
+  width: 75%;
+  margin-inline: auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.normal {
+  background: transparent;
+  width: 100%;
+  position: static;
+}
+
+.scrollDown {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(189, 225, 189);
+  box-shadow: 2px 3px 10px rgba(111, 111, 111, 0.448);
+  color: #333;
+}

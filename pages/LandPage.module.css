@@ -1,0 +1,28 @@
+.root {
+  --primary-bg: #379237;
+  --primary-fg: #f0ff42;
+
+  --shade-1: #54b435;
+  --shade-2: #82cd47;
+}
+
+.hero {
+  background-image: url("/images/backgrounds/homebg.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 700px;
+  background-color: rgb(189, 225, 189);
+  box-shadow: 2px 3px 10px rgba(152, 152, 152, 0.448);
+  color: #e9f3ea;
+}
+
+.widthStab {
+  width: 75%;
+  margin-inline: auto;
+}
+
+.sec2 {
+  background-color: #e5f5e5;
+  color: #fff;
+}
