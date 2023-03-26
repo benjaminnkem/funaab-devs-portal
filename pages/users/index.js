@@ -10,15 +10,14 @@ function Users({ users }) {
       </Head>
       <div className="w-9/12 mx-auto mt-20">
         <h1 className="text-3xl font-bold">List Of Users</h1>
-        <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3">
+        <div className="grid grid-cols-1 gap-3 xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2">
           {users.map((user) => (
-            <User user={user} key={user.id} />
+            <>
+              <User user={user} key={user.id} />
+            </>
           ))}
         </div>
 
-        <Link href="/" className="px-4 py-2 rounded-md shadow-md border">
-          Home
-        </Link>
       </div>
     </>
   );
@@ -31,18 +30,16 @@ export async function getStaticProps() {
 
     return {
       props: {
-        users: data,
+        users: data.slice(0, 3),
       },
     };
-
   } catch (e) {
     return {
       props: {
-        users: []
-      }
-    }
+        users: [],
+      },
+    };
   }
-  x;
 }
 
 export default Users;

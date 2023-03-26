@@ -20,9 +20,8 @@ export default function Home() {
     fromBottomObs.observe(fromBottomToTop.current);
 
     const allWithClass = Array.from(document.getElementsByClassName("fromBAnim"));
-    // allWithClass.forEach(el => fromBottomObs.observe(el))
-    console.log(allWithClass[0]);
-  });
+    console.log(allWithClass);
+  }, []);
 
   return (
     <>
@@ -43,7 +42,7 @@ export default function Home() {
               className="w-9/12 h-full py-6 mx-auto my-auto"
               id="first__intro"
             >
-              <div className="grid grid-cols-2 gap-2 pb-16 pt-24 place-items-center">
+              <div className="grid grid-cols-2 gap-2 pt-24 pb-16 place-items-center">
                 <div className="space-y-4">
                   <h1
                     className="text-3xl font-bold uppercase md:text-5xl forBottom"
@@ -77,7 +76,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="rounded-full p-3">
+                <div className="p-3 rounded-full">
                   <Image
                     src="/images/logos/ng-logo.jpg"
                     alt="Nigeria Logo"
@@ -104,11 +103,11 @@ export default function Home() {
       <main className={styles.sec2}>
         <section className={styles.widthStab}>
           <div className="text-center">
-            <h2 className="text-7xl font-semibold" ref={fromBottomToTop}>
+            <h2 className="font-semibold text-7xl" ref={fromBottomToTop}>
               MEET AND FIND INTERESTING PEOPLE FROM NIGERIA!
             </h2>
           </div>
-          <div className="grid grid-cols-2 gap-2 mt-20 items-center">
+          <div className="grid items-center grid-cols-2 gap-2 mt-20">
             <div>
               <Image
                 src="/images/backgrounds/meeting-people.png"
@@ -117,13 +116,13 @@ export default function Home() {
                 height={2000}
               />
             </div>
-            <div className="p-10 shadow-2xl rounded-lg bg-white">
+            <div className="p-10 bg-white rounded-lg shadow-2xl">
               <h2 className="text-4xl font-semibold">
                 <span className="font-extrabold text-green-600">NGISONE</span>{" "}
                 brings you closer to people
               </h2>
 
-              <p className="text-xl mt-4 fromBAnim">
+              <p className="mt-4 text-xl fromBAnim">
                 NgIsOne was made with love in Nigeria to bring Nigerians and
                 Non-Nigerians together but focuses more on Nigerians people,
                 culture, dishes, tribes and so much more....
@@ -133,7 +132,7 @@ export default function Home() {
                 <Link
                   href="#"
                   style={{ backgroundColor: "#ffe103" }}
-                  className="px-8 py-4 rounded-2xl font-semibold text-lg shadow-lg"
+                  className="px-8 py-4 text-lg font-semibold shadow-lg rounded-2xl"
                 >
                   Get Started
                 </Link>
