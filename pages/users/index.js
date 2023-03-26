@@ -12,7 +12,7 @@ function Users({ users }) {
         <h1 className="text-3xl font-bold">List Of Users</h1>
         <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-3">
           {users.map((user) => (
-            <User user={user}/>
+            <User user={user} key={user.id} />
           ))}
         </div>
 
@@ -25,14 +25,24 @@ function Users({ users }) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch("http://localhost:8000/users");
-  const data = await res.json();
+  try {
+    const res = await fetch("http://localhost:8000/users");
+    const data = await res.json();
 
-  return {
-    props: {
-      users: data,
-    },
-  };
+    return {
+      props: {
+        users: data,
+      },
+    };
+
+  } catch (e) {
+    return {
+      props: {
+        users: []
+      }
+    }
+  }
+  x;
 }
 
 export default Users;
