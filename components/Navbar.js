@@ -19,7 +19,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div id="navbar" className="normal" ref={navbar}>
+    <div id="navbar" className="normal" ref={navbar} style={{zIndex: '50'}}>
       <div
         id="nav_con"
         className="w-9/12 mx-auto flex items-center justify-between"

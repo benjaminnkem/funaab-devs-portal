@@ -1,12 +1,16 @@
+import { useEffect, useRef } from "react";
+
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+
+import "remixicon/fonts/remixicon.css";
 import styles from "./LandPage.module.css";
 
 export default function Home() {
   const fromBottomToTop = useRef();
+  const imageSlide = useRef();
 
   useEffect(() => {
     const fromBottomObs = new IntersectionObserver((entry) => {
@@ -19,8 +23,27 @@ export default function Home() {
 
     fromBottomObs.observe(fromBottomToTop.current);
 
-    const allWithClass = Array.from(document.getElementsByClassName("fromBAnim"));
-    console.log(allWithClass);
+    const listOfImg = [
+      "images/others/lf1.jpg",
+      "images/others/lf2.jpg",
+      "images/others/lf3.jpg",
+      "images/others/lf4.jpg",
+      "images/others/lf5.jpg",
+    ];
+
+    let indexCounter = 0;
+    if (indexCounter <= 0) {
+      imageSlide.current.style.background = `url(${listOfImg[0]})`;
+    }
+    
+    setInterval(() => {
+      indexCounter++;
+      if (indexCounter <= listOfImg.length) {
+        imageSlide.current.style.background = `url(${listOfImg[indexCounter]})`;
+      } else {
+        indexCounter = 0;
+      }
+    }, 3000);
   }, []);
 
   return (
@@ -36,7 +59,7 @@ export default function Home() {
       </Head>
       <header>
         <section className={styles.hero}>
-          <div>
+          <div className={styles.heroShade}>
             <Navbar />
             <div
               className="w-9/12 h-full py-6 mx-auto my-auto"
@@ -45,14 +68,17 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-2 pt-24 pb-16 place-items-center">
                 <div className="space-y-4">
                   <h1
-                    className="text-3xl font-bold uppercase md:text-5xl forBottom"
+                    className="text-3xl font-bold uppercase md:text-4xl forBottom"
                     id="intro__head"
                   >
                     <span className="text-green-600">Welcome</span> to the home
                     of millions of{" "}
                     <span className="text-green-600">Nigerians</span>!
                   </h1>
-                  <p className="text-base md:text-xl sm:text-lg head-writeup forBottom">
+                  <p
+                    className="text-base md:text-xl sm:text-lg head-writeup forBottom"
+                    style={{ textShadow: "1px 1px 1px rgb(33 33 33)" }}
+                  >
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Nostrum aspernatur temporibus atque! Consequuntur quaerat
                     error eveniet illo reprehenderit fugit officia
@@ -76,19 +102,20 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="p-3 rounded-full">
-                  <Image
-                    src="/images/logos/ng-logo.jpg"
-                    alt="Nigeria Logo"
-                    className="rounded-full"
-                    width={400}
-                    height={400}
-                  />
+                <div className="p-3 rounded-full w-full">
+                  <div className={styles.jumboblock2}>
+                    <div className="bg-slate-50"></div>
+                    <div ref={imageSlide}></div>
+                  </div>
                 </div>
               </div>
             </div>
             <div>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 1440 319"
+                style={{ zIndex: "20" }}
+              >
                 <path
                   fill="#f6faf6"
                   fillOpacity="1"
@@ -103,7 +130,7 @@ export default function Home() {
       <main className={styles.sec2}>
         <section className={styles.widthStab}>
           <div className="text-center">
-            <h2 className="font-semibold text-7xl" ref={fromBottomToTop}>
+            <h2 className="font-semibold text-6xl" ref={fromBottomToTop}>
               MEET AND FIND INTERESTING PEOPLE FROM NIGERIA!
             </h2>
           </div>
@@ -116,7 +143,7 @@ export default function Home() {
                 height={2000}
               />
             </div>
-            <div className="p-10 bg-white rounded-lg shadow-2xl">
+            <div className="p-10 transition bg-white rounded-lg shadow-2xl cursor-pointer hover:shadow-lg">
               <h2 className="text-4xl font-semibold">
                 <span className="font-extrabold text-green-600">NGISONE</span>{" "}
                 brings you closer to people
@@ -134,12 +161,14 @@ export default function Home() {
                   style={{ backgroundColor: "#ffe103" }}
                   className="px-8 py-4 text-lg font-semibold shadow-lg rounded-2xl"
                 >
-                  Get Started
+                  Get Started <i className="ri ri-rocket-2-line"></i>
                 </Link>
               </div>
             </div>
           </div>
         </section>
+
+        <section style={{ background: "#333", padding: "10px" }}></section>
         <div className="h-96"></div>
       </main>
     </>

@@ -1,4 +1,12 @@
+import { useRouter } from "next/router";
+
 const UserDetails = ({ user }) => {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <div>{user.name}</div>
@@ -19,7 +27,7 @@ export async function getStaticPaths() {
         params: { userId: "3" },
       },
     ],
-    fallback: false,
+    fallback: true,
   };
 }
 
@@ -27,6 +35,10 @@ export async function getStaticProps({ params }) {
   try {
     const res = await fetch(`http://localhost:8000/users/${params.userId}`);
     const data = await res.json();
+
+    if (!data.id) {
+      return { notFound: true };
+    }
 
     return {
       props: {
