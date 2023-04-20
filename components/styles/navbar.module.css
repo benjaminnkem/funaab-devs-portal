@@ -1,0 +1,14 @@
+.mainNav {
+  background-color: rgb(3, 160, 3);
+}
+
+.navCon {
+  width: 100%;
+  margin-inline: auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 20px;
+  color: #fff;
+}

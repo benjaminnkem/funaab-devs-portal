@@ -1,47 +1,24 @@
-import Link from "next/link";
-import { useEffect, useRef } from "react";
+import navStyles from "./styles/navbar.module.css";
 
-export default function Navbar() {
-  const navbar = useRef();
-
-  useEffect(() => {
-    const scroll_function = () => {
-      if (window.scrollY >= 50) {
-        navbar.current.classList.add("scrollDown");
-      } else {
-        navbar.current.classList.remove("scrollDown");
-      }
-    };
-    window.addEventListener("scroll", scroll_function);
-    return () => {
-      window.removeEventListener("scroll", scroll_function);
-    };
-  }, []);
-
+const Navbar = ({ bgColor, textColor }) => {
   return (
-    <div id="navbar" className="normal" ref={navbar} style={{zIndex: '50'}}>
-      <div
-        id="nav_con"
-        className="w-9/12 mx-auto flex items-center justify-between"
-      >
-        <Link href="/" className="text-2xl font-bold">
-          NGISONE
-        </Link>
+    <>
+      <div className={`${bgColor} ${textColor}`}>
+        <div className={navStyles.navCon}>
+          <h1 id="logo" className="md:text-xl text-lg">Logo</h1>
 
-        <nav>
-          <ul className="flex items-center space-x-4">
-            <li className="py-7">Contact</li>
-            <li>|</li>
-            <li className="py-7">
-              <Link href="/signup">Get Started</Link>
-            </li>
-            <li className="py-7">
-              <Link href="/users">Users</Link>
-            </li>
-            <li className="py-7">Login</li>
-          </ul>
-        </nav>
+          <nav>
+            <ul className="flex space-x-6 md:text-base text-sm">
+              <li>Portal</li>
+              <li>Login</li>
+              <li>News FuList</li>
+              <li>Main Website</li>
+            </ul>
+          </nav>
+        </div>
       </div>
-    </div>
+    </>
   );
-}
+};
+
+export default Navbar;
