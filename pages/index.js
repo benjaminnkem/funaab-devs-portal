@@ -1,11 +1,16 @@
-import Navbar from "@/components/Navbar";
+import { useRouter } from "next/router";
 import Head from "next/head";
+
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 import "remixicon/fonts/remixicon.css";
 import styles from "./index.module.css";
-import Image from "next/image";
 
 export default function Home() {
+  const routes = useRouter();
+
+  // function moveToLogin() {}
   return (
     <>
       <Head>
@@ -29,7 +34,14 @@ export default function Home() {
                 </p>
 
                 <div>
-                  <button className="px-4 py-1 rounded-lg bg-yellow-600 transition hover:bg-yellow-500">Login</button>
+                  <button
+                    className="px-4 py-1 rounded-lg bg-yellow-600 transition hover:bg-yellow-500"
+                    onClick={() => {
+                      routes.push("/login");
+                    }}
+                  >
+                    Login
+                  </button>
                   <button className="px-4 py-1 rounded-lg border border-green-600 transition hover:bg-green-600 ml-3">
                     Enquiries
                   </button>
@@ -42,11 +54,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div>
-              <div>
-                <p className="text-center text-slate-100 my-3">funaab@2023 - Benjamin Nkem</p>
-              </div>
-            </div>
+            <Footer />
           </div>
         </div>
       </div>

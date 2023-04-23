@@ -50,12 +50,24 @@ const Navbar = ({ bgColor, textColor }) => {
         <div className={navStyles.navCon}>
           {/* <h1 id="logo" className="md:text-xl text-lg">Logo</h1> */}
           <div>
-            <Image src={"/images/logos/logo.png"} alt="FUNAAB Logo" width={150} height={150} draggable="false" />
+            <Link href="/">
+              <Image
+                src={"/images/logos/logo.png"}
+                alt="FUNAAB Logo"
+                width={150}
+                height={150}
+                draggable="false"
+                priority
+                id="funaabLogo"
+              />
+            </Link>
           </div>
 
           <nav className="md:block hidden">
             <ul className="flex space-x-6 md:text-base text-sm">
-              <li>Portal</li>
+              <li>
+                <Link href="/">Home</Link>
+              </li>
               <li>
                 <Link href="/login">Login</Link>
               </li>
@@ -65,14 +77,20 @@ const Navbar = ({ bgColor, textColor }) => {
           </nav>
 
           <div className="block md:hidden cursor-pointer" onClick={expandMenu}>
-            <svg fill="#fff" height="24" viewBox="0 0 24 24" width="24">
-              <path
-                d="M4 6H20M4 12H20M4 18H20"
-                stroke="#fff"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-              />
+            <svg
+              fill="#dcfce7"
+              width="40.959px"
+              height="34.536px"
+              viewBox="0 0 122.879 103.609"
+              enableBackground="new 0 0 122.879 103.609"
+            >
+              <g>
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M10.368,0h102.144c5.703,0,10.367,4.665,10.367,10.367v0 c0,5.702-4.664,10.368-10.367,10.368H10.368C4.666,20.735,0,16.07,0,10.368v0C0,4.665,4.666,0,10.368,0L10.368,0z M10.368,82.875 h102.144c5.703,0,10.367,4.665,10.367,10.367l0,0c0,5.702-4.664,10.367-10.367,10.367H10.368C4.666,103.609,0,98.944,0,93.242l0,0 C0,87.54,4.666,82.875,10.368,82.875L10.368,82.875z M10.368,41.438h102.144c5.703,0,10.367,4.665,10.367,10.367l0,0 c0,5.702-4.664,10.368-10.367,10.368H10.368C4.666,62.173,0,57.507,0,51.805l0,0C0,46.103,4.666,41.438,10.368,41.438 L10.368,41.438z"
+                />
+              </g>
             </svg>
           </div>
 
@@ -82,15 +100,16 @@ const Navbar = ({ bgColor, textColor }) => {
                 <path
                   d="M4 6H20M4 12H20M4 18H20"
                   stroke="#fff"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                 />
               </svg>
             </div>
-            <ul className="grid space-y-6 md:text-base place-content-center h-full my-auto first:mt-4 last:mb-4 text-base sm:text-lg">
+
+            <ul className="grid space-y-6 place-content-center h-full my-auto first:mt-4 last:mb-4 text-2xl text-green-100">
               <li className={navStyles.menuElem} ref={menuElRef1}>
-                Portal
+                <Link href="/">Home</Link>
               </li>
               <li className={navStyles.menuElem} ref={menuElRef2}>
                 <Link href="/login">Login</Link>
