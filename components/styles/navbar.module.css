@@ -12,3 +12,47 @@
   padding-block: 20px;
   color: #fff;
 }
+
+.menuList {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  z-index: -10;
+  background-color: rgba(0, 0, 0, 0.98);
+  text-align: center;
+  opacity: 0;
+  /* height: 0; */
+  transition: all 0.5s;
+}
+
+/* .menuList ul {
+  border: 4px red solid;
+} */
+
+.menuElem {
+  transition: all 0.5s;
+  transform: translateY(200%);
+  opacity: 0;
+}
+
+.menuElem:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.menuElem:nth-child(3) {
+  transition-delay: 0.5s;
+}
+
+.menuElem:nth-child(4) {
+  transition-delay: 0.7s;
+}
+
+@media screen and (min-width: 768px) {
+  .menuList {
+    display: none;
+  }
+}
