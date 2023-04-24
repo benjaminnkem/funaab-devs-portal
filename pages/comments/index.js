@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 
 const Comments = () => {
@@ -11,7 +12,6 @@ const Comments = () => {
     setComments(data);
   }
 
-  // Comment Handling
   const [commentInput, setCommentInput] = useState("");
   const [commentStatus, setCommentStatus] = useState(false);
 
@@ -24,34 +24,45 @@ const Comments = () => {
 
     if (commentInput === "") return;
 
-    const commentBody = {
-      text: commentInput,
-    };
-
-    await fetch("http://localhost:8000/comments", {
+    await fetch("/api/comments", {
       headers: { "Content-Type": "application/json" },
       method: "POST",
-      body: JSON.stringify(commentBody),
+      body: JSON.stringify({ comment: commentInput }),
     });
 
     setCommentStatus(true);
-
+    setCommentInput("");
     setTimeout(() => setCommentStatus(false), 2000);
-    console.log("Comment Posted Successfully");
+  }
+
+  async function deleteComment(commentId) {
+    const response = await fetch(`/api/comments/${commentId}`, {
+      method: "DELETE",
+    });
+    const data = await response.json();
+    console.log(data);
+    fetchComments();
   }
 
   return (
     <>
-      <div className="grid w-3/5 grid-cols-2 gap-3 mx-auto">
+      <div className="grid w-3/5 grid-cols-2 gap-4 mx-auto">
         <div>
-          <h1>All Comments</h1>
+          <h1 className="text-3xl font-semibold">All Comments</h1>
           {err && <p>An error occurred while fetching the comments</p>}
 
           {comments &&
             comments.map((comment) => (
-              <p className="py-3 border-b" key={comment.id}>
-                {comment.text}
-              </p>
+              <div
+                key={comment.id}
+                className="flex justify-between px-3 py-3 my-2 transition rounded-md shadow-md hover:shadow-lg"
+              >
+                <p>{comment.text}</p>
+                <div className="space-x-2">
+                  <button onClick={() => deleteComment(comment.id)}>Delete</button>
+                  <Link href={`/comments/${comment.id}`} className="text-blue-400">View</Link>
+                </div>
+              </div>
             ))}
 
           <button className="p-2 bg-yellow-600 text-red-50" onClick={fetchComments}>
@@ -62,19 +73,19 @@ const Comments = () => {
           {commentStatus && <p className="px-3 py-2 text-white bg-green-600 rounded-md">Comment Posted Successfully</p>}
           <form method="post" id="commentForm" onSubmit={handlePostComment}>
             <div>
-              <label htmlFor="commentInp" className="block">
-                Comment Input
+              <label htmlFor="commentInp" className="block text-3xl font-semibold">
+                Post a comment
               </label>
               <input
                 type="text"
                 name="commentInp"
-                className="p-2 border-b"
+                className="w-full p-2 border-b"
                 value={commentInput}
                 onChange={(e) => handleCommentInp(e)}
               />
             </div>
 
-            <button>Post Comment</button>
+            <button className="w-full py-1 mt-3 text-center bg-yellow-600 rounded-md">Post Comment</button>
           </form>
         </div>
       </div>

@@ -71,7 +71,7 @@ const Navbar = ({ bgColor, textColor }) => {
               <li>
                 <Link href="/login">Login</Link>
               </li>
-              <li><Link href='/users'>Users</Link></li>
+              <li>Users</li>
               <li><Link href='/comments'>Main Website</Link></li>
             </ul>
           </nav>
