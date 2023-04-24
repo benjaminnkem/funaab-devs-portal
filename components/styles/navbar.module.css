@@ -56,3 +56,11 @@
     display: none;
   }
 }
+
+@media (max-width: 768px) {
+  .navCon {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 40px;
+  }
+}

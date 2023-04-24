@@ -69,7 +69,7 @@ const UserLogin = () => {
                     />
                     <p className="text-center text-green-100 text-sm font-semibold md:my-2 my-4">
                       A fresher? Click{" "}
-                      <Link href="/" className="border-b border-yellow-400">
+                      <Link href="/" className="border-b border-yellow-400 hover:border-yellow-200 transition">
                         Here
                       </Link>
                     </p>
