@@ -48,8 +48,8 @@ const Navbar = ({ bgColor, textColor }) => {
     <>
       <div className={`${bgColor} ${textColor}`}>
         <div className={navStyles.navCon}>
-          <div className="md:hidden block"></div>
-          <div className="md:text-start text-center">
+          <div className="block md:hidden"></div>
+          <div className="text-center md:text-start">
             <Link href="/">
               <Image
                 src={"/images/logos/logo.png"}
@@ -63,8 +63,8 @@ const Navbar = ({ bgColor, textColor }) => {
             </Link>
           </div>
 
-          <nav className="md:block hidden">
-            <ul className="flex space-x-6 md:text-base text-sm">
+          <nav className="hidden md:block">
+            <ul className="flex space-x-6 text-sm md:text-base">
               <li>
                 <Link href="/">Home</Link>
               </li>
@@ -72,25 +72,25 @@ const Navbar = ({ bgColor, textColor }) => {
                 <Link href="/login">Login</Link>
               </li>
               <li><Link href='/users'>Users</Link></li>
-              <li>Main Website</li>
+              <li><Link href='/comments'>Main Website</Link></li>
             </ul>
           </nav>
 
-          <div className="flex items-center space-x-6 md:hidden relative">
+          <div className="relative flex items-center space-x-6 md:hidden">
             {/* <Link href="/" className="cursor-pointer">
-              <i className="ri ri-home-2-line text-3xl"></i>
+              <i className="text-3xl ri ri-home-2-line"></i>
             </Link> */}
-            <div onClick={expandMenu} className="cursor-pointer absolute right-0">
-              <i className="ri-menu-4-line text-3xl"></i>
+            <div onClick={expandMenu} className="absolute right-0 cursor-pointer">
+              <i className="text-3xl ri-menu-4-line"></i>
             </div>
           </div>
 
           <div id="menu-list" className={navStyles.menuList} ref={navIconRef}>
             <div className="absolute right-10 sm:right-16 top-48 sm:top-44" onClick={collapseMenu}>
-              <i className="ri-close-line text-3xl"></i>
+              <i className="text-3xl ri-close-line"></i>
             </div>
 
-            <ul className="grid space-y-6 place-content-center h-full my-auto first:mt-4 last:mb-4 text-2xl text-green-100">
+            <ul className="grid h-full my-auto space-y-6 text-2xl text-green-100 place-content-center first:mt-4 last:mb-4">
               <li className={navStyles.menuElem} ref={menuElRef1}>
                 <Link href="/">Home</Link>
               </li>

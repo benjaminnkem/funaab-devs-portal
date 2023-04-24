@@ -2,7 +2,7 @@ import useSWR from "swr";
 
 const TestWSR = () => {
   async function fetcher() {
-    const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    const res = await fetch("http://localhost:8000/users");
     const data = await res.json();
     return data;
   }
@@ -12,10 +12,10 @@ const TestWSR = () => {
   return (
     <>
       {err && <p>An error occurred</p>}
-      <div className="grid grid-cols-3 gap-4 w-3/5 mx-auto">
-      {users &&
+      <div className="grid w-3/5 grid-cols-3 gap-4 mx-auto">
+      {data &&
         data.map((user) => (
-          <div key={user.id} className="my-2 shadow-md p-2 rounded-md">
+          <div key={user.id} className="p-2 my-2 rounded-md shadow-md">
             <p>Name: {user.name}</p>
             <p>Username: {user.username}</p>
             <p>Email: {user.email}</p>
