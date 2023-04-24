@@ -23,32 +23,33 @@ export default function Home() {
               <Navbar textColor="text-green-50" bgColor="bg-transparent" />
             </header>
 
-            <div className="grid lg:grid-cols-2 text-green-50 items-center">
-              <div className="lg:text-start text-center">
-                <h1 className="md:text-4xl text-3xl font-bold">
+            <div className="grid items-center lg:grid-cols-2 text-green-50">
+              <div className="text-center lg:text-start">
+                <h1 className="text-3xl font-bold md:text-4xl">
                   WELCOME TO THE NEW <span className="font-extrabold text-green-600">FUNAAB</span> PORTAL
                 </h1>
-                <p className="font-light my-3 md:text-base text-sm">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, quisquam! Quas officia minus
-                  temporibus quam. Facilis, ullam id. Ad, illo.
+                <p className="my-3 text-sm font-light md:text-base">
+                  The New FUNAAB&apos;s portal comes with a pack of new features, such as improved dashboard, faster
+                  loading time and more elit. Iusto, quisquam! Quas officia minus temporibus quam. Facilis, ullam id.
+                  Ad, illo.
                 </p>
 
                 <div>
                   <button
-                    className="px-4 py-1 rounded-lg bg-yellow-600 transition hover:bg-yellow-500"
+                    className="px-4 py-1 transition bg-yellow-600 rounded-lg hover:bg-yellow-500"
                     onClick={() => {
                       routes.push("/login");
                     }}
                   >
                     Login
                   </button>
-                  <button className="px-4 py-1 rounded-lg border border-green-600 transition hover:bg-green-600 ml-3">
+                  <button className="px-4 py-1 ml-3 transition border border-green-600 rounded-lg hover:bg-green-600">
                     Enquiries
                   </button>
                 </div>
               </div>
               <div>
-                {/* <div className="overflow-hidden rounded-full border-cyan-500 border">
+                {/* <div className="overflow-hidden border rounded-full border-cyan-500">
                   <Image src="/images/others/meet-friends.png" alt="Meet friend cover image" width={500} height={500} />
                 </div> */}
               </div>
