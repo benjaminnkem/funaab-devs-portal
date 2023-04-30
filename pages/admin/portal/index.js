@@ -15,7 +15,6 @@ import { Chart } from "react-chartjs-2";
 import { Bar, Line } from "react-chartjs-2";
 
 import dashStyles from "./styles/Dashboard.module.css";
-import "remixicon/fonts/remixicon.css";
 import Image from "next/image";
 import Link from "next/link";
 

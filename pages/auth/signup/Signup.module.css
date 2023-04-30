@@ -1,0 +1,19 @@
+.headerBg {
+  background: url("/images/backgrounds/signup-2.jpg") center no-repeat fixed;
+  background-size: cover;
+}
+
+@media (max-width: 768px) {
+  .headerBg {
+    background-attachment: scroll;
+  }
+}
+
+.signUpText {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 5px 5px 30px rgba(255, 255, 255, 0.8);
+}
+
+.signUpCon {
+  background: url("/images/backgrounds/register-2.jpg") center no-repeat;
+  background-size: cover;
+}

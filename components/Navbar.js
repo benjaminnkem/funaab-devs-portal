@@ -47,7 +47,7 @@ const Navbar = ({ bgColor, textColor }) => {
   return (
     <>
       <div className={`${bgColor} ${textColor}`}>
-        <div className={navStyles.navCon}>
+        <div className={`flex justify-between items-center ${textColor} py-2 md:max-w-[1024px] mx-auto w-11/12`}>
           <div className="block md:hidden"></div>
           <div className="text-center md:text-start">
             <Link href="/">
@@ -59,6 +59,7 @@ const Navbar = ({ bgColor, textColor }) => {
                 draggable="false"
                 priority
                 id="funaabLogo"
+                className="mx-auto"
               />
             </Link>
           </div>
@@ -68,11 +69,13 @@ const Navbar = ({ bgColor, textColor }) => {
               <li>
                 <Link href="/">Home</Link>
               </li>
+              <li>News</li>
               <li>
-                <Link href="/login">Login</Link>
+                <Link href="/auth/signup">Fresh Students</Link>
               </li>
-              <li>Users</li>
-              <li><Link href='/admin/portal'>Portal</Link></li>
+              <li>
+                <Link href="/auth/login">Login</Link>
+              </li>
             </ul>
           </nav>
 
@@ -101,7 +104,7 @@ const Navbar = ({ bgColor, textColor }) => {
                 News
               </li>
               <li className={navStyles.menuElem} ref={menuElRef4}>
-                <Link href='/admin/portal'>Portal</Link>
+                <Link href="/admin/portal">Portal</Link>
               </li>
             </ul>
           </div>

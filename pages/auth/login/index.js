@@ -1,6 +1,4 @@
-import { useEffect, useRef, useState } from "react";
-
-import "remixicon/fonts/remixicon.css";
+import { useState } from "react";
 
 import Navbar from "@/components/Navbar";
 import loginStyles from "./login.module.css";
@@ -28,13 +26,15 @@ const UserLogin = () => {
         <title>LOGIN AS A STUDENT - FUNAAB PORTAL</title>
       </Head>
       <div className={loginStyles.body}>
-        <div className="grid grid-rows-3 h-full">
-          <div className="w-4/5 mx-auto  self-start">
+        <div className="grid h-full grid-rows-3">
+          <div className="self-start w-4/5 mx-auto">
             <Navbar bgColor="bg-transparent" textColor="text-green-50" />
           </div>
-          <div className="text-green-50 self-start md:-mt-20 -mt-16">
-            <div className="max-w-md mx-auto rounded-lg transition px-2 md:mt-8 mt-10">
-              <i className="ri ri-profile-fill text-2xl mb-10"></i>
+          <div className="self-start -mt-16 text-green-50 md:-mt-20">
+            <div className="max-w-md px-2 mx-auto mt-10 transition rounded-lg md:mt-8">
+              <div className="mb-5">
+                <i className="text-2xl md:text-3xl ri-shield-user-line"></i>
+              </div>
 
               <form>
                 <div className="space-y-3">
@@ -42,7 +42,7 @@ const UserLogin = () => {
                     <label className="block font-semibold">UTME NO:</label>
                     <input
                       type="text"
-                      className="bg-transparent focus:outline-2 focus:outline-green-400 focus:border-inherit mt-1 p-2 md:text-base text-sm w-full border-b border-green-600"
+                      className="w-full p-2 mt-1 text-sm bg-transparent border-b border-green-600 focus:outline-2 focus:outline-green-400 focus:border-inherit md:text-base"
                       value={utmeNoInput}
                       placeholder="202xxxxxxxxxxx"
                       maxLength="14"
@@ -57,7 +57,7 @@ const UserLogin = () => {
                     <label className="block font-semibold">Password:</label>
                     <input
                       type="password"
-                      className="bg-transparent focus:outline-2 focus:outline-green-400 focus:border-inherit mt-1 p-2 md:text-base text-sm w-full border-b border-green-600"
+                      className="w-full p-2 mt-1 text-sm bg-transparent border-b border-green-600 focus:outline-2 focus:outline-green-400 focus:border-inherit md:text-base"
                     />
                   </div>
 
@@ -65,11 +65,11 @@ const UserLogin = () => {
                     <input
                       type="submit"
                       value="Login"
-                      className="w-full py-1 bg-green-600 hover:bg-green-700 transition text-green-50 rounded-md"
+                      className="w-full py-1 transition bg-green-600 rounded-md hover:bg-green-700 text-green-50"
                     />
-                    <p className="text-center text-green-100 text-sm font-semibold md:my-2 my-4">
+                    <p className="my-4 text-sm font-semibold text-center text-green-100 md:my-2">
                       A fresher? Click{" "}
-                      <Link href="/" className="border-b border-yellow-400 hover:border-yellow-200 transition">
+                      <Link href="/" className="transition border-b border-yellow-400 hover:border-yellow-200">
                         Here
                       </Link>
                     </p>
@@ -79,7 +79,7 @@ const UserLogin = () => {
             </div>
           </div>
 
-          <div className=" self-end">
+          <div className="self-end ">
             <Footer />
           </div>
         </div>

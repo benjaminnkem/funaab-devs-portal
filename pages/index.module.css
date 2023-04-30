@@ -24,8 +24,6 @@
 }
 
 .homeCon {
-  width: 80%;
-  margin-inline: auto;
   height: 100%;
   display: flex;
   flex-direction: column;
