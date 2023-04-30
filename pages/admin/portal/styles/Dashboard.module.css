@@ -1,0 +1,64 @@
+.dashboardCon {
+  max-width: 1024px;
+  background-color: black;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+.layout {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
+/* .dashContent {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100;
+} */
+
+.notiIcon::after {
+  content: "3";
+  background-color: rgb(3, 198, 42);
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  font-size: 15px;
+  padding: 1px;
+  color: white;
+  font-weight: bold;
+
+  display: inline-flex;
+  -webkit-flex-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.statGrid {
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  gap: 0.75rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  margin-top: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .statGrid {
+    display: block;
+  }
+  .statGrid:last-child {
+    grid-column: 1/1;
+  }
+}

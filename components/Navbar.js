@@ -72,7 +72,7 @@ const Navbar = ({ bgColor, textColor }) => {
                 <Link href="/login">Login</Link>
               </li>
               <li>Users</li>
-              <li>Portal</li>
+              <li><Link href='/admin/portal'>Portal</Link></li>
             </ul>
           </nav>
 
@@ -101,7 +101,7 @@ const Navbar = ({ bgColor, textColor }) => {
                 News
               </li>
               <li className={navStyles.menuElem} ref={menuElRef4}>
-                Portal
+                <Link href='/admin/portal'>Portal</Link>
               </li>
             </ul>
           </div>
