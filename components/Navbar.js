@@ -9,6 +9,7 @@ const Navbar = ({ bgColor, textColor }) => {
   const menuElRef2 = useRef(null);
   const menuElRef3 = useRef(null);
   const menuElRef4 = useRef(null);
+  const menuElRef5 = useRef(null);
 
   function expandMenu() {
     navIconRef.current.style.opacity = "1";
@@ -25,6 +26,9 @@ const Navbar = ({ bgColor, textColor }) => {
 
     menuElRef4.current.style.opacity = "1";
     menuElRef4.current.style.transform = "translateY(0)";
+
+    menuElRef5.current.style.opacity = "1";
+    menuElRef5.current.style.transform = "translateY(0)";
   }
 
   function collapseMenu() {
@@ -42,6 +46,9 @@ const Navbar = ({ bgColor, textColor }) => {
 
     menuElRef4.current.style.opacity = "0";
     menuElRef4.current.style.transform = "translateY(200%)";
+    
+    menuElRef5.current.style.opacity = "0";
+    menuElRef5.current.style.transform = "translateY(200%)";
   }
 
   return (
@@ -69,20 +76,18 @@ const Navbar = ({ bgColor, textColor }) => {
               <li>
                 <Link href="/">Home</Link>
               </li>
-              <li>News</li>
+              <li>Find Match</li>
               <li>
                 <Link href="/auth/signup">Create Account</Link>
               </li>
               <li>
                 <Link href="/auth/login">Login</Link>
               </li>
+              <li>HQ Devs</li>
             </ul>
           </nav>
 
           <div className="relative flex items-center space-x-6 md:hidden">
-            {/* <Link href="/" className="cursor-pointer">
-              <i className="text-3xl ri ri-home-2-line"></i>
-            </Link> */}
             <div onClick={expandMenu} className="absolute right-0 cursor-pointer">
               <i className="text-3xl ri-menu-4-line"></i>
             </div>
@@ -98,13 +103,16 @@ const Navbar = ({ bgColor, textColor }) => {
                 <Link href="/">Home</Link>
               </li>
               <li className={navStyles.menuElem} ref={menuElRef2}>
-                <Link href="/login">Login</Link>
+                Find Match
               </li>
               <li className={navStyles.menuElem} ref={menuElRef3}>
-                News
+                <Link href="/auth/signup">Create Account</Link>
               </li>
               <li className={navStyles.menuElem} ref={menuElRef4}>
-                <Link href="/admin/portal">Portal</Link>
+                <Link href="/auth/login">Login</Link>
+              </li>
+              <li className={navStyles.menuElem} ref={menuElRef5}>
+                HQ Devs
               </li>
             </ul>
           </div>

@@ -51,6 +51,10 @@
   transition-delay: 0.7s;
 }
 
+.menuElem:nth-child(5) {
+  transition-delay: 0.9s;
+}
+
 @media screen and (min-width: 768px) {
   .menuList {
     display: none;

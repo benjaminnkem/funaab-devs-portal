@@ -48,6 +48,7 @@ const NewUserSignUp = () => {
                       </label>
                       <input
                         type="text"
+                        id="username"
                         className="w-full p-2 border-b focus:outline-none"
                         placeholder="Username"
                         required
@@ -59,6 +60,7 @@ const NewUserSignUp = () => {
                       </label>
                       <input
                         type="text"
+                        id="fullName"
                         className="w-full p-2 border-b focus:outline-none"
                         placeholder="Enter Full Name"
                         required
@@ -70,6 +72,7 @@ const NewUserSignUp = () => {
                       </label>
                       <input
                         type="email"
+                        id="email"
                         className="w-full p-2 border-b focus:outline-none"
                         placeholder="Enter Email"
                         required
