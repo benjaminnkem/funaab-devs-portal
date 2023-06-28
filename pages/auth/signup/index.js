@@ -17,11 +17,10 @@ const NewUserSignUp = () => {
                   <h1 className={`text-2xl font-bold uppercase md:text-5xl sm:text-3xl ${styles.signUpText}`}>
                     CREATE AN ACCOUNT
                   </h1>
-                  <p className="mx-auto my-3 font-light md:max-w-4xl">
+                  <p className="mx-auto my-3 text-lg font-light md:max-w-4xl">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam possimus aspernatur, sapiente facere
                     et odit distinctio tenetur sequi accusamus fugiat deserunt nulla enim voluptatibus minus adipisci
-                    dolorum velit, non corrupti. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet,
-                    inventore.
+                    dolorum velit, non corrupti. Lorem ipsum dolor sit amet consecteturF
                   </p>
                 </div>
               </div>
@@ -36,8 +35,58 @@ const NewUserSignUp = () => {
 
             <div className={`grid grid-cols-2 shadow-md rounded-md md:min-h-[30rem] overflow-hidden`}>
               <div className={`${styles.signUpCon}`}></div>
-              <div className="p-3">
-                <div className="py-4"></div>
+              <div className="px-3 py-10">
+                <form className="items-center gap-2 space-y-5 text-slate-700" action="/api/signup">
+                  <div>
+                    <label htmlFor="fullName" className="text-lg font-medium">
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full p-2 border-b focus:outline-none"
+                      placeholder="Enter Full Name"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="username" className="text-lg font-medium">
+                      Username
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full p-2 border-b focus:outline-none"
+                      placeholder="Username"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="text-lg font-medium">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      className="w-full p-2 border-b focus:outline-none"
+                      placeholder="Enter Email"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="password" className="text-lg font-medium">
+                      Password
+                    </label>
+                    <input
+                      type="password"
+                      className="w-full p-2 border-b focus:outline-none"
+                      placeholder="Choose Password"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <button className="w-full py-3 duration-200 bg-green-700 border-2 border-green-400 rounded-md text-green-50 hover:bg-green-600">
+                      Sign Up
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </section>

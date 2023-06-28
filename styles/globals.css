@@ -3,15 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
-::selection {
-  background-color: rgba(0, 158, 53, 0.796);
-}
-
-::-moz-selection {
-  background-color: rgba(0, 158, 53, 0.796);
-}
-
 html {
   scroll-behavior: smooth;
 }
