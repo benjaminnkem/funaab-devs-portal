@@ -71,7 +71,7 @@ const Navbar = ({ bgColor, textColor }) => {
               </li>
               <li>News</li>
               <li>
-                <Link href="/auth/signup">Fresh Students</Link>
+                <Link href="/auth/signup">Create Account</Link>
               </li>
               <li>
                 <Link href="/auth/login">Login</Link>

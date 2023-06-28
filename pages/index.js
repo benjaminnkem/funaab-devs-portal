@@ -25,15 +25,14 @@ export default function Home() {
             <div className="md:max-w-[1024px] mx-auto w-11/12">
               <div className="grid items-center lg:grid-cols-2 text-green-50">
                 <div className="text-center lg:text-start">
-                  <h1 className="text-3xl font-bold md:text-4xl">
-                    WELCOME TO THE NEW <span className="font-extrabold text-green-600">FUNAAB</span> PORTAL
+                  <h1 className="text-xl font-bold md:text-2xl">
+                    WELCOME TO THE <span className="font-extrabold text-green-600">FUNAAB</span> DEVs POINT
                   </h1>
                   <p className="my-3 text-sm font-light md:text-base">
                     The New FUNAAB&apos;s portal comes with a pack of new features, such as improved dashboard, faster
-                    loading time and more elit. Iusto, quisquam! Quas officia minus temporibus quam. Facilis, ullam id.
-                    Ad, illo.
+                    loading time and more elit. Iusto, quisquam!
                   </p>
-                  <div>
+                  <div className="flex items-center">
                     <button
                       className="px-4 py-1 transition bg-yellow-600 rounded-lg hover:bg-yellow-500"
                       onClick={() => {
@@ -43,7 +42,7 @@ export default function Home() {
                       Login
                     </button>
                     <button className="px-4 py-1 ml-3 transition border border-green-600 rounded-lg hover:bg-green-600">
-                      Fresh Students
+                      <span>Join Us</span> <i className="ri-rocket-2-line"></i>
                     </button>
                   </div>
                 </div>
