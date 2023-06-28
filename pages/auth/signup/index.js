@@ -5,132 +5,115 @@ import styles from "./Signup.module.css";
 const NewUserSignUp = () => {
   return (
     <>
-      <div className="absolute top-0 left-0 w-full h-full">
-        <header className={`${styles.headerBg} md:min-h-[40rem] sm:min-h-[28rem] min-h-[24rem] relative`}>
-          <div className="absolute top-0 left-0 flex flex-col justify-between w-full h-full bg-black bg-opacity-60">
-            <div>
-              <Navbar textColor="text-green-50" bgColor="bg-transparent" />
-            </div>
-            <div>
-              <div className="md:max-w-[1024px] mx-auto w-11/12 ">
-                <div className="text-center text-white">
+      <div id="bgCover" className={`${styles.headerBg} fixed -z-20 w-full h-full top-0 left-0`}></div>
+      <div className={`bg-black bg-opacity-40 fixed -z-10 w-full h-full top-0 left-0`}></div>
+
+      <div className={`absolute top-0 left-0 w-full h-full`}>
+        <main>
+          <Navbar textColor="text-purple-50" bgColor="bg-transparent" />
+          <div>
+            <div className="md:max-w-[1024px] mx-auto w-11/12 py-10 md:py-0">
+              <div className={`md:grid gap-4 items-center`} style={{ gridTemplateColumns: "3fr 2fr" }}>
+                <div className="mb-8 text-center text-white md:text-start md:mb-0">
                   <h1 className={`text-2xl font-bold uppercase md:text-5xl sm:text-3xl ${styles.signUpText}`}>
-                    CREATE AN ACCOUNT
+                    JOIN THE EVOLUTION
                   </h1>
                   <p className="mx-auto my-3 text-lg font-light md:max-w-4xl">
                     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam possimus aspernatur, sapiente facere
-                    et odit distinctio tenetur sequi accusamus fugiat deserunt nulla enim voluptatibus minus adipisci
-                    dolorum velit, non corrupti. Lorem ipsum dolor sit amet consecteturF
+                    et odit distinctio tenetur sequi accusamus
                   </p>
                 </div>
-              </div>
-            </div>
-            <div className="h-20"></div>
-          </div>
-        </header>
 
-        <main>
-          <section className="md:max-w-[1024px] mx-auto w-11/12 mt-24">
-            <h2 className="text-xl text-center uppercase md:text-3xl mb-7">Sign Up Here</h2>
-
-            <div className={`grid md:grid-cols-2 shadow-2xl rounded-md md:min-h-[30rem] overflow-hidden`}>
-              <div className={`${styles.signUpCon} hidden md:block`}></div>
-              <div className="p-5">
-                <p className="py-4 text-pink-600">
-                  Note: This application are strictly for FUNAABites only! <br />
-                  Enter your information below
-                </p>
-                <form className="text-slate-700" action="/api/signup">
-                  <div className="grid items-center grid-cols-2 gap-3 space-y-2">
-                  <div>
-                      <label htmlFor="username" className="text-lg font-medium">
+                <form
+                  className={`text-slate-700 p-5 rounded-2xl shadow-lg border border-purple-200 ${styles.formContainer}`}
+                  action="/api/signup"
+                >
+                  <div className="items-center block grid-cols-1 gap-3 space-y-4 md:space-y-2 sm:grid sm:grid-cols-2">
+                    <div>
+                      <label htmlFor="username" className="text-lg font-medium text-white">
                         Username
                       </label>
                       <input
                         type="text"
                         id="username"
-                        className="w-full p-2 border-b focus:outline-none"
+                        className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
                         placeholder="Username"
                         required
                       />
                     </div>
                     <div>
-                      <label htmlFor="fullName" className="text-lg font-medium">
+                      <label htmlFor="fullName" className="text-lg font-medium text-white">
                         Full Name
                       </label>
                       <input
                         type="text"
                         id="fullName"
-                        className="w-full p-2 border-b focus:outline-none"
+                        className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
                         placeholder="Enter Full Name"
                         required
                       />
                     </div>
                     <div>
-                      <label htmlFor="email" className="text-lg font-medium">
+                      <label htmlFor="email" className="text-lg font-medium text-white">
                         Email
                       </label>
                       <input
                         type="email"
                         id="email"
-                        className="w-full p-2 border-b focus:outline-none"
+                        className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
                         placeholder="Enter Email"
                         required
                       />
                     </div>
                     <div>
-                      <label htmlFor="department" className="text-lg font-medium">
+                      <label htmlFor="department" className="text-lg font-medium text-white">
                         Department
                       </label>
                       <input
                         type="text"
                         id="department"
-                        className="w-full p-2 border-b focus:outline-none"
+                        className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
                         placeholder="Enter Your Department"
                         required
                       />
                     </div>
                     <div>
-                      <label htmlFor="level" className="text-lg font-medium">
+                      <label htmlFor="level" className="text-lg font-medium text-white">
                         Level
                       </label>
                       <input
                         type="text"
                         id="level"
-                        className="w-full p-2 border-b focus:outline-none"
+                        className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
                         placeholder="What level are you in?"
                         required
                       />
                     </div>
                     <div>
-                      <label htmlFor="college" className="text-lg font-medium">
+                      <label htmlFor="college" className="text-lg font-medium text-white">
                         College
                       </label>
-                      <select name="college" id="college" className="w-full py-2 border-b focus:outline-none">
-                        <option value="colphys">COLPHYS</option>
-                        <option value="colphys">COLBIOS</option>
-                        <option value="colphys">COLAMRUD</option>
-                        <option value="colphys">COLENG</option>
-                        <option value="colphys">COLEND</option>
-                        <option value="colphys">COLVET</option>
-                        <option value="colphys">COLNAS</option>
-                        <option value="colphys">COLERM</option>
-                        <option value="colphys">COLPLANT</option>
-                      </select>
+                      <input
+                        type="text"
+                        id="college"
+                        className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
+                        placeholder="College e.g COLPHYS"
+                        required
+                      />
                     </div>
                     <div>
-                      <label htmlFor="password" className="text-lg font-medium">
+                      <label htmlFor="password" className="text-lg font-medium text-white">
                         Password
                       </label>
                       <input
                         type="password"
-                        className="w-full p-2 border-b focus:outline-none"
+                        className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
                         placeholder="Choose Password"
                         required
                       />
                     </div>
                     <div style={{ gridColumn: "1/3" }}>
-                      <button className="w-full py-3 duration-200 bg-green-700 border-2 border-green-400 rounded-md text-green-50 hover:bg-green-600">
+                      <button className="w-full py-3 duration-200 bg-purple-700 bg-opacity-40 rounded-2xl text-purple-50 hover:bg-purple-600">
                         Sign Up
                       </button>
                     </div>
@@ -138,9 +121,8 @@ const NewUserSignUp = () => {
                 </form>
               </div>
             </div>
-          </section>
+          </div>
         </main>
-        <div className="h-96"></div>
       </div>
     </>
   );

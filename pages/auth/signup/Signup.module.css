@@ -1,5 +1,5 @@
 .headerBg {
-  background: url("/images/backgrounds/signup-2.jpg") center no-repeat fixed;
+  background: url("/images/backgrounds/bg3.jpg") center no-repeat fixed;
   background-size: cover;
 }
 
@@ -16,4 +16,9 @@
 .signUpCon {
   background: url("/images/backgrounds/register-2.jpg") center no-repeat;
   background-size: cover;
+}
+
+.formContainer {
+  background-color: transparent;
+  backdrop-filter: blur(12px);
 }
