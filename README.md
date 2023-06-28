@@ -1,19 +1,22 @@
-This is a test Nextjs web application for students, either aspiring, beginner, intermediate and pro developers.
+# FUNAAB Devs Portal
+
+FUNAAB Devs portal is a web application built on Nextjs, which should supports a realtime chat rooms, signup and signout, notification and is kept very simple. In the nearest future, more features may be added.
 
 ## Getting Started
 
-First, run the development server:
+To install all dependencies, run (after forking and cloning):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Contributing
 
-## More Info
-If you're consistent working with Nextjs and Javascript, you can fork the project to contribute and make developing the app faster
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
+
+Please make sure to update tests as appropriate.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
