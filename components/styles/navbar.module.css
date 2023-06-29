@@ -33,7 +33,7 @@
   border: 4px red solid;                                                        
 } */
 
-.menuElem {
+/* .menuElem {
   transition: all 0.5s;
   transform: translateY(200%);
   opacity: 0;
@@ -53,7 +53,7 @@
 
 .menuElem:nth-child(5) {
   transition-delay: 0.9s;
-}
+} */
 
 @media screen and (min-width: 768px) {
   .menuList {
