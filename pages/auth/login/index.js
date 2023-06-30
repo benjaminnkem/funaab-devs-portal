@@ -20,6 +20,16 @@ const UserLogin = () => {
     }
   }
 
+  async function handleLoginDemo(e) {
+    e.preventDefault();
+    const data = {};
+    await fetch("/api/auth/signin", {
+      method: "POST",
+      headers: { "Content-type": "application/json" },
+      body: JSON.stringify(data),
+    });
+  }
+
   return (
     <>
       <Head>
@@ -36,7 +46,7 @@ const UserLogin = () => {
                 <i className="text-2xl md:text-3xl ri-shield-user-line"></i>
               </div>
 
-              <form>
+              <form onSubmit={(e) => handleLoginDemo(e)}>
                 <div className="space-y-3">
                   <div>
                     <label className="block font-semibold">UTME NO:</label>

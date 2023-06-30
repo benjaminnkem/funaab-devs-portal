@@ -27,7 +27,7 @@ const NewUserSignUp = () => {
       setFormProcessing(false);
       setFormErrorMessage(errMessage);
     }
-    
+
     // Validating form input
     if (password.length < 8) {
       stopProcess("Password is less than 8 characters");
@@ -37,7 +37,6 @@ const NewUserSignUp = () => {
       stopProcess("Password does not match");
       return;
     }
-
 
     const data = { name: "Benjamin", age: 18 };
     const response = await fetch("/api/signup", {
@@ -93,7 +92,7 @@ const NewUserSignUp = () => {
                   }`}
                 >
                   {/* Setting a customer  error when any of the defined error occurs*/}
-                  {serverErrorPresent || (formErrorPresent && formErrorMessage)}
+                  {(serverErrorPresent || formErrorPresent) && formErrorMessage}
                 </p>
 
                 <div className="items-center block grid-cols-1 gap-3 space-y-4 md:space-y-2 sm:grid sm:grid-cols-2">

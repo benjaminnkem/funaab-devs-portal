@@ -1,11 +1,25 @@
-export default function handler(req, res) {
-  try {
-    if (req.method === "POST") {
+import UserModel from "@/pages/schemas/users/UserModel";
+import dbConnection from "@/pages/utils/db";
+
+async function handler(req, res) {
+  if (req.method === "POST") {
+    try {
+      // Connecting to database
+      await dbConnection();
+
+      //Using Users Model
+      const user = await UserModel.find({});
+      console.log(user);
+
       return res.status(200).json({ message: "Congrats" });
-    } else {
-      res.status(202).json({ message: `The method ${req.method} is unsupported` });
+    } catch (err) {
+      return res
+        .status(500)
+        .json({ message: "An error occurred while trying to communicate with the database", errMessage: err.message });
     }
-  } catch (e) {
-    console.log(e);
+  } else {
+    res.status(405).json({ message: `The method ${req.method} is unsupported` });
   }
 }
+
+export default handler;
