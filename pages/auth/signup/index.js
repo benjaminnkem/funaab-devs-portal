@@ -1,10 +1,43 @@
 import Navbar from "@/components/Navbar";
 
 import styles from "./Signup.module.css";
+import { useState } from "react";
 
 const NewUserSignUp = () => {
+  const [formErrorPresent, setFormErrorPresent] = useState(false);
+  const [serverErrorPresent, setServerErrorPresent] = useState(false);
+  const [formProcessing, setFormProcessing] = useState(false);
+  const [formErrorMessage, setFormErrorMessage] = useState("");
+
+  const [username, setUsername] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
+  const [level, setLevel] = useState("");
+  const [department, setDepartment] = useState("");
+  const [colFalc, setColFalc] = useState("");
+
   async function handleSignUp(e) {
     e.preventDefault();
+    setFormProcessing(true);
+
+    function stopProcess(errMessage) {
+      setFormErrorPresent(true);
+      setFormProcessing(false);
+      setFormErrorMessage(errMessage);
+    }
+    
+    // Validating form input
+    if (password.length < 8) {
+      stopProcess("Password is less than 8 characters");
+      return;
+    }
+    if (password !== repeatPassword) {
+      stopProcess("Password does not match");
+      return;
+    }
+
 
     const data = { name: "Benjamin", age: 18 };
     const response = await fetch("/api/signup", {
@@ -14,11 +47,16 @@ const NewUserSignUp = () => {
     });
 
     if (!response.ok) {
-      console.log("something wrong happened", response.message);
+      setFormProcessing(false);
+      setServerErrorPresent(true);
+      setFormErrorMessage("Sorry, we cannot process your request at the moment");
       return;
     }
 
-    console.log("User data reached the server", response.message);
+    setFormProcessing(false);
+    setServerErrorPresent(false);
+    setFormErrorPresent(false);
+    setFormErrorMessage("You've signed up successfully!");
   }
 
   return (
@@ -49,6 +87,15 @@ const NewUserSignUp = () => {
                   handleSignUp(e);
                 }}
               >
+                <p
+                  className={`py-1 font-semibold text-center ${
+                    serverErrorPresent || formErrorPresent ? "text-red-500" : "text-green-500"
+                  }`}
+                >
+                  {/* Setting a customer  error when any of the defined error occurs*/}
+                  {serverErrorPresent || (formErrorPresent && formErrorMessage)}
+                </p>
+
                 <div className="items-center block grid-cols-1 gap-3 space-y-4 md:space-y-2 sm:grid sm:grid-cols-2">
                   <div>
                     <label htmlFor="username" className="text-lg font-medium text-white">
@@ -59,6 +106,10 @@ const NewUserSignUp = () => {
                       id="username"
                       className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
                       placeholder="Username"
+                      value={username}
+                      onChange={(e) => {
+                        setUsername(e.target.value);
+                      }}
                       required
                     />
                   </div>
@@ -71,6 +122,10 @@ const NewUserSignUp = () => {
                       id="fullName"
                       className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
                       placeholder="Enter Full Name"
+                      value={fullName}
+                      onChange={(e) => {
+                        setFullName(e.target.value);
+                      }}
                       required
                     />
                   </div>
@@ -83,6 +138,10 @@ const NewUserSignUp = () => {
                       id="email"
                       className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
                       placeholder="Enter Email"
+                      value={email}
+                      onChange={(e) => {
+                        setEmail(e.target.value);
+                      }}
                       required
                     />
                   </div>
@@ -95,6 +154,10 @@ const NewUserSignUp = () => {
                       id="department"
                       className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
                       placeholder="Enter Your Department"
+                      value={department}
+                      onChange={(e) => {
+                        setDepartment(e.target.value);
+                      }}
                       required
                     />
                   </div>
@@ -107,18 +170,26 @@ const NewUserSignUp = () => {
                       id="level"
                       className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
                       placeholder="What level are you in?"
+                      value={level}
+                      onChange={(e) => {
+                        setLevel(e.target.value);
+                      }}
                       required
                     />
                   </div>
                   <div>
                     <label htmlFor="college" className="text-lg font-medium text-white">
-                      College
+                      College/Faculty
                     </label>
                     <input
                       type="text"
                       id="college"
                       className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
                       placeholder="College e.g COLPHYS"
+                      value={colFalc}
+                      onChange={(e) => {
+                        setColFalc(e.target.value);
+                      }}
                       required
                     />
                   </div>
@@ -131,6 +202,10 @@ const NewUserSignUp = () => {
                       className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
                       placeholder="Choose Password"
                       id="password"
+                      value={password}
+                      onChange={(e) => {
+                        setPassword(e.target.value);
+                      }}
                       required
                     />
                   </div>
@@ -143,12 +218,34 @@ const NewUserSignUp = () => {
                       className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
                       placeholder="Choose Password"
                       id="repeatPassword"
+                      value={repeatPassword}
+                      onChange={(e) => {
+                        setRepeatPassword(e.target.value);
+                      }}
                       required
                     />
                   </div>
+                  {/* {password.length < 8 ? (
+                    <p className="text-sm font-bold text-center text-red-500" style={{ gridColumn: "1/3" }}>
+                      Password cannot be less than 8 characters
+                    </p>
+                  ) : (
+                    <p className="text-sm font-bold text-center text-green-500" style={{ gridColumn: "1/3" }}>
+                      Password is {">"} 8 characters ✅
+                    </p>
+                  )} */}
+
                   <div style={{ gridColumn: "1/3" }}>
-                    <button className="w-full py-3 duration-200 bg-purple-700 bg-opacity-40 rounded-2xl text-purple-50 hover:bg-purple-600">
-                      Sign Up
+                    <button
+                      className="relative w-full py-3 overflow-hidden duration-200 bg-purple-700 bg-opacity-40 rounded-2xl text-purple-50 hover:bg-purple-600 disabled:bg-purple-300"
+                      disabled={formProcessing ? true : false}
+                    >
+                      Sign Up{" "}
+                      {formProcessing && (
+                        <span className="absolute top-0 left-0 grid w-full h-full place-content-center">
+                          <span className="w-10 h-10 border-8 border-purple-600 rounded-full border-t-white border-opacity-70 animate-spin"></span>
+                        </span>
+                      )}
                     </button>
                   </div>
                 </div>
