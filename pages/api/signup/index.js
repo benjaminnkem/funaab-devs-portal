@@ -6,13 +6,12 @@ async function handler(req, res) {
     try {
       // Connecting to database
       await dbConnection();
-
-      //Using Users Model
-      const user = await UserModel.find({});
-      console.log(user);
-
+      
+      // Using Users Model
+      const user = await UserModel.create(req.body);
       return res.status(200).json({ message: "Congrats" });
     } catch (err) {
+      console.log(err);
       return res
         .status(500)
         .json({ message: "An error occurred while trying to communicate with the database", errMessage: err.message });

@@ -38,7 +38,15 @@ const NewUserSignUp = () => {
       return;
     }
 
-    const data = { name: "Benjamin", age: 18 };
+    const data = {
+      username,
+      fullName,
+      email,
+      department,
+      level,
+      colFalc,
+      password,
+    };
     const response = await fetch("/api/signup", {
       method: "POST",
       headers: { "Content-type": "application/json" },
