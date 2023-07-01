@@ -36,12 +36,11 @@ const Navbar = ({ bgColor, textColor }) => {
               </li>
               <li>Find Match</li>
               <li>
-                <Link href="/auth/signup">Create Account</Link>
-              </li>
-              <li>
                 <Link href="/auth/login">Login</Link>
               </li>
-              <li>HQ Devs</li>
+              <li>
+                <Link href="/auth/signup">Create Account</Link>
+              </li>
             </ul>
           </nav>
 
@@ -66,13 +65,13 @@ const Navbar = ({ bgColor, textColor }) => {
                 <Link href="/">Home</Link>
               </li>
               <li className={navStyles.menuElem}>Find Match</li>
-              <li className={navStyles.menuElem}>
-                <Link href="/auth/signup">Create Account</Link>
-              </li>
+
               <li className={navStyles.menuElem}>
                 <Link href="/auth/login">Login</Link>
               </li>
-              <li className={navStyles.menuElem}>HQ Devs</li>
+              <li className={navStyles.menuElem}>
+                <Link href="/auth/signup">Create Account</Link>
+              </li>
             </ul>
           </div>
         </div>

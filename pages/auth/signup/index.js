@@ -2,12 +2,17 @@ import Navbar from "@/components/Navbar";
 
 import styles from "./Signup.module.css";
 import { useState } from "react";
+import Head from "next/head";
 
 const NewUserSignUp = () => {
   const [formErrorPresent, setFormErrorPresent] = useState(false);
   const [serverErrorPresent, setServerErrorPresent] = useState(false);
   const [formProcessing, setFormProcessing] = useState(false);
   const [formErrorMessage, setFormErrorMessage] = useState("");
+
+  // On Success
+  const [successMessage, setSuccessMessage] = useState("");
+  const [signUpBtnText, setSignUpBtnText] = useState("Sign Up 🚀");
 
   const [username, setUsername] = useState("");
   const [fullName, setFullName] = useState("");
@@ -43,10 +48,13 @@ const NewUserSignUp = () => {
       fullName,
       email,
       department,
-      level,
+      level: parseInt(level),
       colFalc,
       password,
     };
+
+    console.log(data);
+
     const response = await fetch("/api/signup", {
       method: "POST",
       headers: { "Content-type": "application/json" },
@@ -56,18 +64,35 @@ const NewUserSignUp = () => {
     if (!response.ok) {
       setFormProcessing(false);
       setServerErrorPresent(true);
-      setFormErrorMessage("Sorry, we cannot process your request at the moment");
+      setSuccessMessage("");
+      setFormErrorMessage("Form validation failed 😥");
       return;
     }
 
+    // Resetting all values;
+    setUsername("");
+    setPassword("");
+    setColFalc("");
+    setLevel("");
+    setRepeatPassword("");
+    setEmail("");
+    setDepartment("");
+
+    // Stopping all form process...
     setFormProcessing(false);
     setServerErrorPresent(false);
     setFormErrorPresent(false);
-    setFormErrorMessage("You've signed up successfully!");
+
+    setSuccessMessage("Your account was created successfully 🎉");
+    setSignUpBtnText("Success! 🎉");
+    setTimeout(() => setSignUpBtnText("Sign Up 🚀"), 2000);
   }
 
   return (
     <>
+      <Head>
+        <title>FunaabDevs - Sign Up</title>
+      </Head>
       <div id="bgCover" className={`${styles.headerBg} fixed -z-20 w-full h-full top-0 left-0`}></div>
       <div className={`bg-black bg-opacity-40 fixed -z-10 w-full h-full top-0 left-0`}></div>
 
@@ -102,6 +127,9 @@ const NewUserSignUp = () => {
                   {/* Setting a customer  error when any of the defined error occurs*/}
                   {(serverErrorPresent || formErrorPresent) && formErrorMessage}
                 </p>
+                {(!serverErrorPresent || !formErrorPresent) && (
+                  <p className="py-1 font-semibold text-center text-green-500">{successMessage}</p>
+                )}
 
                 <div className="items-center block grid-cols-1 gap-3 space-y-4 md:space-y-2 sm:grid sm:grid-cols-2">
                   <div>
@@ -179,7 +207,10 @@ const NewUserSignUp = () => {
                       placeholder="What level are you in?"
                       value={level}
                       onChange={(e) => {
-                        setLevel(e.target.value);
+                        // This ensures users input numbers only - a little bug here
+                        if (e.target.value.length < 4 && !isNaN(parseInt(e.target.value))) {
+                          setLevel(e.target.value);
+                        }
                       }}
                       required
                     />
@@ -247,7 +278,7 @@ const NewUserSignUp = () => {
                       className="relative w-full py-3 overflow-hidden duration-200 bg-purple-700 bg-opacity-40 rounded-2xl text-purple-50 hover:bg-purple-600 disabled:bg-purple-300"
                       disabled={formProcessing ? true : false}
                     >
-                      Sign Up{" "}
+                      {signUpBtnText}{" "}
                       {formProcessing && (
                         <span className="absolute top-0 left-0 grid w-full h-full place-content-center">
                           <span className="w-10 h-10 border-8 border-purple-600 rounded-full border-t-white border-opacity-70 animate-spin"></span>
