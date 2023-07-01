@@ -19,8 +19,8 @@ const Navbar = ({ bgColor, textColor }) => {
               <Image
                 src={"/images/logos/logo.png"}
                 alt="FUNAAB Logo"
-                width={160}
-                height={160}
+                width={100}
+                height={100}
                 draggable="false"
                 priority
                 id="funaabLogo"
@@ -36,10 +36,10 @@ const Navbar = ({ bgColor, textColor }) => {
               </li>
               <li>Find Match</li>
               <li>
-                <Link href="/auth/login">Login</Link>
+                <Link href="/login">Login</Link>
               </li>
               <li>
-                <Link href="/auth/signup">Create Account</Link>
+                <Link href="/signup">Create Account</Link>
               </li>
             </ul>
           </nav>
@@ -50,6 +50,7 @@ const Navbar = ({ bgColor, textColor }) => {
             </div>
           </div>
 
+          {/* Mobile Menu */}
           <div
             id="menu-list"
             className={`absolute md:hidden top-0 left-0 w-full h-full bg-black bg-opacity-70 backdrop-blur-xl grid place-content-center text-center ${
@@ -67,10 +68,10 @@ const Navbar = ({ bgColor, textColor }) => {
               <li className={navStyles.menuElem}>Find Match</li>
 
               <li className={navStyles.menuElem}>
-                <Link href="/auth/login">Login</Link>
+                <Link href="/login">Login</Link>
               </li>
               <li className={navStyles.menuElem}>
-                <Link href="/auth/signup">Create Account</Link>
+                <Link href="/signup">Create Account</Link>
               </li>
             </ul>
           </div>
