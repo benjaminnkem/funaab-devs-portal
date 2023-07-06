@@ -6,7 +6,8 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     lowercase: true,
-    required: true,
+    trim: true,
+    required: "Please supply a valid email address",
   },
   department: { type: String, required: true },
   level: { type: Number, required: true, max: 700, min: 100 },
@@ -15,4 +16,4 @@ const userSchema = new mongoose.Schema({
   dateCreated: { type: Date, default: () => new Date() },
 });
 
-export default mongoose.model("User", userSchema);
+export default mongoose.models.User || mongoose.model("User", userSchema);

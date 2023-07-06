@@ -1,6 +1,7 @@
 import UserModel from "@/pages/schemas/users/UserModel";
 import dbConnection from "@/pages/utils/db";
 import bcryptjs from "bcryptjs";
+import mongoose from "mongoose";
 
 async function handler(req, res) {
   if (req.method === "POST") {
@@ -21,10 +22,11 @@ async function handler(req, res) {
         department: requestBody.department,
         level: requestBody.level,
         colFalc: requestBody.colFalc,
-        password: hashedPassword, // Sent hashes password instead
+        password: hashedPassword, // Sent hashed password instead
       };
 
-      const user = await UserModel.create(newUserData);
+      const userModel = await UserModel.create(newUserData);
+
       return res.status(200).json({ message: "Congrats" });
     } catch (err) {
       console.log(err);
