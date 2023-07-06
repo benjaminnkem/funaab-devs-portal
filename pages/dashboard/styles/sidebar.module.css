@@ -1,0 +1,22 @@
+.adminImage::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: rgb(0, 255, 17);
+  z-index: 20;
+  bottom: 0;
+  right: 35%;
+  border-radius: 50%;
+  border: 2px solid rgb(172, 255, 177);
+  transition: all 0.1s;
+}
+
+@media (max-width: 768px) {
+  .adminImage::after {
+    width: 10px;
+    height: 10px;
+    right: 15%;
+    border-width: 2px;
+  }
+}

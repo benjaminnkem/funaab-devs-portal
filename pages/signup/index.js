@@ -148,7 +148,7 @@ const NewUserSignUp = () => {
               <div className="text-center space-y-2 mt-2">
                 <p className="text-xl font-bold dark:text-slate-400 text-slate-600">Benjamin Nkem</p>
                 <p className="font-light max-w-lg mx-auto">
-                  Benjamin Nkem is the creator/founder of{" "}
+                  Benjamin Nkem is one of the creators/founders of{" "}
                   <span className="text-slate-800 dark:text-slate-400 font-bold">#TheFunaabsDev</span>, he&apos;s a
                   passionate Web Developer🕸/Data Engineer⚗ and strives to make Nigeria a better place with technology.
                 </p>

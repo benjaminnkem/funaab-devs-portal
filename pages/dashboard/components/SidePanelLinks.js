@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import styles from  "../styles/sidebar.module.css";
 import { usePathname } from "next/navigation";
 
-import "../styles/sidebar.css";
 
 const SidePanelLinks = () => {
   const currentPath = usePathname();
@@ -15,9 +15,9 @@ const SidePanelLinks = () => {
           <h1 className="hidden text-2xl sm:inline-block">BStore</h1>
         </div>
         <div className="mt-3 text-center">
-          <div className="relative" id="admin-image">
+          <div className={`relative ${styles.adminImages}`} id="admin-image">
             <Image
-              src={`/images/admin1.jpg`}
+              src={`/images/others/meface.jpg`}
               alt="Admin Pic"
               width={100}
               height={100}

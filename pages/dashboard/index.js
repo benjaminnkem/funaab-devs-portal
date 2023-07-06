@@ -1,7 +1,16 @@
+import DashboardLayout from "@/components/DashboardLayout";
 import CurrentTimeDisplay from "./components/TimeDisplay";
+import { signIn, useSession } from "next-auth/react";
 
-const dashboard = () => {
+const DashboardHome = () => {
+  const { data: session, status } = useSession();
+
+  if (!session && status === "unauthenticated") {
+    signIn();
+  }
+
   const username = "Benjamin";
+
   return (
     <>
       <div className="px-10 py-20 bg-stone-200 dark:bg-stone-900">
@@ -82,4 +91,8 @@ const dashboard = () => {
   );
 };
 
-export default dashboard;
+DashboardHome.getLayout = function getLayout(page) {
+  return <DashboardLayout>{page}</DashboardLayout>;
+};
+
+export default DashboardHome;

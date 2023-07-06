@@ -4,7 +4,8 @@ import { SessionProvider } from "next-auth/react";
 import "remixicon/fonts/remixicon.css";
 
 export default function App({ Component, pageProps: { session, ...pageProps } }) {
-  return (
+  const getLayout = Component.getLayout || ((page) => page);
+  return getLayout(
     <SessionProvider>
       <Component {...pageProps} />
     </SessionProvider>

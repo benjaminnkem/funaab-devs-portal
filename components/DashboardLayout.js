@@ -1,8 +1,5 @@
-import "./dashboard.css";
-import "remixicon/fonts/remixicon.css";
-import SidePanelLinks from "./components/SidePanelLinks";
-import DashNavbar from "./components/DashNavbar";
-
+import DashNavbar from "@/pages/dashboard/components/DashNavbar";
+import SidePanelLinks from "@/pages/dashboard/components/SidePanelLinks";
 
 export default function DashboardLayout({ children }) {
   return (
