@@ -1,23 +1,43 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Navbar from "@/components/Navbar";
 import loginStyles from "./login.module.css";
 import Head from "next/head";
 import Link from "next/link";
 import Footer from "@/components/Footer";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const UserLogin = () => {
+  const { status } = useSession();
+  const router = useRouter();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  // const [loadingText, setLoadingText] = useState("");
 
   // Error handlers
   const [emailErr, setEmailErr] = useState(false);
   const [emailErrorText, setEmailErrorText] = useState("");
   const [loginError, setLoginError] = useState(false);
   const [loginErrorText, setLoginErrorText] = useState("");
+
+  const [passwordVisibility, setPasswordVisibility] = useState(false);
+  const passwordInputBox = useRef();
+
+  useEffect(() => {
+    async function isLoggedIn() {
+      if (status === "authenticated") {
+        await router.push("/dashboard");
+      }
+    }
+
+    isLoggedIn();
+  }, [status, router]);
+
+  function togglePasswordVisibility() {
+    setPasswordVisibility(!passwordVisibility);
+  }
 
   async function handleLoginDemo(e) {
     e.preventDefault();
@@ -55,6 +75,8 @@ const UserLogin = () => {
     }
 
     setLoginErrorText("");
+    setEmail("");
+    setPassword("");
     setLoading(false);
   }
 
@@ -96,22 +118,29 @@ const UserLogin = () => {
                       <label className="block font-semibold" htmlFor="password">
                         Password:
                       </label>
-                      <div className="border-b border-purple-600 p-2">
+                      <div className="border-b border-purple-600 p-2 flex items-center justify-between">
                         <input
-                          type="password"
+                          type={passwordVisibility ? "text" : "password"}
                           id="password"
                           placeholder="Enter your password"
                           className="w-full mt-1 text-sm bg-transparent focus:outline-none md:text-base"
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
+                          ref={passwordInputBox}
                         />
+
+                        <i
+                          className={`cursor-pointer ${passwordVisibility ? "ri-eye-line" : "ri-eye-close-line"}`}
+                          title="Toggle Password Visibility"
+                          onClick={togglePasswordVisibility}
+                        ></i>
                       </div>
                     </div>
                     <div>
                       <input
                         type="submit"
                         value={loading ? "Verifying..." : "Login"}
-                        className="w-full py-1 transition bg-purple-600 rounded-md hover:bg-purple-700 text-purple-50 disabled:bg-purple-400"
+                        className={`w-full py-1 transition bg-purple-600 rounded-md hover:bg-purple-700 text-purple-50 disabled:bg-purple-400`}
                         disabled={loading}
                       />
 
