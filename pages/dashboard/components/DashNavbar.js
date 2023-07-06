@@ -1,7 +1,7 @@
 const DashNavbar = () => {
   return (
     <>
-      <div className="sticky top-0 left-0 w-full px-4 py-4 shadow-md dark:bg-stone-900 bg-stone-50">
+      <div className="sticky top-0 left-0 w-full px-4 py-4 shadow-md dark:bg-gray-900 bg-gray-50 dark:text-gray-100">
         <div className="grid items-center justify-between grid-cols-2">
           <div className="flex items-center space-x-3">
             <i className="text-2xl ri-menu-line hover:cursor-pointer"></i>
@@ -9,7 +9,7 @@ const DashNavbar = () => {
               <i className="ri-search-2-line"></i>
               <input
                 type="text"
-                className="w-4/5 bg-transparent placeholder:text-stone-600 focus:outline-none"
+                className="w-4/5 bg-transparent placeholder:dark:text-gray-300 placeholder:text-gray-600 focus:outline-none"
                 placeholder="type to search"
               />
             </div>

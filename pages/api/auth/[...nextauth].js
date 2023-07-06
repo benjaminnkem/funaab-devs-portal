@@ -24,7 +24,7 @@ export default NextAuth({
             throw new Error("The password is incorrect");
           }
 
-          return { id: user.id, username: user.username, email: user.email }; // returning a unique cookie object
+          return { id: user.id, name: user.username, email: user.email }; // returning a unique cookie object
         } catch (e) {
           console.log(e);
           throw new Error("Login Failed, re-check credentials 😣");
