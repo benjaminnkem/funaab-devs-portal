@@ -6,7 +6,6 @@ import Footer from "@/components/Footer";
 
 import styles from "./index.module.css";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
 
 export default function Home() {
   const routes = useRouter();
@@ -24,11 +23,10 @@ export default function Home() {
               <Navbar textColor="text-purple-50" bgColor="bg-transparent" />
             </header>
 
-            <div className="md:max-w-[1024px] mx-auto w-11/12">
+            <div className="md:max-w-[1400px] mx-auto w-11/12">
               <div className="grid items-center md:grid-cols-2 text-purple-50">
                 <div className="text-center md:text-start">
-                  <h1 className="text-xl font-bold md:text-2xl">
-                    WELCOME TO THE{" "}
+                  <h1 className="text-3xl font-bold md:text-4xl">
                     <span className={`font-extrabold text-purple-600 relative ${styles.funaabText}`}>FUNAAB</span> DEVs
                     POINT
                   </h1>
@@ -46,9 +44,7 @@ export default function Home() {
                       Login
                     </button>
                     <Link href={"/auth/signup"}>
-                      <button
-                        className="px-4 py-1 ml-3 transition border border-purple-600 rounded-lg hover:bg-purple-600"
-                      >
+                      <button className="px-4 py-1 ml-3 transition border border-purple-600 rounded-lg hover:bg-purple-600">
                         <span>Join Us</span> <i className="ri-rocket-2-line"></i>
                       </button>
                     </Link>

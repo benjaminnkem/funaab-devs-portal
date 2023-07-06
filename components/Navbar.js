@@ -12,11 +12,11 @@ const Navbar = ({ bgColor, textColor }) => {
   return (
     <>
       <div className={`${bgColor} ${textColor}`}>
-        <div className={`flex justify-between items-center ${textColor} py-2 md:max-w-[1024px] mx-auto w-11/12`}>
+        <div className={`flex justify-between items-center ${textColor} py-4 md:max-w-[1400px] mx-auto w-11/12`}>
           <div className="block md:hidden"></div>
           <div className="text-center md:text-start">
             <Link href="/">
-              <Image
+              {/* <Image
                 src={"/images/logos/logo.png"}
                 alt="FUNAAB Logo"
                 width={100}
@@ -25,7 +25,8 @@ const Navbar = ({ bgColor, textColor }) => {
                 priority
                 id="funaabLogo"
                 className="mx-auto"
-              />
+              /> */}
+             <span className="font-bold text-3xl">FDev<span className="text-purple-600">.</span></span>
             </Link>
           </div>
 

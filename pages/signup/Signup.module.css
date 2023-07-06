@@ -1,7 +1,7 @@
-.headerBg {
+/* .headerBg {
   background: url("/images/backgrounds/bg3.jpg") center no-repeat fixed;
   background-size: cover;
-}
+} */
 
 @media (max-width: 768px) {
   .headerBg {
@@ -18,7 +18,7 @@
   background-size: cover;
 }
 
-.formContainer {
+/* .formContainer {
   background-color: transparent;
   backdrop-filter: blur(12px);
-}
+} */

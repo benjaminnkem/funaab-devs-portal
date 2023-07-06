@@ -3,6 +3,8 @@ import Navbar from "@/components/Navbar";
 import styles from "./Signup.module.css";
 import { useState } from "react";
 import Head from "next/head";
+import Link from "next/link";
+import Footer from "@/components/Footer";
 
 const NewUserSignUp = () => {
   const [formErrorPresent, setFormErrorPresent] = useState(false);
@@ -94,26 +96,57 @@ const NewUserSignUp = () => {
         <title>FunaabDevs - Sign Up</title>
       </Head>
       <div id="bgCover" className={`${styles.headerBg} fixed -z-20 w-full h-full top-0 left-0`}></div>
-      <div className={`bg-black bg-opacity-40 fixed -z-10 w-full h-full top-0 left-0`}></div>
 
-      <div className={`absolute top-0 left-0 w-full h-full`}>
-        <main className="relative w-full h-full">
-          <Navbar textColor="text-purple-50" bgColor="bg-transparent" />
+      <main className="relative w-full h-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100">
+        {/* <Navbar textColor="text-black" bgColor="bg-purple-50" /> */}
 
-          <div className="md:max-w-[1024px] mx-auto w-11/12 py-10 md:py-0 md:my-10 my-0">
-            <div className={`md:grid gap-4 items-center`} style={{ gridTemplateColumns: "3fr 2fr" }}>
-              <div className="mb-8 text-center text-white md:text-start md:mb-0">
-                <h1 className={`text-2xl font-bold uppercase md:text-5xl sm:text-3xl ${styles.signUpText}`}>
-                  JOIN THE EVOLUTION
-                </h1>
-                <p className="mx-auto my-3 text-lg font-light md:max-w-4xl">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam possimus aspernatur, sapiente facere
-                  et odit distinctio tenetur sequi accusamus
+        <div className="text-center text-white md:text-start md:mb-0 bg-purple-700 h-[32rem] grid place-content-center">
+          <div className="text-center px-4 space-y-4 md:max-w-[1400px] mx-auto w-11/12">
+            <h1 className={`text-xl font-bold uppercase md:text-4xl sm:text-2xl tracking-widest ${styles.signUpText}`}>
+              JOIN THE EVOLUTION
+            </h1>
+            <p className="mx-auto my-3 font-light md:max-w-2xl">
+              Are you ready to join one of the biggest Nigerian Developers circle and take technology to the next level{" "}
+              <span className="font-semibold">Sign Up 😊</span> Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Error, eum?
+            </p>
+
+            <div className="space-x-2 flex items-center justify-center">
+              <Link href={"/"}>
+                <button className="flex items-center space-x-1 border-2 rounded border-purple-500 px-3 duration-200 hover:bg-purple-500 py-1">
+                  <span>Home</span> <i className="ri-home-3-line"></i>
+                </button>
+              </Link>
+              <button className="flex items-center space-x-1 border-2 rounded border-purple-500 px-3 duration-200 hover:bg-purple-500 py-1">
+                <span>Contact Us</span> <i className="ri-phone-line"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className="mb-8 overflow-hidden h-[150px]">
+          <svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{ height: "100%", width: "100%" }}>
+            <path
+              d="M-10.31,26.08 C122.18,12.08 224.06,6.10 517.81,87.08 L500.00,0.00 L0.00,0.00 Z"
+              style={{ stroke: "none", fill: "#7e22ce" }}
+            ></path>
+          </svg>
+        </div>
+
+        <section className="pb-10 -mt-24">
+          <div className="md:max-w-[1400px] mx-auto w-11/12 grid md:grid-cols-2 grid-cols-1 gap-8">
+            <div className="grid place-content-center -mt-10">
+              <div className="h-40 w-40 bg-slate-400 rounded-full mx-auto"></div>
+              <div className="text-center space-y-2 mt-2">
+                <p className="text-xl font-bold dark:text-slate-400 text-slate-600">Benjamin Nkem</p>
+                <p className="font-light max-w-lg mx-auto">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus soluta accusantium quasi
+                  facere quo
                 </p>
               </div>
-
+            </div>
+            <div className="-mt-20">
               <form
-                className={`text-slate-700 p-5 rounded-2xl shadow-lg border border-purple-200 ${styles.formContainer}`}
+                className={`p-5 rounded-2xl max-w-xl shadow-md bg-white dark:bg-slate-700 ${styles.formContainer}`}
                 action="/api/signup"
                 onSubmit={(e) => {
                   handleSignUp(e);
@@ -131,15 +164,15 @@ const NewUserSignUp = () => {
                   <p className="py-1 font-semibold text-center text-green-500">{successMessage}</p>
                 )}
 
-                <div className="items-center block grid-cols-1 gap-3 space-y-4 md:space-y-2 sm:grid sm:grid-cols-2">
-                  <div>
-                    <label htmlFor="username" className="text-lg font-medium text-white">
+                <div className="items-center md:grid-cols-2 md:gap-2 block md:grid">
+                  <div className="my-3">
+                    <label htmlFor="username" className="text-lg font-medium">
                       Username
                     </label>
                     <input
                       type="text"
                       id="username"
-                      className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
+                      className="w-full p-2 bg-transparent border-b border-purple-200 focus:outline-none"
                       placeholder="Username"
                       value={username}
                       onChange={(e) => {
@@ -148,14 +181,14 @@ const NewUserSignUp = () => {
                       required
                     />
                   </div>
-                  <div>
-                    <label htmlFor="fullName" className="text-lg font-medium text-white">
+                  <div className="my-3">
+                    <label htmlFor="fullName" className="text-lg font-medium">
                       Full Name
                     </label>
                     <input
                       type="text"
                       id="fullName"
-                      className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
+                      className="w-full p-2 bg-transparent border-b border-purple-200 focus:outline-none"
                       placeholder="Enter Full Name"
                       value={fullName}
                       onChange={(e) => {
@@ -164,14 +197,14 @@ const NewUserSignUp = () => {
                       required
                     />
                   </div>
-                  <div>
-                    <label htmlFor="email" className="text-lg font-medium text-white">
+                  <div className="my-3">
+                    <label htmlFor="email" className="text-lg font-medium">
                       Email
                     </label>
                     <input
                       type="email"
                       id="email"
-                      className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
+                      className="w-full p-2 bg-transparent border-b border-purple-200 focus:outline-none"
                       placeholder="Enter Email"
                       value={email}
                       onChange={(e) => {
@@ -180,14 +213,14 @@ const NewUserSignUp = () => {
                       required
                     />
                   </div>
-                  <div>
-                    <label htmlFor="department" className="text-lg font-medium text-white">
+                  <div className="my-3">
+                    <label htmlFor="department" className="text-lg font-medium">
                       Department
                     </label>
                     <input
                       type="text"
                       id="department"
-                      className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
+                      className="w-full p-2 bg-transparent border-b border-purple-200 focus:outline-none"
                       placeholder="Enter Your Department"
                       value={department}
                       onChange={(e) => {
@@ -196,14 +229,14 @@ const NewUserSignUp = () => {
                       required
                     />
                   </div>
-                  <div>
-                    <label htmlFor="level" className="text-lg font-medium text-white">
+                  <div className="my-3">
+                    <label htmlFor="level" className="text-lg font-medium">
                       Level
                     </label>
                     <input
                       type="text"
                       id="level"
-                      className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
+                      className="w-full p-2 bg-transparent border-b border-purple-200 focus:outline-none"
                       placeholder="What level are you in?"
                       value={level}
                       onChange={(e) => {
@@ -215,14 +248,14 @@ const NewUserSignUp = () => {
                       required
                     />
                   </div>
-                  <div>
-                    <label htmlFor="college" className="text-lg font-medium text-white">
+                  <div className="my-3">
+                    <label htmlFor="college" className="text-lg font-medium">
                       College/Faculty
                     </label>
                     <input
                       type="text"
                       id="college"
-                      className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
+                      className="w-full p-2 bg-transparent border-b border-purple-200 focus:outline-none"
                       placeholder="College e.g COLPHYS"
                       value={colFalc}
                       onChange={(e) => {
@@ -231,13 +264,13 @@ const NewUserSignUp = () => {
                       required
                     />
                   </div>
-                  <div>
-                    <label htmlFor="password" className="text-lg font-medium text-white">
+                  <div className="my-3">
+                    <label htmlFor="password" className="text-lg font-medium">
                       Password
                     </label>
                     <input
                       type="password"
-                      className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
+                      className="w-full p-2 bg-transparent border-b border-purple-200 focus:outline-none"
                       placeholder="Choose Password"
                       id="password"
                       value={password}
@@ -247,13 +280,13 @@ const NewUserSignUp = () => {
                       required
                     />
                   </div>
-                  <div>
-                    <label htmlFor="repeatPassword" className="text-lg font-medium text-white">
+                  <div className="my-3">
+                    <label htmlFor="repeatPassword" className="text-lg font-medium">
                       Repeat Password
                     </label>
                     <input
                       type="password"
-                      className="w-full p-2 text-purple-100 bg-transparent border-b border-purple-200 focus:outline-none"
+                      className="w-full p-2 bg-transparent border-b border-purple-200 focus:outline-none"
                       placeholder="Choose Password"
                       id="repeatPassword"
                       value={repeatPassword}
@@ -275,7 +308,7 @@ const NewUserSignUp = () => {
 
                   <div style={{ gridColumn: "1/3" }}>
                     <button
-                      className="relative w-full py-3 overflow-hidden duration-200 bg-purple-700 bg-opacity-40 rounded-2xl text-purple-50 hover:bg-purple-600 disabled:bg-purple-300"
+                      className="relative w-full py-3 overflow-hidden duration-200 bg-purple-700 rounded-2xl text-purple-50 hover:bg-purple-600 disabled:bg-purple-300"
                       disabled={formProcessing ? true : false}
                     >
                       {signUpBtnText}{" "}
@@ -290,8 +323,13 @@ const NewUserSignUp = () => {
               </form>
             </div>
           </div>
-        </main>
-      </div>
+        </section>
+      </main>
+      <footer className="bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100">
+        <div className="py-4">
+          <p className="my-3 text-base text-center md:text-sm">funaabdevteam@2023 - Nkem</p>
+        </div>
+      </footer>
     </>
   );
 };
