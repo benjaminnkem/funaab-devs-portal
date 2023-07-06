@@ -27,7 +27,7 @@ export default NextAuth({
           return { id: user.id, username: user.username, email: user.email }; // returning a unique cookie object
         } catch (e) {
           console.log(e);
-          throw new Error("Process could not be completed");
+          throw new Error("Login Failed, re-check credentials 😣");
         }
       },
     }),
