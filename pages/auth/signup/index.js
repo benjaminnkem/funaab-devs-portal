@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Navbar from "@/components/Navbar";
 
 import styles from "./Signup.module.css";
@@ -5,6 +6,9 @@ import styles from "./Signup.module.css";
 const NewUserSignUp = () => {
   return (
     <>
+    <Head>
+      <title>SIGNUP AS A STUDENT</title>
+    </Head>
       <div id="bgCover" className={`${styles.headerBg} fixed -z-20 w-full h-full top-0 left-0`}></div>
       <div className={`bg-black bg-opacity-40 fixed -z-10 w-full h-full top-0 left-0`}></div>
 
@@ -19,8 +23,8 @@ const NewUserSignUp = () => {
                     JOIN THE EVOLUTION
                   </h1>
                   <p className="mx-auto my-3 text-lg font-light md:max-w-4xl">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam possimus aspernatur, sapiente facere
-                    et odit distinctio tenetur sequi accusamus
+                    Join the second best university in Nigeria devs portal and get matched with professional developers,
+                    Connect and grow your network and profile in this School.
                   </p>
                 </div>
 
