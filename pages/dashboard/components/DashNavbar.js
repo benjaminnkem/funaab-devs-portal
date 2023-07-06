@@ -4,7 +4,7 @@ import Link from "next/link";
 const DashNavbar = () => {
   return (
     <>
-      <div className="sticky top-0 left-0 w-full px-4 py-4 shadow-md dark:bg-gray-900 bg-gray-50 dark:text-gray-100">
+      <div className="sticky top-0 left-0 w-full px-4 py-4 shadow-md dark:bg-gray-900 bg-gray-50 dark:text-gray-100 z-50">
         <div className="grid items-center justify-between grid-cols-2">
           <div className="flex items-center space-x-3">
             <i className="text-2xl ri-menu-line hover:cursor-pointer"></i>
