@@ -99,28 +99,10 @@ const NewUserSignUp = () => {
       <div id="bgCover" className={`${styles.headerBg} fixed -z-20 w-full h-full top-0 left-0`}></div>
 
       <main className="relative w-full h-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100">
-        {/* <Navbar textColor="text-black" bgColor="bg-purple-50" /> */}
-        <nav className="bg-purple-700">
-          <div className="md:max-w-[1400px] mx-auto w-11/12">
-            <div className="py-4 flex justify-between items-center">
-              <Link href="/" className="text-white">
-                <span className="font-bold text-2xl">
-                  FDev<span className="text-purple-300">.</span>
-                </span>
-              </Link>
-
-              <div className="flex items-center space-x-3 text-purple-100 text-sm">
-                <Link href={"/"} className="duration-200 hover:text-purple-300">Home</Link>
-                <Link href={"/login"} className="duration-200 hover:text-purple-300">Login</Link>
-                <Link href={"/"} className="duration-200 hover:text-purple-300">Contact</Link>
-                <Link href={"/"} className="duration-200 hover:text-purple-300">Send Us A Message</Link>
-              </div>
-            </div>
-          </div>
-        </nav>
+        <Navbar textColor="text-purple-100" bgColor="bg-purple-700" />
 
         <div className="text-center text-white md:text-start md:mb-0 bg-purple-700 h-[32rem] grid place-content-center">
-          <div className="text-center px-4 space-y-4 md:max-w-[1400px] mx-auto w-11/12">
+          <div className="text-center px-4 space-y-4 md:max-w-[1448px] mx-auto w-11/12">
             <h1 className={`text-xl font-bold uppercase md:text-4xl sm:text-2xl tracking-widest ${styles.signUpText}`}>
               JOIN THE EVOLUTION
             </h1>
@@ -152,7 +134,7 @@ const NewUserSignUp = () => {
         </div>
 
         <section className="pb-10 -mt-24">
-          <div className="md:max-w-[1400px] mx-auto w-11/12 grid md:grid-cols-2 grid-cols-1 gap-8">
+          <div className="md:max-w-[1448px] mx-auto w-11/12 grid md:grid-cols-2 grid-cols-1 gap-8">
             <div className="grid place-content-center -mt-10">
               <div className="h-40 w-40 overflow-hidden rounded-full mx-auto">
                 <Image
@@ -168,13 +150,14 @@ const NewUserSignUp = () => {
                 <p className="font-light max-w-lg mx-auto">
                   Benjamin Nkem is the creator/founder of{" "}
                   <span className="text-slate-800 dark:text-slate-400 font-bold">#TheFunaabsDev</span>, he&apos;s a
-                  passionate Web Developer🕸/Data Engineer⚗ and has strive to help Nigerian be a better place with technology.
+                  passionate Web Developer🕸/Data Engineer⚗ and strives to make Nigeria a better place with technology.
                 </p>
 
                 <div className="flex items-center space-x-3 justify-center">
                   <i className="ri-facebook-circle-fill text-3xl cursor-pointer"></i>
                   <i className="ri-whatsapp-fill text-3xl cursor-pointer"></i>
                   <i className="ri-twitter-fill text-3xl cursor-pointer"></i>
+                  <i className="ri-github-fill text-3xl cursor-pointer"></i>
                 </div>
               </div>
             </div>

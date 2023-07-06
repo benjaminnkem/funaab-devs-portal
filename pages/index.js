@@ -23,7 +23,7 @@ export default function Home() {
               <Navbar textColor="text-purple-50" bgColor="bg-transparent" />
             </header>
 
-            <div className="md:max-w-[1400px] mx-auto w-11/12">
+            <div className="md:max-w-[1448px] mx-auto w-11/12">
               <div className="grid items-center md:grid-cols-2 text-purple-50">
                 <div className="text-center md:text-start">
                   <h1 className="text-3xl font-bold md:text-4xl">

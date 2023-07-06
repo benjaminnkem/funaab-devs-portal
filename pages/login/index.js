@@ -65,9 +65,7 @@ const UserLogin = () => {
       </Head>
       <div className={loginStyles.body}>
         <div className="grid h-full grid-rows-3">
-          <div className="self-start w-4/5 mx-auto">
-            <Navbar bgColor="bg-transparent" textColor="text-purple-50" />
-          </div>
+          <Navbar bgColor="bg-transparent" textColor="text-purple-50" />
           <div className="self-start -mt-16 text-purple-50 md:-mt-20">
             <div className="max-w-md px-2 mx-auto mt-10 transition rounded-lg md:mt-8">
               <div className="p-4 border border-purple-400 rounded-md">

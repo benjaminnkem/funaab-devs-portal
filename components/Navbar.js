@@ -11,7 +11,7 @@ const Navbar = ({ bgColor, textColor }) => {
   return (
     <>
       <div className={`${bgColor} ${textColor}`}>
-        <div className={`flex justify-between items-center ${textColor} py-4 md:max-w-[1400px] mx-auto w-11/12`}>
+        <div className={`flex justify-between items-center py-4 md:max-w-[1448px] mx-auto w-11/12`}>
           <div className="text-center md:text-start">
             <Link href="/">
               <span className="font-bold text-2xl">
@@ -21,7 +21,7 @@ const Navbar = ({ bgColor, textColor }) => {
           </div>
 
           <nav className="hidden sm:block">
-            <ul className="flex space-x-3 text-sm">
+            <ul className="flex space-x-3 text-sm items-center">
               <li>
                 <Link href={"/"} className="duration-200 hover:text-purple-300">
                   Home
@@ -39,12 +39,14 @@ const Navbar = ({ bgColor, textColor }) => {
               </li>
               <li>
                 <Link href={"/"} className="duration-200 hover:text-purple-300">
-                  Send Us A Message
+                  Developers
                 </Link>
               </li>
               <li>
                 <Link href={"/login"} className="duration-200 hover:text-purple-300">
-                  Login
+                  <span className="bg-purple-600 rounded-md duration-200 hover:bg-purple-500 px-4 py-2 text-purple-50 flex items-center space-x-1">
+                    <span>Login</span> <i className="ri-login-box-line"></i>
+                  </span>
                 </Link>
               </li>
             </ul>
@@ -59,25 +61,41 @@ const Navbar = ({ bgColor, textColor }) => {
           {/* Mobile Menu */}
           <div
             id="menu-list"
-            className={`absolute md:hidden top-0 left-0 w-full h-full bg-black bg-opacity-70 backdrop-blur-xl grid place-content-center text-center ${
-              isMenuOpen ? "opacity-100 z-20" : "-z-20 opacity-0"
+            className={`fixed md:hidden top-0 right-0 w-[.25px] duration-200 h-full bg-black bg-opacity-70 backdrop-blur-xl grid place-content-center text-center ${
+              isMenuOpen ? "opacity-100 z-20 w-screen" : "-z-20 opacity-0"
             }`}
           >
             <div className="absolute right-10 sm:right-16 top-48 sm:top-44" onClick={toggleMobileMenu}>
               <i className="text-3xl ri-close-line"></i>
             </div>
 
-            <ul className="grid h-full my-auto space-y-6 text-2xl text-green-100 place-content-center first:mt-4 last:mb-4">
-              <li className={navStyles.menuElem}>
-                <Link href="/">Home</Link>
+            <ul className="grid h-full my-auto space-y-6 text-lg text-green-100 place-content-center first:mt-4 last:mb-4">
+              <li>
+                <Link href={"/"} onClick={toggleMobileMenu} className="duration-200 hover:text-purple-300">
+                  Home
+                </Link>
               </li>
-              <li className={navStyles.menuElem}>Find Match</li>
-
-              <li className={navStyles.menuElem}>
-                <Link href="/login">Login</Link>
+              <li>
+                <Link href={"/signup"} onClick={toggleMobileMenu} className="duration-200 hover:text-purple-300">
+                  Join Us
+                </Link>
               </li>
-              <li className={navStyles.menuElem}>
-                <Link href="/signup">Create Account</Link>
+              <li>
+                <Link href={"/"} onClick={toggleMobileMenu} className="duration-200 hover:text-purple-300">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link href={"/"} onClick={toggleMobileMenu} className="duration-200 hover:text-purple-300">
+                  Developers
+                </Link>
+              </li>
+              <li>
+                <Link href={"/login"} onClick={toggleMobileMenu} className="duration-200 hover:text-purple-300">
+                  <span className="border-b border-purple-600 rounded-md duration-200 hover:bg-purple-500 px-4 py-2 text-purple-50 flex items-center space-x-1">
+                    <span>Login</span> <i className="ri-login-box-line"></i>
+                  </span>
+                </Link>
               </li>
             </ul>
           </div>
