@@ -102,22 +102,19 @@ const NewUserSignUp = () => {
         {/* <Navbar textColor="text-black" bgColor="bg-purple-50" /> */}
         <nav className="bg-purple-700">
           <div className="md:max-w-[1400px] mx-auto w-11/12">
-            <div className="py-4">
+            <div className="py-4 flex justify-between items-center">
               <Link href="/" className="text-white">
-                {/* <Image
-                src={"/images/logos/logo.png"}
-                alt="FUNAAB Logo"
-                width={100}
-                height={100}
-                draggable="false"
-                priority
-                id="funaabLogo"
-                className="mx-auto"
-              /> */}
                 <span className="font-bold text-2xl">
                   FDev<span className="text-purple-300">.</span>
                 </span>
               </Link>
+
+              <div className="flex items-center space-x-3 text-purple-100 text-sm">
+                <Link href={"/"} className="duration-200 hover:text-purple-300">Home</Link>
+                <Link href={"/"} className="duration-200 hover:text-purple-300">Login</Link>
+                <Link href={"/"} className="duration-200 hover:text-purple-300">Contact</Link>
+                <Link href={"/"} className="duration-200 hover:text-purple-300">Send Us A Message</Link>
+              </div>
             </div>
           </div>
         </nav>
@@ -171,7 +168,7 @@ const NewUserSignUp = () => {
                 <p className="font-light max-w-lg mx-auto">
                   Benjamin Nkem is the creator/founder of{" "}
                   <span className="text-slate-800 dark:text-slate-400 font-bold">#TheFunaabsDev</span>, he&apos;s a
-                  passionate web developer and has strive to help Nigerian be a better place with technology.
+                  passionate Web Developer🕸/Data Engineer⚗ and has strive to help Nigerian be a better place with technology.
                 </p>
 
                 <div className="flex items-center space-x-3 justify-center">

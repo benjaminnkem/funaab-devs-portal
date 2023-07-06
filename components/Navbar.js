@@ -13,34 +13,40 @@ const Navbar = ({ bgColor, textColor }) => {
     <>
       <div className={`${bgColor} ${textColor}`}>
         <div className={`flex justify-between items-center ${textColor} py-4 md:max-w-[1400px] mx-auto w-11/12`}>
-          <div className="block md:hidden"></div>
           <div className="text-center md:text-start">
             <Link href="/">
-              {/* <Image
-                src={"/images/logos/logo.png"}
-                alt="FUNAAB Logo"
-                width={100}
-                height={100}
-                draggable="false"
-                priority
-                id="funaabLogo"
-                className="mx-auto"
-              /> */}
-             <span className="font-bold text-3xl">FDev<span className="text-purple-600">.</span></span>
+              <span className="font-bold text-2xl">
+                FDev<span className="text-purple-600">.</span>
+              </span>
             </Link>
           </div>
 
           <nav className="hidden md:block">
-            <ul className="flex space-x-6 text-sm md:text-base">
+            <ul className="flex space-x-3 text-sm">
               <li>
-                <Link href="/">Home</Link>
-              </li>
-              <li>Find Match</li>
-              <li>
-                <Link href="/login">Login</Link>
+                <Link href={"/"} className="duration-200 hover:text-purple-300">
+                  Home
+                </Link>
               </li>
               <li>
-                <Link href="/signup">Create Account</Link>
+                <Link href={"/signup"} className="duration-200 hover:text-purple-300">
+                  Join Us
+                </Link>
+              </li>
+              <li>
+                <Link href={"/"} className="duration-200 hover:text-purple-300">
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link href={"/"} className="duration-200 hover:text-purple-300">
+                  Send Us A Message
+                </Link>
+              </li>
+              <li>
+                <Link href={"/login"} className="duration-200 hover:text-purple-300">
+                  Login
+                </Link>
               </li>
             </ul>
           </nav>
