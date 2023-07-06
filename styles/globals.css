@@ -6,6 +6,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  transition: color 0.5s, background-color 0.5s;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -16,5 +20,5 @@ html {
 
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background-color: rgb(173, 0, 173);
+  background-color: rgb(154, 14, 197);
 }

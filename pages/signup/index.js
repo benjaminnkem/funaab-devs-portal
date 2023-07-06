@@ -5,6 +5,7 @@ import { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 
 const NewUserSignUp = () => {
   const [formErrorPresent, setFormErrorPresent] = useState(false);
@@ -99,6 +100,27 @@ const NewUserSignUp = () => {
 
       <main className="relative w-full h-full bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-100">
         {/* <Navbar textColor="text-black" bgColor="bg-purple-50" /> */}
+        <nav className="bg-purple-700">
+          <div className="md:max-w-[1400px] mx-auto w-11/12">
+            <div className="py-4">
+              <Link href="/" className="text-white">
+                {/* <Image
+                src={"/images/logos/logo.png"}
+                alt="FUNAAB Logo"
+                width={100}
+                height={100}
+                draggable="false"
+                priority
+                id="funaabLogo"
+                className="mx-auto"
+              /> */}
+                <span className="font-bold text-2xl">
+                  FDev<span className="text-purple-300">.</span>
+                </span>
+              </Link>
+            </div>
+          </div>
+        </nav>
 
         <div className="text-center text-white md:text-start md:mb-0 bg-purple-700 h-[32rem] grid place-content-center">
           <div className="text-center px-4 space-y-4 md:max-w-[1400px] mx-auto w-11/12">
@@ -135,13 +157,28 @@ const NewUserSignUp = () => {
         <section className="pb-10 -mt-24">
           <div className="md:max-w-[1400px] mx-auto w-11/12 grid md:grid-cols-2 grid-cols-1 gap-8">
             <div className="grid place-content-center -mt-10">
-              <div className="h-40 w-40 bg-slate-400 rounded-full mx-auto"></div>
+              <div className="h-40 w-40 overflow-hidden rounded-full mx-auto">
+                <Image
+                  src={"/images/others/meface.jpg"}
+                  alt="A portrait of Benjamin Nkem"
+                  width={160}
+                  height={160}
+                  className="object-cover aspect-square"
+                />
+              </div>
               <div className="text-center space-y-2 mt-2">
                 <p className="text-xl font-bold dark:text-slate-400 text-slate-600">Benjamin Nkem</p>
                 <p className="font-light max-w-lg mx-auto">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente, temporibus soluta accusantium quasi
-                  facere quo
+                  Benjamin Nkem is the creator/founder of{" "}
+                  <span className="text-slate-800 dark:text-slate-400 font-bold">#TheFunaabsDev</span>, he&apos;s a
+                  passionate web developer and has strive to help Nigerian be a better place with technology.
                 </p>
+
+                <div className="flex items-center space-x-3 justify-center">
+                  <i className="ri-facebook-circle-fill text-3xl cursor-pointer"></i>
+                  <i className="ri-whatsapp-fill text-3xl cursor-pointer"></i>
+                  <i className="ri-twitter-fill text-3xl cursor-pointer"></i>
+                </div>
               </div>
             </div>
             <div className="-mt-20">
