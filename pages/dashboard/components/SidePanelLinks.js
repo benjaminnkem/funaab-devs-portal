@@ -23,7 +23,7 @@ const SidePanelLinks = () => {
               alt="Admin Pic"
               width={100}
               height={100}
-              className="relative mx-auto rounded-full"
+              className="mx-auto rounded-full aspect-square"
               draggable="false"
             ></Image>
           </div>
@@ -34,7 +34,7 @@ const SidePanelLinks = () => {
       <div className="mt-5">
         <Link href="/dashboard">
           <div
-            className={`grid grid-cols-3 hover:shadow-md items-center px-6 duration-75 hover:bg-gray-800 dark:hover:bg-gray-700 py-2 select-none ${
+            className={`grid hover:shadow-md items-center px-6 duration-75 hover:bg-gray-800 dark:hover:bg-gray-700 py-2 select-none ${styles.links} ${
               currentPath === "/dashboard" ? "border-l-2 border-purple-50" : ""
             }`}
           >
@@ -42,34 +42,50 @@ const SidePanelLinks = () => {
             <p className="hidden md:inline-block">Dashboard</p>
           </div>
         </Link>
-        <Link href="/dashboard/store">
-          <div
-            className={`grid items-center grid-cols-3 px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-800 dark:hover:bg-gray-700 ${
-              currentPath === "/dashboard/store" ? "border-l-2 border-purple-50" : ""
-            }`}
-          >
-            <i className="text-xl ri-shopping-cart-fill"></i>
-            <p className="hidden md:inline-block">Products</p>
+        <Link href="#">
+          <div className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-800 dark:hover:bg-gray-700 ${styles.links}`}>
+            <i className="text-xl ri-user-3-fill"></i>
+            <p className="hidden md:inline-block">Course Registration</p>
           </div>
         </Link>
         <Link href="#">
-          <div className="grid items-center grid-cols-3 px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-800 dark:hover:bg-gray-700">
+          <div
+            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-800 dark:hover:bg-gray-700 ${styles.links} ${
+              currentPath === "/dashboard/store" ? "border-l-2 border-purple-50" : ""
+            }`}
+          >
+            <i className="text-xl ri-book-3-line"></i>
+            <p className="hidden md:inline-block">Result</p>
+          </div>
+        </Link>
+        <Link href="#">
+          <div
+            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-800 dark:hover:bg-gray-700 ${styles.links} ${
+              currentPath === "/dashboard/store" ? "border-l-2 border-purple-50" : ""
+            }`}
+          >
+            <i className="text-xl ri-money-dollar-box-line"></i>
+            <p className="hidden md:inline-block">Payment</p>
+          </div>
+        </Link>
+        <Link href="#">
+          <div className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-800 dark:hover:bg-gray-700 ${styles.links}`}>
             <i className="text-xl ri-user-3-fill"></i>
-            <p className="hidden md:inline-block">Users</p>
+            <p className="hidden md:inline-block">Chat Rooms</p>
           </div>
         </Link>
         <Link href="/dashboard/settings">
           <div
-            className={`grid grid-cols-3 hover:shadow-md items-center px-6 duration-75 hover:bg-gray-800 dark:hover:bg-gray-700 py-2 select-none ${
+            className={`grid hover:shadow-md items-center px-6 duration-75 hover:bg-gray-800 dark:hover:bg-gray-700 py-2 select-none ${styles.links} ${
               currentPath === "/dashboard/settings" ? "border-l-2 border-purple-50" : ""
             }`}
           >
             <i className="text-xl ri-settings-3-fill"></i>
-            <p className="hidden md:inline-block">Account</p>
+            <p className="hidden md:inline-block">Settings</p>
           </div>
         </Link>
         <Link href="#">
-          <div className="grid items-center grid-cols-3 px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-800 dark:hover:bg-gray-700">
+          <div className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-800 dark:hover:bg-gray-700 ${styles.links}`}>
             <i className="text-xl ri-information-fill"></i>
             <p className="hidden md:inline-block">About</p>
           </div>

@@ -1,3 +1,6 @@
+import { signOut } from "next-auth/react";
+import Link from "next/link";
+
 const DashNavbar = () => {
   return (
     <>
@@ -15,9 +18,14 @@ const DashNavbar = () => {
             </div>
           </div>
           <div className="flex items-center ml-auto space-x-4">
-            <i className="text-xl cursor-pointer ri-github-line"></i>
-            <i className="text-xl cursor-pointer ri-notification-3-line"></i>
-            <i className="text-xl cursor-pointer ri-user-line"></i>
+            {/* <i className="text-xl cursor-pointer ri-github-line"></i> */}
+            <Link href={"/"}>
+              {" "}
+              <i className="text-xl cursor-pointer ri-home-3-line" title="Home"></i>
+            </Link>
+            <i className="text-xl cursor-pointer ri-notification-3-line" title="Notifications"></i>
+            <i className="text-xl cursor-pointer ri-user-line" title="Profile"></i>
+            <i className="text-xl cursor-pointer ri-logout-box-r-line" title="Logout" onClick={() => signOut()}></i>
           </div>
         </div>
       </div>

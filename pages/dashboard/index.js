@@ -1,21 +1,24 @@
 import DashboardLayout from "@/components/DashboardLayout";
 import CurrentTimeDisplay from "./components/TimeDisplay";
-import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
+import { signIn, useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
 
 const DashboardHome = () => {
   const { data: session, status } = useSession();
+  const [username, setUsername] = useState("");
 
   if (!session && status === "unauthenticated") {
     signIn();
   }
 
-  const username = session.user.name;
+  useEffect(() => {
+    if (session) setUsername(session.user.name);
+  }, [session]);
 
   return (
     <>
       <Head>
-        <meta name="robots" content="noindex" />
         <title>Dashboard - {username}</title>
       </Head>
       <div className="px-10 py-20 bg-gray-200 dark:bg-gray-800">
@@ -27,25 +30,25 @@ const DashboardHome = () => {
         <div className="grid gap-2 px-5 -mt-5 sm:grid-cols-2 md:grid-cols-3">
           <div className="px-8 py-6 duration-200 bg-green-600 rounded-md shadow-md select-none hover:shadow-2xl text-green-50 hover:bg-green-500 hover:cursor-pointer">
             <div className="flex flex-col justify-between h-full space-y-4">
-              <h3 className="font-semibold">Customers</h3>
+              <h3 className="font-semibold">Friends</h3>
               <div className="flex items-center justify-between text-2xl">
                 <i className="ri-user-5-fill"></i>
-                <p>5</p>
+                <p>5.98k</p>
               </div>
             </div>
           </div>
           <div className="px-8 py-6 duration-200 bg-gray-600 rounded-md shadow-md select-none hover:shadow-2xl text-green-50 hover:bg-gray-500 hover:cursor-pointer">
             <div className="flex flex-col justify-between h-full space-y-4">
-              <h3 className="font-semibold">Orders</h3>
+              <h3 className="font-semibold">Payments</h3>
               <div className="flex items-center justify-between text-2xl">
                 <i className="ri-shopping-cart-fill"></i>
-                <p>114</p>
+                <p>20</p>
               </div>
             </div>
           </div>
           <div className="px-8 py-6 duration-200 bg-red-600 rounded-md shadow-md select-none hover:shadow-2xl text-green-50 hover:bg-red-500 hover:cursor-pointer">
             <div className="flex flex-col justify-between h-full space-y-4">
-              <h3 className="font-semibold">Users</h3>
+              <h3 className="font-semibold">Groups</h3>
               <div className="flex items-center justify-between text-2xl">
                 <i className="ri-user-2-line"></i>
                 <p>1.2k</p>
@@ -85,8 +88,8 @@ const DashboardHome = () => {
             </div>
           </div>
           <div className="grid max-w-5xl p-10 text-center bg-transparent rounded-md shadow-md dark:bg-gray-800 place-content-center">
-            <h3 className="text-xl font-semibold">Stock Statistics</h3>
-            <p>Coming Soon.</p>
+            <h3 className="text-xl font-semibold">Interaction Statistics</h3>
+            <p>Coming Soon. 😉</p>
           </div>
         </div>
 

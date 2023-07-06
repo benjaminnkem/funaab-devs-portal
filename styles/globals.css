@@ -20,5 +20,5 @@ body {
 
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background-color: rgb(154, 14, 197);
+  background: linear-gradient(rgb(154, 14, 197), rgb(14, 145, 197));
 }
