@@ -1,34 +1,33 @@
-import UserModel from "@/pages/schemas/users/UserModel";
-import dbConnection from "@/pages/utils/db";
+import UserModel from "@/utils/schemas/users/UserModel";
+import dbConnection from "@/utils/db";
 import NextAuth from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
-import bcryptjs from "bcryptjs";
+import { compare } from "bcryptjs";
 
 export default NextAuth({
   providers: [
     Credentials({
       type: "credentials",
-      name: "credentials",
       credentials: {},
       async authorize(credentials, req) {
         try {
-          // Connecting to DB
           await dbConnection();
-          console.log("connected successfully");
+          const { email, password } = credentials;
 
-          const { username, password } = credentials;
-          const userExists = await UserModel.where("username").equals(username);
-          if (!userExists) {
-            return null;
+          const user = await UserModel.findOne({ email: email });
+          if (!user || user.length === 0) {
+            throw new Error(`The email ${email} does not exist`);
           }
 
-          const passwordMatch = await bcryptjs.compare(password, userExists.password);
-          if (!passwordMatch) return null;
+          const passwordMatch = await compare(password, user.password);
+          if (!passwordMatch) {
+            throw new Error("The password is incorrect");
+          }
 
-          return { id: userExists.id, username: userExists.username, email: userExists.email };
+          return { id: user.id, username: user.username, email: user.email }; // returning a unique cookie object
         } catch (e) {
           console.log(e);
-          return new Error("Process could not be completed");
+          throw new Error("Process could not be completed");
         }
       },
     }),

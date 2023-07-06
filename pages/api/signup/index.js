@@ -1,5 +1,5 @@
-import UserModel from "@/pages/schemas/users/UserModel";
-import dbConnection from "@/pages/utils/db";
+import UserModel from "@/utils/schemas/users/UserModel";
+import dbConnection from "@/utils/db";
 import bcryptjs from "bcryptjs";
 import mongoose from "mongoose";
 

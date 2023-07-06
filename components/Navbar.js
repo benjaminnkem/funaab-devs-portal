@@ -1,4 +1,3 @@
-import Image from "next/image";
 import navStyles from "./styles/navbar.module.css";
 import { useState } from "react";
 import Link from "next/link";
@@ -21,7 +20,7 @@ const Navbar = ({ bgColor, textColor }) => {
             </Link>
           </div>
 
-          <nav className="hidden md:block">
+          <nav className="hidden sm:block">
             <ul className="flex space-x-3 text-sm">
               <li>
                 <Link href={"/"} className="duration-200 hover:text-purple-300">
@@ -51,7 +50,7 @@ const Navbar = ({ bgColor, textColor }) => {
             </ul>
           </nav>
 
-          <div className="relative flex items-center space-x-6 md:hidden">
+          <div className="relative flex items-center space-x-6 sm:hidden">
             <div onClick={toggleMobileMenu} className="absolute right-0 cursor-pointer">
               <i className="text-3xl ri-menu-4-line"></i>
             </div>

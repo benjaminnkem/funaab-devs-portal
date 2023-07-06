@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import { signIn } from "next-auth/react";
 
 const UserLogin = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -16,22 +16,13 @@ const UserLogin = () => {
     e.preventDefault();
     setLoading(true);
 
-    const credentials = { username, password };
-    // const res = await fetch("/api/auth/signin", {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify(credentials),
-    // });
-
-    const res = await signIn("credentials", credentials);
+    const res = await signIn("credentials", { redirect: false, email, password });
 
     if (!res.ok) {
-      // Do some other stuffs: Or show errors to the user
       setLoading(false);
       return;
     }
 
-    console.log("Operation successful");
     setLoading(false);
   }
 
@@ -54,19 +45,19 @@ const UserLogin = () => {
                 <form onSubmit={(e) => handleLoginDemo(e)}>
                   <div className="space-y-3">
                     <div>
-                      <label className="block font-semibold" htmlFor="username">
-                        Username:
+                      <label className="block font-semibold" htmlFor="email">
+                        Email:
                       </label>
                       <input
                         type="text"
-                        id="username"
+                        id="email"
                         className="w-full p-2 mt-1 text-sm bg-transparent border-b border-purple-600 focus:outline-2 focus:outline-purple-400 focus:border-inherit md:text-base"
-                        value={username}
-                        placeholder="Enter Username"
-                        maxLength="14"
+                        value={email}
+                        placeholder="example@domain.com"
                         onChange={(e) => {
-                          setUsername(e.target.value);
+                          setEmail(e.target.value);
                         }}
+                        required
                       />
                     </div>
                     <div>

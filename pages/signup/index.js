@@ -111,7 +111,7 @@ const NewUserSignUp = () => {
 
               <div className="flex items-center space-x-3 text-purple-100 text-sm">
                 <Link href={"/"} className="duration-200 hover:text-purple-300">Home</Link>
-                <Link href={"/"} className="duration-200 hover:text-purple-300">Login</Link>
+                <Link href={"/login"} className="duration-200 hover:text-purple-300">Login</Link>
                 <Link href={"/"} className="duration-200 hover:text-purple-300">Contact</Link>
                 <Link href={"/"} className="duration-200 hover:text-purple-300">Send Us A Message</Link>
               </div>
