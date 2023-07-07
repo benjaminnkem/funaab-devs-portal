@@ -25,15 +25,10 @@ const UserLogin = () => {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
   const passwordInputBox = useRef();
 
-  useEffect(() => {
-    async function isLoggedIn() {
-      if (status === "authenticated") {
-        await router.push("/dashboard");
-      }
-    }
-
-    isLoggedIn();
-  }, [status, router]);
+  // Checking if user is logged in
+  if (status === "authenticated") {
+    router.push("/dashboard");
+  }
 
   function togglePasswordVisibility() {
     setPasswordVisibility(!passwordVisibility);
@@ -80,90 +75,94 @@ const UserLogin = () => {
     setLoading(false);
   }
 
-  return (
-    <>
-      <Head>
-        <title>FunaabDevs - Login</title>
-      </Head>
-      <div className={loginStyles.body}>
-        <div className="grid h-full grid-rows-3">
-          <Navbar bgColor="bg-transparent" textColor="text-purple-50" />
-          <div className="self-start -mt-16 text-purple-50 md:-mt-20">
-            <div className="max-w-md px-2 mx-auto mt-10 transition rounded-lg md:mt-8">
-              <div className="p-4 border border-purple-400 rounded-md">
-                <div className="mb-5">
-                  <i className="text-2xl md:text-3xl ri-user-3-fill"></i>
-                </div>
-                <form onSubmit={(e) => handleLoginDemo(e)}>
-                  {loginError && <p className="text-sm text-red-500 font-semibold text-center">{loginErrorText}</p>}
-                  {emailErr && <p className="text-sm text-red-500 font-semibold text-center">{emailErrorText}</p>}
-                  <div className="space-y-3">
-                    <div>
-                      <label className="block font-semibold" htmlFor="email">
-                        Email:
-                      </label>
-                      <input
-                        type="text"
-                        id="email"
-                        className="w-full p-2 mt-1 text-sm bg-transparent border-b border-purple-600 focus:outline-none md:text-base"
-                        value={email}
-                        placeholder="example@domain.com"
-                        onChange={(e) => {
-                          setEmail(e.target.value);
-                        }}
-                        required
-                      />
-                    </div>
-                    <div>
-                      <label className="block font-semibold" htmlFor="password">
-                        Password:
-                      </label>
-                      <div className="border-b border-purple-600 p-2 flex items-center justify-between">
+  if (status === "unauthenticated")
+    return (
+      <>
+        <Head>
+          <title>FunaabDevs - Login</title>
+        </Head>
+        <div className={loginStyles.body}>
+          <div className="grid h-full grid-rows-3">
+            <Navbar bgColor="bg-transparent" textColor="text-purple-50" />
+            <div className="self-start -mt-16 text-purple-50 md:-mt-20">
+              <div className="max-w-md px-2 mx-auto mt-10 transition rounded-lg md:mt-8">
+                <div className="p-4 border border-purple-400 rounded-md">
+                  <div className="mb-5">
+                    <i className="text-2xl md:text-3xl ri-user-3-fill"></i>
+                  </div>
+                  <form onSubmit={(e) => handleLoginDemo(e)}>
+                    {loginError && <p className="text-sm text-red-500 font-semibold text-center">{loginErrorText}</p>}
+                    {emailErr && <p className="text-sm text-red-500 font-semibold text-center">{emailErrorText}</p>}
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block font-semibold" htmlFor="email">
+                          Email:
+                        </label>
                         <input
-                          type={passwordVisibility ? "text" : "password"}
-                          id="password"
-                          placeholder="Enter your password"
-                          className="w-full mt-1 text-sm bg-transparent focus:outline-none md:text-base"
-                          value={password}
-                          onChange={(e) => setPassword(e.target.value)}
-                          ref={passwordInputBox}
+                          type="text"
+                          id="email"
+                          className={`w-full p-2 mt-1 text-sm bg-transparent border-b border-purple-600 focus:outline-none md:text-base`}
+                          value={email}
+                          placeholder="example@domain.com"
+                          onChange={(e) => {
+                            setEmail(e.target.value);
+                          }}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <label className="block font-semibold" htmlFor="password">
+                          Password:
+                        </label>
+                        <div className="border-b border-purple-600 p-2 flex items-center justify-between">
+                          <input
+                            type={passwordVisibility ? "text" : "password"}
+                            id="password"
+                            placeholder="Enter your password"
+                            className="w-full mt-1 text-sm bg-transparent focus:outline-none md:text-base"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            ref={passwordInputBox}
+                          />
+
+                          <i
+                            className={`cursor-pointer ${passwordVisibility ? "ri-eye-line" : "ri-eye-close-line"}`}
+                            title="Toggle Password Visibility"
+                            onClick={togglePasswordVisibility}
+                          ></i>
+                        </div>
+                      </div>
+                      <div>
+                        <input
+                          type="submit"
+                          value={loading ? "Verifying..." : "Login"}
+                          className={`w-full py-1 transition bg-purple-600 rounded-md hover:bg-purple-700 text-purple-50 disabled:bg-purple-400`}
+                          disabled={loading}
                         />
 
-                        <i
-                          className={`cursor-pointer ${passwordVisibility ? "ri-eye-line" : "ri-eye-close-line"}`}
-                          title="Toggle Password Visibility"
-                          onClick={togglePasswordVisibility}
-                        ></i>
+                        <div className="text-center my-4 text-sm font-semibold  text-purple-100 md:my-2">
+                          <span>A Fresh Dev?</span>{" "}
+                          <Link
+                            href="/signup"
+                            className="transition border-b border-yellow-400 hover:border-yellow-200"
+                          >
+                            Sign Up
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                    <div>
-                      <input
-                        type="submit"
-                        value={loading ? "Verifying..." : "Login"}
-                        className={`w-full py-1 transition bg-purple-600 rounded-md hover:bg-purple-700 text-purple-50 disabled:bg-purple-400`}
-                        disabled={loading}
-                      />
-
-                      <div className="text-center my-4 text-sm font-semibold  text-purple-100 md:my-2">
-                        <span>A Fresh Dev?</span>{" "}
-                        <Link href="/signup" className="transition border-b border-yellow-400 hover:border-yellow-200">
-                          Sign Up
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </form>
+                  </form>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="self-end ">
-            <Footer />
+            <div className="self-end ">
+              <Footer />
+            </div>
           </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+    );
 };
 
 export default UserLogin;
