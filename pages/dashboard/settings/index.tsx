@@ -1,7 +1,7 @@
-import DashboardLayout from "@/components/DashboardLayout";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import DashboardLayout from "../../../components/DashboardLayout";
 
 const Settings = () => {
   const { data: session, status } = useSession();

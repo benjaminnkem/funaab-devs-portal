@@ -1,9 +1,9 @@
-import DashboardLayout from "@/components/DashboardLayout";
-import CurrentTimeDisplay from "./components/TimeDisplay";
 import Head from "next/head";
 import { signIn, useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
+import CurrentTimeDisplay from "./components/TimeDisplay";
+import DashboardLayout from "../../components/DashboardLayout";
 
 const DashboardHome = () => {
   const { data: session, status } = useSession();

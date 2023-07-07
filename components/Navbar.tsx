@@ -35,12 +35,7 @@ const Navbar = ({ bgColor, textColor }: NavbarProps) => {
                 </Link>
               </li>
               <li>
-                <Link href={"/signup"} className="duration-200 hover:text-purple-300">
-                  Join Us
-                </Link>
-              </li>
-              <li>
-                <Link href={"/"} className="duration-200 hover:text-purple-300">
+                <Link href={"/contact"} className="duration-200 hover:text-purple-300">
                   Contact
                 </Link>
               </li>
@@ -88,13 +83,13 @@ const Navbar = ({ bgColor, textColor }: NavbarProps) => {
                 </Link>
               </li>
               <li>
-                <Link href={"/signup"} onClick={toggleMobileMenu} className="duration-200 hover:text-purple-300">
-                  Join Us
+                <Link href={"/contact"} onClick={toggleMobileMenu} className="duration-200 hover:text-purple-300">
+                  Contact
                 </Link>
               </li>
               <li>
-                <Link href={"/"} onClick={toggleMobileMenu} className="duration-200 hover:text-purple-300">
-                  Contact
+                <Link href={"/signup"} onClick={toggleMobileMenu} className="duration-200 hover:text-purple-300">
+                  Sign Up
                 </Link>
               </li>
               <li>
@@ -116,6 +111,8 @@ const Navbar = ({ bgColor, textColor }: NavbarProps) => {
     );
   }
 
+
+  // A more optimized version of the navbar would be created
   if (status === "authenticated")
     return (
       <>
@@ -137,7 +134,7 @@ const Navbar = ({ bgColor, textColor }: NavbarProps) => {
                   </Link>
                 </li>
                 <li>
-                  <Link href={"/"} className="duration-200 hover:text-purple-300">
+                  <Link href={"/contact"} className="duration-200 hover:text-purple-300">
                     Contact
                   </Link>
                 </li>

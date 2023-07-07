@@ -1,11 +1,9 @@
-import Navbar from "@/components/Navbar";
-
 import styles from "./Signup.module.css";
 import { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import Footer from "@/components/Footer";
 import Image from "next/image";
+import Navbar from "../../components/Navbar";
 
 const NewUserSignUp = () => {
   const [formErrorPresent, setFormErrorPresent] = useState(false);

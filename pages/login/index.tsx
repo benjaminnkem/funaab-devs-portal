@@ -1,12 +1,11 @@
-import { useEffect, useRef, useState } from "react";
-
-import Navbar from "@/components/Navbar";
+import { useRef, useState } from "react";
 import loginStyles from "./login.module.css";
 import Head from "next/head";
 import Link from "next/link";
-import Footer from "@/components/Footer";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 
 const UserLogin = () => {
   const { status } = useSession();

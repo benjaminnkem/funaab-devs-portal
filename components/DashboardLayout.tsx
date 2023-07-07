@@ -1,5 +1,5 @@
-import DashNavbar from "@/pages/dashboard/components/DashNavbar";
-import SidePanelLinks from "@/pages/dashboard/components/SidePanelLinks";
+import DashNavbar from "../pages/dashboard/components/DashNavbar";
+import SidePanelLinks from "../pages/dashboard/components/SidePanelLinks";
 import Head from "next/head";
 
 export default function DashboardLayout({ children }) {
