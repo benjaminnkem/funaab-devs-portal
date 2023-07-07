@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/sidebar.module.css";
 import { usePathname } from "next/navigation";
+import { signOut } from "next-auth/react";
 
 const SidePanelLinks = () => {
   const currentPath = usePathname();
@@ -34,25 +35,27 @@ const SidePanelLinks = () => {
       <div className="mt-5">
         <Link href="/dashboard">
           <div
-            className={`grid hover:shadow-md items-center px-6 duration-75 hover:bg-gray-400 dark:hover:bg-gray-700 py-2 select-none ${styles.links} ${
-              currentPath === "/dashboard" ? "border-l-2 border-purple-50" : ""
-            }`}
+            className={`grid hover:shadow-md items-center px-6 duration-75 hover:bg-gray-400 dark:hover:bg-gray-700 py-2 select-none ${
+              styles.links
+            } ${currentPath === "/dashboard" ? "border-l-2 border-purple-50" : ""}`}
           >
             <i className="text-xl ri-home-3-fill"></i>
             <p className="hidden md:inline-block">Dashboard</p>
           </div>
         </Link>
         <Link href="#">
-          <div className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-400 dark:hover:bg-gray-700 ${styles.links}`}>
+          <div
+            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-400 dark:hover:bg-gray-700 ${styles.links}`}
+          >
             <i className="text-xl ri-user-3-fill"></i>
             <p className="hidden md:inline-block">Course Registration</p>
           </div>
         </Link>
         <Link href="#">
           <div
-            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-400 dark:hover:bg-gray-700 ${styles.links} ${
-              currentPath === "/dashboard/store" ? "border-l-2 border-purple-50" : ""
-            }`}
+            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-400 dark:hover:bg-gray-700 ${
+              styles.links
+            } ${currentPath === "/dashboard/store" ? "border-l-2 border-purple-50" : ""}`}
           >
             <i className="text-xl ri-book-3-line"></i>
             <p className="hidden md:inline-block">Result</p>
@@ -60,32 +63,44 @@ const SidePanelLinks = () => {
         </Link>
         <Link href="#">
           <div
-            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-400 dark:hover:bg-gray-700 ${styles.links} ${
-              currentPath === "/dashboard/store" ? "border-l-2 border-purple-50" : ""
-            }`}
+            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-400 dark:hover:bg-gray-700 ${
+              styles.links
+            } ${currentPath === "/dashboard/store" ? "border-l-2 border-purple-50" : ""}`}
           >
             <i className="text-xl ri-money-dollar-box-line"></i>
             <p className="hidden md:inline-block">Payment</p>
           </div>
         </Link>
         <Link href="#">
-          <div className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-400 dark:hover:bg-gray-700 ${styles.links}`}>
+          <div
+            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-400 dark:hover:bg-gray-700 ${styles.links}`}
+          >
             <i className="text-xl ri-user-3-fill"></i>
             <p className="hidden md:inline-block">Chat Rooms</p>
           </div>
         </Link>
         <Link href="/dashboard/settings">
           <div
-            className={`grid hover:shadow-md items-center px-6 duration-75 hover:bg-gray-400 dark:hover:bg-gray-700 py-2 select-none ${styles.links} ${
-              currentPath === "/dashboard/settings" ? "border-l-2 border-purple-50" : ""
-            }`}
+            className={`grid hover:shadow-md items-center px-6 duration-75 hover:bg-gray-400 dark:hover:bg-gray-700 py-2 select-none ${
+              styles.links
+            } ${currentPath === "/dashboard/settings" ? "border-l-2 border-purple-50" : ""}`}
           >
             <i className="text-xl ri-settings-3-fill"></i>
             <p className="hidden md:inline-block">Settings</p>
           </div>
         </Link>
+        <Link href="#" onClick={() => signOut()}>
+          <div
+            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-400 dark:hover:bg-gray-700 ${styles.links}`}
+          >
+            <i className="text-xl ri-logout-box-r-line"></i>
+            <p className="hidden md:inline-block">Log Out</p>
+          </div>
+        </Link>
         <Link href="#">
-          <div className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-400 dark:hover:bg-gray-700 ${styles.links}`}>
+          <div
+            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-400 dark:hover:bg-gray-700 ${styles.links}`}
+          >
             <i className="text-xl ri-information-fill"></i>
             <p className="hidden md:inline-block">About</p>
           </div>

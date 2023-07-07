@@ -28,6 +28,11 @@ body {
   background: var(--s-thumb);
 }
 
+::selection,
+::-moz-selection {
+  background-color: rgba(128, 0, 128, 0.286);
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --s-track: rgba(84, 84, 84, 0.299);
