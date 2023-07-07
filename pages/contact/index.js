@@ -71,7 +71,7 @@ const ContactForm = () => {
       <title>Contact - Funaab Devs</title>
     </Head>
     <div className="max-w-md mx-auto">
-      <h2 className="text-2xl font-bold mb-4 text-purple-800 text-center">Contact Form</h2>
+      <h2 className="text-2xl font-bold mb-4 text-purple-800 text-center contact">Contact Form</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
           <label htmlFor="firstName" className="block text-gray-700 font-bold mb-2">
