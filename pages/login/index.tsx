@@ -33,8 +33,8 @@ const UserLogin = () => {
     setPasswordVisibility(!passwordVisibility);
   }
 
-  async function handleLoginDemo(e) {
-    e.preventDefault();
+  async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     setLoading(true);
 
     function emailErrStop() {
@@ -89,7 +89,7 @@ const UserLogin = () => {
                   <div className="mb-5">
                     <i className="text-2xl md:text-3xl ri-user-3-fill"></i>
                   </div>
-                  <form onSubmit={(e) => handleLoginDemo(e)}>
+                  <form onSubmit={(e) => handleLogin(e)}>
                     {loginError && <p className="text-sm text-red-500 font-semibold text-center">{loginErrorText}</p>}
                     {emailErr && <p className="text-sm text-red-500 font-semibold text-center">{emailErrorText}</p>}
                     <div className="space-y-3">

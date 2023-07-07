@@ -9,7 +9,7 @@ const SidePanelLinks = () => {
   const currentPath = usePathname();
 
   return (
-    <aside className="overflow-x-hidden bg-gray-300 dark:bg-gray-800 dark:text-gray-50 text-gray-900 h-full fixed lg:w-[320px] md:w-[280px] w-[80px] duration-200 z-10">
+    <aside className="overflow-x-hidden bg-gray-100 dark:bg-gray-800 dark:text-gray-50 text-gray-900 h-full fixed lg:w-[320px] md:w-[280px] w-[80px] duration-200 z-10">
       <div className="px-6">
         <div className="flex items-center justify-between py-3">
           <h1 className="hidden text-2xl sm:inline-block font-bold">
@@ -35,7 +35,7 @@ const SidePanelLinks = () => {
       <div className="mt-5">
         <Link href="/dashboard">
           <div
-            className={`grid hover:shadow-md items-center px-6 duration-75 hover:bg-gray-400 dark:hover:bg-gray-700 py-2 select-none ${
+            className={`grid hover:shadow-md items-center px-6 duration-75 hover:bg-gray-50 dark:hover:bg-gray-700 py-2 select-none ${
               styles.links
             } ${currentPath === "/dashboard" ? "border-l-2 border-purple-50" : ""}`}
           >
@@ -45,7 +45,7 @@ const SidePanelLinks = () => {
         </Link>
         <Link href="#">
           <div
-            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-400 dark:hover:bg-gray-700 ${styles.links}`}
+            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-700 ${styles.links}`}
           >
             <i className="text-xl ri-user-3-fill"></i>
             <p className="hidden md:inline-block">Course Registration</p>
@@ -53,7 +53,7 @@ const SidePanelLinks = () => {
         </Link>
         <Link href="#">
           <div
-            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-400 dark:hover:bg-gray-700 ${
+            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-700 ${
               styles.links
             } ${currentPath === "/dashboard/store" ? "border-l-2 border-purple-50" : ""}`}
           >
@@ -63,7 +63,7 @@ const SidePanelLinks = () => {
         </Link>
         <Link href="#">
           <div
-            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-400 dark:hover:bg-gray-700 ${
+            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-700 ${
               styles.links
             } ${currentPath === "/dashboard/store" ? "border-l-2 border-purple-50" : ""}`}
           >
@@ -73,7 +73,7 @@ const SidePanelLinks = () => {
         </Link>
         <Link href="#">
           <div
-            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-400 dark:hover:bg-gray-700 ${styles.links}`}
+            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-700 ${styles.links}`}
           >
             <i className="text-xl ri-user-3-fill"></i>
             <p className="hidden md:inline-block">Chat Rooms</p>
@@ -81,7 +81,7 @@ const SidePanelLinks = () => {
         </Link>
         <Link href="/dashboard/settings">
           <div
-            className={`grid hover:shadow-md items-center px-6 duration-75 hover:bg-gray-400 dark:hover:bg-gray-700 py-2 select-none ${
+            className={`grid hover:shadow-md items-center px-6 duration-75 hover:bg-gray-50 dark:hover:bg-gray-700 py-2 select-none ${
               styles.links
             } ${currentPath === "/dashboard/settings" ? "border-l-2 border-purple-50" : ""}`}
           >
@@ -91,7 +91,7 @@ const SidePanelLinks = () => {
         </Link>
         <Link href="#" onClick={() => signOut()}>
           <div
-            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-400 dark:hover:bg-gray-700 ${styles.links}`}
+            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-700 ${styles.links}`}
           >
             <i className="text-xl ri-logout-box-r-line"></i>
             <p className="hidden md:inline-block">Log Out</p>
@@ -99,7 +99,7 @@ const SidePanelLinks = () => {
         </Link>
         <Link href="#">
           <div
-            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-400 dark:hover:bg-gray-700 ${styles.links}`}
+            className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-700 ${styles.links}`}
           >
             <i className="text-xl ri-information-fill"></i>
             <p className="hidden md:inline-block">About</p>

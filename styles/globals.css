@@ -5,6 +5,7 @@
 :root {
   --s-track: rgba(235, 235, 235, 0.95);
   --s-thumb: rgb(81, 81, 81);
+  --bg-color: #111827;
 }
 
 html {
@@ -37,5 +38,8 @@ body {
   :root {
     --s-track: rgba(84, 84, 84, 0.299);
     --s-thumb: linear-gradient(rgb(154, 14, 197), rgb(14, 145, 197));
+  }
+  body {
+    background-color: #111827;
   }
 }

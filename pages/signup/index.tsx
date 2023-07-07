@@ -24,8 +24,8 @@ const NewUserSignUp = () => {
   const [department, setDepartment] = useState("");
   const [colFalc, setColFalc] = useState("");
 
-  async function handleSignUp(e) {
-    e.preventDefault();
+  async function handleSignUp(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     setFormProcessing(true);
 
     function stopProcess(errMessage) {
