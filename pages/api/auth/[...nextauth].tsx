@@ -4,10 +4,10 @@ import NextAuth from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
 import { compare } from "bcryptjs";
 
-type LoginDataType = {
-  email: string;
-  password: string;
-};
+// type LoginDataType = {
+//   email: string;
+//   password: string;
+// };
 
 export default NextAuth({
   providers: [
@@ -17,7 +17,7 @@ export default NextAuth({
         email: { label: "Email", type: "text" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials, _req) {
         try {
           await dbConnection();
           const { email, password } = credentials;
@@ -32,9 +32,8 @@ export default NextAuth({
             throw new Error("The password is incorrect");
           }
 
-          return { id: user.id, name: user.username, email: user.email }; // returning a unique cookie object
+          return { id: user.id, name: user.username, email: user.email, image: user.img }; // returning a unique cookie object
         } catch (e) {
-          console.log(e);
           throw new Error("Login Failed, re-check credentials 😣");
         }
       },
@@ -43,5 +42,6 @@ export default NextAuth({
   session: { strategy: "jwt" },
   pages: {
     signIn: "/login",
+    error: "/login",
   },
 });

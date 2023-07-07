@@ -7,12 +7,13 @@ const userSchema = new mongoose.Schema({
     type: String,
     lowercase: true,
     trim: true,
-    required: "Please supply a valid email address",
+    required: true,
   },
   department: { type: String, required: true },
   level: { type: Number, required: true, max: 700, min: 100 },
   colFalc: { type: String, required: true },
   password: { type: String, required: true },
+  img: { type: String, lowercase: true },
   dateCreated: { type: Date, default: () => new Date() },
 });
 

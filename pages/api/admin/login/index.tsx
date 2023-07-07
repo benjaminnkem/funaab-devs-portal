@@ -1,7 +1,7 @@
-import dbConnection from "@/utils/db";
-import UserModel from "@/utils/schemas/users/UserModel";
 import { compare } from "bcryptjs";
 import { signIn } from "next-auth/react";
+import dbConnection from "../../../../utils/db";
+import UserModel from "../../../../utils/schemas/users/UserModel";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {

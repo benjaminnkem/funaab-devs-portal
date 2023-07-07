@@ -54,9 +54,7 @@ const NewUserSignUp = () => {
       password,
     };
 
-    console.log(data);
-
-    const response = await fetch("/api/signup", {
+    const response = await fetch("/api/admin/signup", {
       method: "POST",
       headers: { "Content-type": "application/json" },
       body: JSON.stringify(data),
@@ -72,6 +70,7 @@ const NewUserSignUp = () => {
 
     // Resetting all values;
     setUsername("");
+    setFullName("");
     setPassword("");
     setColFalc("");
     setLevel("");

@@ -1,9 +1,9 @@
-import UserModel from "@/utils/schemas/users/UserModel";
-import dbConnection from "@/utils/db";
 import bcryptjs from "bcryptjs";
-import mongoose from "mongoose";
+import { NextApiRequest, NextApiResponse } from "next";
+import dbConnection from "../../../../utils/db";
+import UserModel from "../../../../utils/schemas/users/UserModel";
 
-async function handler(req, res) {
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST") {
     try {
       // Connecting to database
@@ -11,6 +11,7 @@ async function handler(req, res) {
 
       // Using Users Model
       const requestBody = req.body;
+      const defaultImgPath = "/images/users/default.png";
 
       // Hashing password before sending to database
       const hashedPassword = await bcryptjs.hash(requestBody.password, 12);
@@ -22,12 +23,12 @@ async function handler(req, res) {
         department: requestBody.department,
         level: requestBody.level,
         colFalc: requestBody.colFalc,
+        img: defaultImgPath,
         password: hashedPassword, // Sent hashed password instead
       };
 
       const userModel = await UserModel.create(newUserData);
-
-      return res.status(200).json({ message: "Congrats" });
+      res.status(200).json({ message: "Congrats" });
     } catch (err) {
       console.log(err);
       return res

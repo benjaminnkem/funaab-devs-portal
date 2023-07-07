@@ -111,7 +111,6 @@ const Navbar = ({ bgColor, textColor }: NavbarProps) => {
     );
   }
 
-
   // A more optimized version of the navbar would be created
   if (status === "authenticated")
     return (
@@ -145,8 +144,11 @@ const Navbar = ({ bgColor, textColor }: NavbarProps) => {
                 </li>
 
                 <li>
-                  <Link href={"/signup"} className="duration-200 hover:text-purple-300">
-                    Sign Up
+                  <Link
+                    href={"/dashboard"}
+                    className="duration-200 bg-purple-700 text-white hover:text-purple-300 px-2 py-1 rounded-md hover:bg-purple-600"
+                  >
+                    Dashboard
                   </Link>
                 </li>
               </ul>
