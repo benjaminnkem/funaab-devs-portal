@@ -33,7 +33,7 @@ const Navbar = ({ bgColor, textColor }) => {
                 </Link>
               </li>
               <li>
-                <Link href={"/"} className="duration-200 hover:text-purple-300">
+                <Link href={"/contact"} className="duration-200 hover:text-purple-300">
                   Contact
                 </Link>
               </li>

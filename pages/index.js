@@ -38,12 +38,12 @@ export default function Home() {
                     <button
                       className="px-4 py-1 transition bg-yellow-600 rounded-lg hover:bg-yellow-500"
                       onClick={() => {
-                        routes.push("/auth/login");
+                        routes.push("/login");
                       }}
                     >
                       Login
                     </button>
-                    <Link href={"/auth/signup"}>
+                    <Link href={"/signup"}>
                       <button className="px-4 py-1 ml-3 transition border border-purple-600 rounded-lg hover:bg-purple-600">
                         <span>Join Us</span> <i className="ri-rocket-2-line"></i>
                       </button>
