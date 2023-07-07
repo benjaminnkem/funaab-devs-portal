@@ -1,14 +1,22 @@
-import UserModel from "@/utils/schemas/users/UserModel";
-import dbConnection from "@/utils/db";
+import dbConnection from "../../../utils/db";
+import UserModel from "../../../utils/schemas/users/UserModel";
 import NextAuth from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
 import { compare } from "bcryptjs";
+
+type LoginDataType = {
+  email: string;
+  password: string;
+};
 
 export default NextAuth({
   providers: [
     Credentials({
       type: "credentials",
-      credentials: {},
+      credentials: {
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
+      },
       async authorize(credentials, req) {
         try {
           await dbConnection();

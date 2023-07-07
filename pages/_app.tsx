@@ -1,5 +1,5 @@
-import "@/styles/globals.css";
-import "@/styles/navbar.css";
+import "../styles/globals.css";
+import "../styles/navbar.css";
 import { SessionProvider } from "next-auth/react";
 import "remixicon/fonts/remixicon.css";
 

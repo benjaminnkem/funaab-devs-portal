@@ -1,11 +1,10 @@
 import { useRouter } from "next/router";
 import Head from "next/head";
 
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-
 import styles from "./index.module.css";
 import Link from "next/link";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export default function Home() {
   const routes = useRouter();

@@ -1,11 +1,14 @@
-import navStyles from "./styles/navbar.module.css";
 import { useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 
-const Navbar = ({ bgColor, textColor }) => {
+type NavbarProps = {
+  bgColor: string;
+  textColor: string;
+};
+
+const Navbar = ({ bgColor, textColor }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { data: session, status } = useSession();
 
   function toggleMobileMenu() {
