@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --s-track: rgba(235, 235, 235, 0.95);
+  --s-thumb: rgb(81, 81, 81);
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -15,10 +20,17 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: rgba(139, 71, 139, 0.641);
+  background-color: var(--s-track);
 }
 
 ::-webkit-scrollbar-thumb {
   border-radius: 5px;
-  background: linear-gradient(rgb(154, 14, 197), rgb(14, 145, 197));
+  background: var(--s-thumb);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --s-track: rgba(84, 84, 84, 0.299);
+    --s-thumb: linear-gradient(rgb(154, 14, 197), rgb(14, 145, 197));
+  }
 }
