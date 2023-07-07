@@ -156,7 +156,7 @@ const UserLogin = () => {
             </div>
 
             <div className="self-end ">
-              <Footer />
+              <Footer bgColor="bg-transparent" textColor="text-white"/>
             </div>
           </div>
         </div>

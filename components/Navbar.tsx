@@ -17,7 +17,7 @@ const Navbar = ({ bgColor, textColor }: NavbarProps) => {
 
   if (!session && status === "unauthenticated") {
     return (
-      <div className={`${bgColor} ${textColor}`}>
+      <div className={`${bgColor} ${textColor} z-50`}>
         <div className={`flex justify-between items-center py-4 md:max-w-[1448px] mx-auto w-11/12`}>
           <div className="text-center md:text-start">
             <Link href="/">
