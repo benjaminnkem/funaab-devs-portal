@@ -22,7 +22,9 @@ const SidePanelLinks = () => {
             <h1 className="hidden text-2xl sm:inline-block font-bold">
               FDev<span className="text-gray-500">.</span>
             </h1>
-            <Image src={"/images/logos/logo.png"} alt="The FUNAAB's Logo" width={60} height={60} />
+            <Link href={"/"}>
+              <Image src={"/images/logos/logo.png"} alt="The FUNAAB's Logo" width={60} height={60} />
+            </Link>
           </div>
           <div className="mt-3 text-center">
             <div className={`relative ${styles.adminImages}`} id="admin-image">
@@ -32,7 +34,7 @@ const SidePanelLinks = () => {
                 width={100}
                 height={100}
                 title="Profile Image"
-                className="mx-auto rounded-full aspect-square border-2 border-gray-500"
+                className="mx-auto rounded-full aspect-square border-4 border-white shadow-xl"
                 draggable="false"
               ></Image>
             </div>
@@ -83,7 +85,7 @@ const SidePanelLinks = () => {
             <div
               className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-gray-50 dark:hover:bg-gray-700 ${styles.links}`}
             >
-              <i className="text-xl ri-user-3-fill"></i>
+              <i className="text-xl ri-user-smile-line"></i>
               <p className="hidden md:inline-block">Chat Rooms</p>
             </div>
           </Link>
@@ -94,7 +96,7 @@ const SidePanelLinks = () => {
               } ${currentPath === "/dashboard/settings" ? "border-l-2 border-purple-50" : ""}`}
             >
               <i className="text-xl ri-settings-3-fill"></i>
-              <p className="hidden md:inline-block">Settings</p>
+              <p className="hidden md:inline-block">Account</p>
             </div>
           </Link>
           <Link href="#" onClick={() => signOut()}>

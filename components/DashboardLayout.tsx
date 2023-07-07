@@ -10,8 +10,8 @@ export default function DashboardLayout({ children }) {
         <meta name="robots" content="noindex" />
       </Head>
       <SessionProvider>
-        <main>
-          <div className="grid h-full dark:bg-gray-900 bg-slate-100 text-gray-800 dark:text-gray-100">
+        <main className="dark:bg-gray-900 bg-gray-100 text-gray-800 dark:text-gray-100">
+          <div className="grid h-full">
             <SidePanelLinks />
             <div className="lg:ml-[320px] md:ml-[280px] ml-[80px] duration-200">
               <DashNavbar />

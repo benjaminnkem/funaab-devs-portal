@@ -39,7 +39,7 @@ const DashboardHome = () => {
           <CurrentTimeDisplay />
         </div>
 
-        <div className="px-4 my-10 main-dash-side md:px-6">
+        <div className="px-4 my-10 md:px-6">
           <div className="mb-10 space-y-4">
             <h2 className="text-gray-700 dark:text-gray-300 font-bold md:text-3xl text-xl">Actions</h2>
             <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">

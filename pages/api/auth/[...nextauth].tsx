@@ -4,11 +4,6 @@ import NextAuth from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
 import { compare } from "bcryptjs";
 
-// type LoginDataType = {
-//   email: string;
-//   password: string;
-// };
-
 export default NextAuth({
   providers: [
     Credentials({
@@ -44,4 +39,16 @@ export default NextAuth({
     signIn: "/login",
     error: "/login",
   },
+  // callbacks: {
+  //   async session({ session, token }) {
+  //     const userSession = session.user;
+
+  //     userSession.name = token.name;
+  //     userSession.email = token.email;
+  //     userSession.image = token.image as string;
+  //     userSession.fullName = token.fullName; // Bug here...
+
+  //     return session;
+  //   },
+  // },
 });
