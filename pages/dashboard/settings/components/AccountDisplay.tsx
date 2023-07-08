@@ -13,8 +13,8 @@ const AccountDisplay = ({ userData }: UserDataProps) => {
   if (status === "authenticated") {
     return (
       <>
-        <div className="bg-white shadow-md border">
-          <div className="bg-white p-6 border">
+        <div className="shadow-md">
+          <div className="bg-white rounded-md dark:bg-gray-800 p-6 border dark:border-gray-700">
             <h1 className="text-2xl text-gray-600 mb-4 font-semibold">Profile</h1>
 
             <form>

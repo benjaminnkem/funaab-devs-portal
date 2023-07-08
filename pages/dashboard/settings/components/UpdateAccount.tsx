@@ -19,9 +19,9 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
 
     return (
       <>
-        <div className="bg-white shadow-md border">
-          <div className="bg-white p-6 border">
-            <h1 className="text-2xl text-gray-600 mb-4 font-semibold">Profile</h1>
+        <div className="bg-white dark:bg-gray-700 shadow-md border">
+          <div className="p-6 border">
+            <h1 className="text-2xl text-gray-600 dark:text-gray-50 mb-4 font-semibold">Profile</h1>
 
             <form>
               <div className="grid grid-cols-3 gap-3">

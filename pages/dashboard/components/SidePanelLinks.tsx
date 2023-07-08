@@ -121,17 +121,17 @@ const SidePanelLinks = () => {
           {/* About dropdown */}
           <div className={`overflow-x-hidden duration-200 ${accountDrop ? "h-24" : "h-[.05px]"}`}>
             <Link href={`/${session.user.name}`}>
-              <div className="bg-purple-300 py-1 hover:bg-purple-400 duration-200 text-start pl-24 flex items-center space-x-4">
+              <div className="bg-purple-300 py-1 hover:bg-purple-400 dark:bg-transparent dark:hover:bg-gray-700 duration-200 text-start pl-24 flex items-center space-x-4">
                 <i className="ri-user-2-fill"></i> <span>Profile</span>
               </div>
             </Link>
-            <Link href={"/dashboard/settings?tab=settings"}>
-              <div className="bg-purple-300 py-1 hover:bg-purple-400 duration-200 text-start pl-24 flex items-center space-x-4">
+            <Link href={`${session.user.name}?tab=settings`}>
+              <div className="bg-purple-300 py-1 hover:bg-purple-400 dark:bg-transparent dark:hover:bg-gray-700 duration-200 text-start pl-24 flex items-center space-x-4">
                 <i className="ri-settings-2-line"></i> <span>Settings</span>
               </div>
             </Link>
-            <Link href={"/dashboard/settings?tab=update"}>
-              <div className="bg-purple-300 py-1 hover:bg-purple-400 duration-200 text-start pl-24 flex items-center space-x-4">
+            <Link href={`${session.user.name}?tab=update`}>
+              <div className="bg-purple-300 py-1 hover:bg-purple-400 dark:bg-transparent dark:hover:bg-gray-700 duration-200 text-start pl-24 flex items-center space-x-4">
                 <i className="ri-key-2-line"></i> <span>Change Password</span>
               </div>
             </Link>
