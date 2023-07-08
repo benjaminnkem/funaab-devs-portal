@@ -1,6 +1,5 @@
 import { signOut } from "next-auth/react";
 import Link from "next/link";
-import useValidateUserSession from "./ValidateSession";
 
 const DashNavbar = () => {
   return (

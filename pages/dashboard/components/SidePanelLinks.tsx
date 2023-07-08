@@ -4,16 +4,16 @@ import Link from "next/link";
 import styles from "../styles/sidebar.module.css";
 import { usePathname } from "next/navigation";
 import { signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useState } from "react";
 
 const SidePanelLinks = () => {
   const currentPath = usePathname();
-  const router = useRouter();
   const { data: session, status } = useSession();
+  const [accountDrop, setAccountDrop] = useState(false);
 
-  if (status === "unauthenticated") {
-    router.push("/login");
-  }
+  const showDrop = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    setAccountDrop(!accountDrop);
+  };
 
   if (status === "authenticated")
     return (
@@ -28,7 +28,7 @@ const SidePanelLinks = () => {
             </Link>
           </div>
           <div className="mt-3 text-center">
-            <div className={`relative ${styles.adminImages}`} id="admin-image">
+            <div className={`relative`}>
               <Image
                 src={session.user.image ? session.user.image : "/images/users/blank-user-profile.png"}
                 alt="Admin Pic"
@@ -38,6 +38,7 @@ const SidePanelLinks = () => {
                 className="mx-auto rounded-full aspect-square border-4 border-white shadow-xl"
                 draggable="false"
               ></Image>
+              <div className="absolute w-5 h-5 bottom-0 bg-[#23f634] rounded-full right-[5.5rem] border-2 border-[#36ff46]"></div>
             </div>
             <p className="mt-3 text-xs font-semibold dark:text-gray-200">Nkem Benjamin</p>
           </div>
@@ -102,7 +103,7 @@ const SidePanelLinks = () => {
               <p className="hidden md:inline-block">Chat Rooms</p>
             </div>
           </Link>
-          <Link href="/dashboard/settings?tab=account">
+          <Link href="/dashboard/settings?tab=account" onClick={(event) => showDrop(event)}>
             <div
               className={`grid hover:shadow-md items-center px-6 duration-75 hover:bg-purple-500 hover:text-purple-50 dark:hover:bg-gray-700 py-2 select-none ${
                 styles.links
@@ -116,6 +117,26 @@ const SidePanelLinks = () => {
               <p className="hidden md:inline-block">Account</p>
             </div>
           </Link>
+
+          {/* About dropdown */}
+          <div className={`overflow-x-hidden duration-200 ${accountDrop ? "h-24" : "h-[.05px]"}`}>
+            <Link href={"/dashboard/settings"}>
+              <div className="bg-purple-300 py-1 hover:bg-purple-400 duration-200 text-start pl-24 flex items-center space-x-4">
+                <i className="ri-user-2-fill"></i> <span>Profile</span>
+              </div>
+            </Link>
+            <Link href={"/dashboard/settings/update"}>
+              <div className="bg-purple-300 py-1 hover:bg-purple-400 duration-200 text-start pl-24 flex items-center space-x-4">
+                <i className="ri-settings-2-line"></i> <span>Update Profile</span>
+              </div>
+            </Link>
+            <Link href={"/dashboard/settings/change"}>
+              <div className="bg-purple-300 py-1 hover:bg-purple-400 duration-200 text-start pl-24 flex items-center space-x-4">
+                <i className="ri-key-2-line"></i> <span>Change Password</span>
+              </div>
+            </Link>
+          </div>
+
           <Link href="#" onClick={() => signOut()}>
             <div
               className={`grid items-center px-6 py-2 duration-75 select-none hover:shadow-md hover:bg-purple-500 hover:text-purple-50 dark:hover:bg-gray-700 ${styles.links}`}

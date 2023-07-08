@@ -4,7 +4,8 @@ import DashboardLayout from "../../../components/DashboardLayout";
 import styles from "./settings.module.css";
 import AccountDisplay from "./components/AccountDisplay";
 import { useRouter } from "next/router";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const Settings = () => {
@@ -15,7 +16,7 @@ const Settings = () => {
   useEffect(() => setCurrentTab(router.query.tab as string), [router.query]);
 
   if (status === "unauthenticated") {
-    router.push("/login");
+    signIn();
   }
 
   if (status === "authenticated") {
@@ -23,28 +24,23 @@ const Settings = () => {
     return (
       <>
         <Head>
-          <title>Account - @{username}</title>
+          <title>Account - @{username} (Profile)</title>
         </Head>
 
         <div className="min-h-screen">
-          <div className={`mt-10 rounded-md shadow-md overflow-hidden mx-5 max-w-5xl ${styles.accountContainer}`}>
-            <div className="bg-white p-6 border">
-              <div className="relative">
-                <Image
-                  src={session.user.image ? session.user.image : "/images/users/blank-user-profile.png"}
-                  alt="Admin Pic"
-                  width={90}
-                  height={90}
-                  title="Profile Image"
-                  className="mx-auto rounded-full aspect-square shadow-sm border border-gray-200"
-                  draggable="false"
-                ></Image>
-                <div className="absolute w-5 h-5 bottom-0 bg-[#23f634] rounded-full right-14 border-2 border-[#36ff46]"></div>
-              </div>
-              <div className="text-center">
-                <button className="mt-4 border border-purple-700 rounded text-sm px-2 py-1">Upload Picture</button>
-              </div>
+          <div className={`mt-10  overflow-hidden mx-5 max-w-5xl`}>
+            <div className="flex space-x-5 justify-center font-semibold mb-4">
+              <Link href={"/dashboard/settings?tab=profile"}>
+                <p className="py-1 border-purple-700 border-b-2">Profile</p>
+              </Link>
+              <Link href={"/dashboard/settings?tab=settings"}>
+                <p className="py-1">Settings</p>
+              </Link>
+              <Link href={"/dashboard/settings?tab=update"}>
+                <p className="py-1">Update</p>
+              </Link>
             </div>
+
             <AccountDisplay />
           </div>
         </div>
