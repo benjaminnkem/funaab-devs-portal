@@ -10,4 +10,5 @@ const UpdateAccount = () => {
   );
 };
 
+
 export default UpdateAccount;

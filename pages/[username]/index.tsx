@@ -1,21 +1,27 @@
+import DashboardLayout from "../../components/DashboardLayout";
 import Head from "next/head";
-import DashboardLayout from "../../../components/DashboardLayout";
-import AccountDisplay from "./components/AccountDisplay";
 import { useRouter } from "next/router";
 import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import AccountSettings from "./components/AccountSettings";
-import UpdateAccount from "./components/UpdateAccount";
 import { GetServerSideProps } from "next";
+import AccountDisplay from "../dashboard/settings/components/AccountDisplay";
+import AccountSettings from "../dashboard/settings/components/AccountSettings";
+import UpdateAccount from "../dashboard/settings/components/UpdateAccount";
+import dbConnection from "../../utils/db";
+import UserModel from "../../utils/schemas/users/UserModel";
+import { UserDataProps } from "../types/UserData.types";
 
-const Settings = () => {
+const Profile = ({ userData }: UserDataProps) => {
   const { data: session, status } = useSession();
   const [currentTab, setCurrentTab] = useState("");
 
   const router = useRouter();
   const pathName = router.asPath;
-  useEffect(() => setCurrentTab(router.query.tab as string), [router.query]);
+  useEffect(() => {
+    setCurrentTab(router.query.tab as string);
+    console.log('userdatat', userData);
+  }, [router.query]);
 
   if (status === "unauthenticated") {
     signIn();
@@ -33,21 +39,23 @@ const Settings = () => {
           <div className={`mt-8 overflow-hidden mx-5 max-w-5xl`}>
             <div className="flex space-x-5 justify-center font-semibold mb-4">
               <Link href={`/${username}`}>
-                <p className={`py-1 duration-200 border-b-2 ${pathName === `/${username}` ? "border-b-purple-700" : ""}`}>
+                <p
+                  className={`py-1 duration-200 border-b-2 ${pathName === `/${username}` ? "border-b-purple-700" : ""}`}
+                >
                   Profile
                 </p>
               </Link>
-              <Link href={"/dashboard/settings?tab=settings"}>
+              <Link href={`/${username}?tab=settings`}>
                 <p className={`py-1 duration-200 border-b-2 ${currentTab === "settings" ? "border-b-purple-700" : ""}`}>
                   Settings
                 </p>
               </Link>
-              <Link href={"/dashboard/settings?tab=update"}>
+              <Link href={`/${username}?tab=update`}>
                 <p className={`py-1 duration-200 border-b-2 ${currentTab === "update" ? "border-b-purple-700" : ""}`}>
                   Update
                 </p>
               </Link>
-              <Link href={"/dashboard/settings?tab=notifications"}>
+              <Link href={`/${username}?tab=notifications`}>
                 <p
                   className={`py-1 duration-200 border-b-2 ${
                     currentTab === "notifications" ? "border-b-purple-700" : ""
@@ -59,7 +67,7 @@ const Settings = () => {
             </div>
 
             {/* Tabs */}
-            {pathName === `/${username}` && <AccountDisplay />}
+            {pathName === `/${username}` && <AccountDisplay userData={userData} />}
             {currentTab === "settings" && <AccountSettings />}
             {currentTab === "update" && <UpdateAccount />}
           </div>
@@ -69,15 +77,39 @@ const Settings = () => {
   }
 };
 
-Settings.getLayout = function getLayout(page) {
-  return <DashboardLayout>{page}</DashboardLayout>;
-};
-
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  
+  const { params } = context;
+  const { username } = params;
+
+  await dbConnection();
+  const user = await UserModel.findOne({ username });
+
+  if (!user) {
+    return {
+      notFound: true,
+    };
+  }
+
+  const pureUserData: UserDataProps = {
+    userData: {
+      fullName: user.fullName,
+      username: user.username,
+      level: user.level,
+      colFalc: user.colFalc,
+      department: user.department,
+      email: user.email,
+      dateCreated: new Date(user.dateCreated).toLocaleDateString(),
+    },
+  }; // You can't send the whole user data since it contains a Date data type.
   return {
-    props: { data: [] },
+    props: {
+      userData: pureUserData.userData,
+    },
   };
 };
 
-export default Settings;
+Profile.getLayout = function getLayout(page) {
+  return <DashboardLayout>{page}</DashboardLayout>;
+};
+
+export default Profile;

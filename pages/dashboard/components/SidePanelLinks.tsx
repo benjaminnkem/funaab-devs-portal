@@ -103,12 +103,12 @@ const SidePanelLinks = () => {
               <p className="hidden md:inline-block">Chat Rooms</p>
             </div>
           </Link>
-          <Link href="/dashboard/settings?tab=profile" onClick={showDrop}>
+          <Link href={`/${session.user.name}`} onClick={showDrop}>
             <div
               className={`grid hover:shadow-md items-center px-6 duration-75 hover:bg-purple-500 hover:text-purple-50 dark:hover:bg-gray-700 py-2 select-none ${
                 styles.links
               } ${
-                currentPath === "/dashboard/settings"
+                currentPath === `/${session.user.name}`
                   ? "dark:border-l-2 dark:border-purple-50 dark:bg-transparent bg-purple-600 text-gray-50"
                   : ""
               }`}
@@ -120,7 +120,7 @@ const SidePanelLinks = () => {
 
           {/* About dropdown */}
           <div className={`overflow-x-hidden duration-200 ${accountDrop ? "h-24" : "h-[.05px]"}`}>
-            <Link href={"/dashboard/settings?tab=profile"}>
+            <Link href={`/${session.user.name}`}>
               <div className="bg-purple-300 py-1 hover:bg-purple-400 duration-200 text-start pl-24 flex items-center space-x-4">
                 <i className="ri-user-2-fill"></i> <span>Profile</span>
               </div>

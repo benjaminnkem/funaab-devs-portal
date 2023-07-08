@@ -142,4 +142,6 @@ DashboardHome.getLayout = function getLayout(page) {
   return <DashboardLayout>{page}</DashboardLayout>;
 };
 
+
+
 export default DashboardHome;
