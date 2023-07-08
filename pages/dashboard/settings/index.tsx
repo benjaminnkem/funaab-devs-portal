@@ -7,6 +7,8 @@ import { useRouter } from "next/router";
 import { signIn, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import AccountSettings from "./components/AccountSettings";
+import UpdateAccount from "./components/UpdateAccount";
 
 const Settings = () => {
   const { data: session, status } = useSession();
@@ -28,20 +30,38 @@ const Settings = () => {
         </Head>
 
         <div className="min-h-screen">
-          <div className={`mt-10  overflow-hidden mx-5 max-w-5xl`}>
+          <div className={`mt-8 overflow-hidden mx-5 max-w-5xl`}>
             <div className="flex space-x-5 justify-center font-semibold mb-4">
               <Link href={"/dashboard/settings?tab=profile"}>
-                <p className="py-1 border-purple-700 border-b-2">Profile</p>
+                <p className={`py-1 duration-200 border-b-2 ${currentTab === "profile" ? "border-b-purple-700" : ""}`}>
+                  Profile
+                </p>
               </Link>
               <Link href={"/dashboard/settings?tab=settings"}>
-                <p className="py-1">Settings</p>
+                <p className={`py-1 duration-200 border-b-2 ${currentTab === "settings" ? "border-b-purple-700" : ""}`}>
+                  Settings
+                </p>
               </Link>
               <Link href={"/dashboard/settings?tab=update"}>
-                <p className="py-1">Update</p>
+                <p className={`py-1 duration-200 border-b-2 ${currentTab === "update" ? "border-b-purple-700" : ""}`}>
+                  Update
+                </p>
+              </Link>
+              <Link href={"/dashboard/settings?tab=notifications"}>
+                <p
+                  className={`py-1 duration-200 border-b-2 ${
+                    currentTab === "notifications" ? "border-b-purple-700" : ""
+                  }`}
+                >
+                  Notifications
+                </p>
               </Link>
             </div>
 
-            <AccountDisplay />
+            {/* Tabs */}
+            {currentTab === "profile" && <AccountDisplay />}
+            {currentTab === "settings" && <AccountSettings />}
+            {currentTab === "update" && <UpdateAccount />}
           </div>
         </div>
       </>

@@ -11,13 +11,13 @@ const SidePanelLinks = () => {
   const { data: session, status } = useSession();
   const [accountDrop, setAccountDrop] = useState(false);
 
-  const showDrop = (event: React.MouseEvent<HTMLAnchorElement>) => {
+  const showDrop = () => {
     setAccountDrop(!accountDrop);
   };
 
   if (status === "authenticated")
     return (
-      <aside className="overflow-x-hidden bg-gray-100 dark:bg-gray-800 dark:text-gray-50 text-gray-900 h-full fixed lg:w-[320px] md:w-[280px] w-[80px] duration-200 z-10">
+      <aside className="overflow-x-hidden bg-white dark:bg-gray-800 dark:text-gray-50 text-gray-900 h-full fixed lg:w-[320px] md:w-[280px] w-[80px] duration-200 z-10">
         <div className="px-6">
           <div className="flex items-center justify-between py-3">
             <h1 className="hidden text-2xl sm:inline-block font-bold">
@@ -103,7 +103,7 @@ const SidePanelLinks = () => {
               <p className="hidden md:inline-block">Chat Rooms</p>
             </div>
           </Link>
-          <Link href="/dashboard/settings?tab=account" onClick={(event) => showDrop(event)}>
+          <Link href="/dashboard/settings?tab=profile" onClick={showDrop}>
             <div
               className={`grid hover:shadow-md items-center px-6 duration-75 hover:bg-purple-500 hover:text-purple-50 dark:hover:bg-gray-700 py-2 select-none ${
                 styles.links
@@ -120,17 +120,17 @@ const SidePanelLinks = () => {
 
           {/* About dropdown */}
           <div className={`overflow-x-hidden duration-200 ${accountDrop ? "h-24" : "h-[.05px]"}`}>
-            <Link href={"/dashboard/settings"}>
+            <Link href={"/dashboard/settings?tab=profile"}>
               <div className="bg-purple-300 py-1 hover:bg-purple-400 duration-200 text-start pl-24 flex items-center space-x-4">
                 <i className="ri-user-2-fill"></i> <span>Profile</span>
               </div>
             </Link>
-            <Link href={"/dashboard/settings/update"}>
+            <Link href={"/dashboard/settings?tab=settings"}>
               <div className="bg-purple-300 py-1 hover:bg-purple-400 duration-200 text-start pl-24 flex items-center space-x-4">
-                <i className="ri-settings-2-line"></i> <span>Update Profile</span>
+                <i className="ri-settings-2-line"></i> <span>Settings</span>
               </div>
             </Link>
-            <Link href={"/dashboard/settings/change"}>
+            <Link href={"/dashboard/settings?tab=update"}>
               <div className="bg-purple-300 py-1 hover:bg-purple-400 duration-200 text-start pl-24 flex items-center space-x-4">
                 <i className="ri-key-2-line"></i> <span>Change Password</span>
               </div>
