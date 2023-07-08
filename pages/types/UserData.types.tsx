@@ -6,6 +6,8 @@ export type UserDataProps = {
     colFalc: string;
     department: string;
     email: string;
+    phoneNumber: string;
+    bio: string;
     dateCreated: string;
   };
 };

@@ -18,10 +18,7 @@ const Profile = ({ userData }: UserDataProps) => {
 
   const router = useRouter();
   const pathName = router.asPath;
-  useEffect(() => {
-    setCurrentTab(router.query.tab as string);
-    console.log('userdatat', userData);
-  }, [router.query]);
+  useEffect(() => setCurrentTab(router.query.tab as string), [router.query]);
 
   if (status === "unauthenticated") {
     signIn();
@@ -69,7 +66,7 @@ const Profile = ({ userData }: UserDataProps) => {
             {/* Tabs */}
             {pathName === `/${username}` && <AccountDisplay userData={userData} />}
             {currentTab === "settings" && <AccountSettings />}
-            {currentTab === "update" && <UpdateAccount />}
+            {currentTab === "update" && <UpdateAccount userData={userData} />}
           </div>
         </div>
       </>
@@ -98,6 +95,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       colFalc: user.colFalc,
       department: user.department,
       email: user.email,
+      phoneNumber: "",
+      bio: "",
       dateCreated: new Date(user.dateCreated).toLocaleDateString(),
     },
   }; // You can't send the whole user data since it contains a Date data type.
