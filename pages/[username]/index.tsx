@@ -37,25 +37,25 @@ const Profile = ({ userData }: UserDataProps) => {
             <div className="flex space-x-5 justify-center font-semibold mb-4">
               <Link href={`/${username}`}>
                 <p
-                  className={`py-1 duration-200  border-b-2 ${pathName === `/${username}` ? "border-b-purple-700" : "dark:border-gray-300"}`}
+                  className={`py-1 duration-200  border-b-2 ${pathName === `/${username}` ? "border-b-purple-600" : "dark:border-gray-400"}`}
                 >
                   Profile
                 </p>
               </Link>
               <Link href={`/${username}?tab=settings`}>
-                <p className={`py-1 duration-200  border-b-2 ${currentTab === "settings" ? "border-b-purple-700" : "dark:border-gray-300"}`}>
+                <p className={`py-1 duration-200  border-b-2 ${currentTab === "settings" ? "border-b-purple-600" : "dark:border-gray-400"}`}>
                   Settings
                 </p>
               </Link>
               <Link href={`/${username}?tab=update`}>
-                <p className={`py-1 duration-200  border-b-2 ${currentTab === "update" ? "border-b-purple-700" : "dark:border-gray-300"}`}>
+                <p className={`py-1 duration-200  border-b-2 ${currentTab === "update" ? "border-b-purple-600" : "dark:border-gray-400"}`}>
                   Update
                 </p>
               </Link>
               <Link href={`/${username}?tab=notifications`}>
                 <p
                   className={`py-1 duration-200  border-b-2 ${
-                    currentTab === "notifications" ? "border-b-purple-700" : "dark:border-gray-300"
+                    currentTab === "notifications" ? "border-b-purple-600" : "dark:border-gray-400"
                   }`}
                 >
                   Notifications

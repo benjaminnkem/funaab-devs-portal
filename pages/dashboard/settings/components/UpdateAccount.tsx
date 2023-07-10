@@ -19,9 +19,9 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
 
     return (
       <>
-        <div className="bg-white dark:bg-gray-700 shadow-md border">
-          <div className="p-6 border">
-            <h1 className="text-2xl text-gray-600 dark:text-gray-50 mb-4 font-semibold">Profile</h1>
+        <div className="shadow-md">
+          <div className="bg-white rounded-md dark:bg-gray-800 p-6 border dark:border-gray-700">
+            <h1 className="text-2xl text-gray-600 mb-4 font-semibold">Update Profile</h1>
 
             <form>
               <div className="grid grid-cols-3 gap-3">
@@ -32,7 +32,7 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                   <input
                     type="text"
                     autoComplete="off"
-                    className="w-full rounded-md outline-1 outline-gray-400 outline-dashed disabled:bg-gray-300 mt-2 p-2"
+                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600 mt-2 p-2"
                     name="fullName"
                     id="fullName"
                     placeholder="Your Full Name"
@@ -47,7 +47,7 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                   <input
                     type="text"
                     autoComplete="off"
-                    className="w-full rounded-md outline-1 outline-gray-400 outline-dashed disabled:bg-gray-300 mt-2 p-2"
+                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600 mt-2 p-2"
                     name="username"
                     id="username"
                     placeholder="username"
@@ -62,7 +62,7 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                   <input
                     type="email"
                     autoComplete="off"
-                    className="w-full rounded-md outline-1 outline-gray-400 outline-dashed disabled:bg-gray-300 mt-2 p-2"
+                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600 mt-2 p-2"
                     name="email"
                     id="email"
                     placeholder="example@xyz.com"
@@ -77,7 +77,7 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                   <input
                     type="text"
                     autoComplete="off"
-                    className="w-full rounded-md outline-1 outline-gray-400 outline-dashed mt-2 p-2 disabled:bg-gray-300"
+                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed mt-2 p-2 disabled:bg-gray-300 dark:disabled:bg-gray-600"
                     name="department"
                     id="department"
                     value={userData.colFalc ? userData.colFalc : ""}
@@ -91,7 +91,7 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                   <input
                     type="text"
                     autoComplete="off"
-                    className="w-full rounded-md outline-1 outline-gray-400 outline-dashed disabled:bg-gray-300 mt-2 p-2"
+                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600 mt-2 p-2"
                     name="level"
                     id="level"
                     placeholder="100 - 700"
@@ -106,7 +106,7 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                   <input
                     type="text"
                     autoComplete="off"
-                    className="w-full rounded-md outline-1 outline-gray-400 outline-dashed disabled:bg-gray-300 mt-2 p-2"
+                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600 mt-2 p-2"
                     name="phoneNumber"
                     id="phoneNumber"
                     placeholder="+234..."
@@ -121,7 +121,7 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                     name="bio"
                     id="bio"
                     rows={4}
-                    className="w-full rounded-md outline-1 outline-gray-400 outline-dashed mt-2 p-2"
+                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed mt-2 p-2"
                     placeholder="A short description of yourself"
                     maxLength={420}
                     disabled={userData.bio && allDisabled ? true : false}
@@ -132,12 +132,6 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
               <p className="font-mono float-right text-sm font-bold mt-4">Date Joined: {new Date().toLocaleString()}</p>
 
               <div className="flex items-center space-x-3">
-                {/* <button
-                  className="bg-purple-700 text-purple-50 px-4 py-2 rounded-md mt-4 hover:bg-purple-600 duration-200 hover:animate-pulse"
-                  onClick={(e) => handleEdit(e)}
-                >
-                  Edit 🖊
-                </button> */}
                 <button className="bg-purple-700 text-purple-50 px-4 py-2 rounded-md mt-4 hover:bg-purple-600 duration-200 hover:animate-pulse">
                   Update ✍
                 </button>
