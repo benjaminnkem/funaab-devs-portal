@@ -5,7 +5,7 @@ type FooterProps = {
 
 const Footer = ({ bgColor, textColor }: FooterProps) => {
   return (
-    <footer>
+    <footer className={`${bgColor} ${textColor}`}>
       <div className="py-4">
         <p className="my-3 text-base text-center md:text-sm">funaabdevteam@2023</p>
       </div>

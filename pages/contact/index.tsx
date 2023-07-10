@@ -185,7 +185,7 @@ const ContactForm = () => {
           </div>
         </div>
       </main>
-      <Footer bgColor="bg-inherit" textColor="text-slate-900"></Footer>
+      <Footer bgColor="bg-gray-50" textColor="text-slate-900"></Footer>
     </>
   );
 };

@@ -26,7 +26,7 @@ const AccountDisplay = ({ userData }: UserDataProps) => {
                   <input
                     type="text"
                     autoComplete="off"
-                    className="w-full rounded-md outline-1 outline-gray-400 outline-dashed disabled:bg-gray-300 mt-2 p-2"
+                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600 mt-2 p-2"
                     name="fullName"
                     id="fullName"
                     placeholder="Your Full Name"
@@ -41,7 +41,7 @@ const AccountDisplay = ({ userData }: UserDataProps) => {
                   <input
                     type="text"
                     autoComplete="off"
-                    className="w-full rounded-md outline-1 outline-gray-400 outline-dashed disabled:bg-gray-300 mt-2 p-2"
+                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600 mt-2 p-2"
                     name="username"
                     id="username"
                     placeholder="username"
@@ -56,7 +56,7 @@ const AccountDisplay = ({ userData }: UserDataProps) => {
                   <input
                     type="email"
                     autoComplete="off"
-                    className="w-full rounded-md outline-1 outline-gray-400 outline-dashed disabled:bg-gray-300 mt-2 p-2"
+                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600 mt-2 p-2"
                     name="email"
                     id="email"
                     placeholder="example@xyz.com"
@@ -71,7 +71,7 @@ const AccountDisplay = ({ userData }: UserDataProps) => {
                   <input
                     type="text"
                     autoComplete="off"
-                    className="w-full rounded-md outline-1 outline-gray-400 outline-dashed mt-2 p-2 disabled:bg-gray-300"
+                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed mt-2 p-2 disabled:bg-gray-300 dark:disabled:bg-gray-600"
                     name="department"
                     id="department"
                     value={userData.colFalc ? userData.colFalc : ""}
@@ -85,7 +85,7 @@ const AccountDisplay = ({ userData }: UserDataProps) => {
                   <input
                     type="text"
                     autoComplete="off"
-                    className="w-full rounded-md outline-1 outline-gray-400 outline-dashed disabled:bg-gray-300 mt-2 p-2"
+                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600 mt-2 p-2"
                     name="level"
                     id="level"
                     placeholder="100 - 700"
@@ -100,7 +100,7 @@ const AccountDisplay = ({ userData }: UserDataProps) => {
                   <input
                     type="text"
                     autoComplete="off"
-                    className="w-full rounded-md outline-1 outline-gray-400 outline-dashed disabled:bg-gray-300 mt-2 p-2"
+                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600 mt-2 p-2"
                     name="phoneNumber"
                     id="phoneNumber"
                     placeholder="+234..."
@@ -115,7 +115,7 @@ const AccountDisplay = ({ userData }: UserDataProps) => {
                     name="bio"
                     id="bio"
                     rows={4}
-                    className="w-full rounded-md outline-1 outline-gray-400 outline-dashed mt-2 p-2"
+                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed mt-2 p-2"
                     placeholder="A short description of yourself"
                     maxLength={420}
                     disabled={userData.bio && allDisabled ? true : false}
