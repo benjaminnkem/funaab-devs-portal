@@ -33,7 +33,7 @@ const Profile = ({ userData }: UserDataProps) => {
         </Head>
 
         <div className="min-h-screen">
-          <div className={`mt-8 overflow-hidden mx-5 max-w-5xl`}>
+          <div className={`mt-4 overflow-hidden mx-5 max-w-5xl`}>
             <div className="flex space-x-5 justify-center font-semibold mb-4">
               <Link href={`/${username}`}>
                 <p
