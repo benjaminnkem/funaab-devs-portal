@@ -11,7 +11,6 @@ const userSchema = new mongoose.Schema({
   },
   department: { type: String, required: true },
   level: { type: Number, required: true, max: 800, min: 100 },
-  college: { type: String, required: true },
   phoneNumber: { type: Number, default: 0 },
   bio: { type: String, max: 1024, default: "" },
   img: { type: String, lowercase: true },

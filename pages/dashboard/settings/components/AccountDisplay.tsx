@@ -74,7 +74,7 @@ const AccountDisplay = ({ userData }: UserDataProps) => {
                       className="w-full p-2 mt-2 rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600"
                       name="department"
                       id="department"
-                      value={userData.college ? userData.college : ""}
+                      value={userData.department ? userData.department : ""}
                       disabled
                     />
                   </div>

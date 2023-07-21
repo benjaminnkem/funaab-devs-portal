@@ -22,7 +22,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         email: requestBody.email,
         department: requestBody.department,
         level: parseInt(requestBody.level),
-        college: requestBody.college,
         img: defaultImgPath,
         password: hashedPassword, // Sent hashed password instead
       };

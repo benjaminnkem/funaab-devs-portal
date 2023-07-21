@@ -6,7 +6,7 @@ import { useState } from "react";
 import { UpdateUserStructure } from "../../../../types/NewUsers,types";
 
 const UpdateAccount = ({ userData }: UserDataProps) => {
-  const { status } = useSession();
+  const { status, data: session } = useSession();
   const [formStatus, setFormStatus] = useState<{ loading: boolean; success: boolean }>({
     loading: false,
     success: false,
@@ -14,21 +14,60 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
 
   const [formInputs, setFormInputs] = useState<UpdateUserStructure>({
     fullName: "",
-    level: "",
     department: "",
-    college: "",
     phoneNumber: 0,
     bio: "",
   });
   const [errors, setErrors] = useState<UpdateUserStructure>({} as UpdateUserStructure);
 
-  if (status === "unauthenticated") {
-    return null;
-  }
+  if (status === "unauthenticated") return null;
 
   if (status === "authenticated") {
-    const handleUpdate = (event: React.FormEvent<HTMLFormElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setFormInputs({ ...formInputs, [e.target.name]: e.target.value });
+    };
+
+    const validateInputs = () => {
+      const error = {} as UpdateUserStructure;
+      if (!formInputs.fullName) error.fullName = "Full Name is required";
+      if (!formInputs.department) error.department = "Department is required";
+      if (!formInputs.phoneNumber) {
+        error.phoneNumber = "Phone Number is required" as unknown as number;
+      } else if (!formInputs.phoneNumber.toString().startsWith("0") || isNaN(formInputs.phoneNumber)) {
+        error.phoneNumber = "Invalid Phone Number" as unknown as number;
+      }
+
+      return error;
+    };
+
+    const handleUpdate = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
+      const gottenErr = validateInputs();
+      setErrors(gottenErr);
+
+      setFormStatus({ ...formStatus, loading: true, success: false });
+
+      if (Object.keys(errors).length === 0) {
+        const updateData = {
+          username: userData.username, // passing this to find user in the server side
+          fullName: formInputs.fullName,
+          department: formInputs.department,
+          phoneNumber: formInputs.phoneNumber,
+          bio: formInputs.bio,
+        };
+
+        const res = await fetch("/api/admin/user/update", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(updateData),
+        });
+
+        if (!res.ok) {
+          setFormStatus({ ...formStatus, loading: false, success: false });
+        }
+
+        setFormStatus({ ...formStatus, loading: false, success: true });
+      }
     };
 
     return (
@@ -38,7 +77,7 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
           <div className="p-6 bg-white border rounded-md dark:bg-gray-800 dark:border-gray-700">
             <h1 className="mb-4 text-2xl font-semibold text-gray-600">Update Profile</h1>
 
-            <form onClick={(e) => handleUpdate(e)}>
+            <form onSubmit={(e) => handleUpdate(e)}>
               <div className="grid grid-cols-3 gap-3">
                 <div className="my-1">
                   <label htmlFor="fullName" className="font-semibold">
@@ -46,13 +85,15 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                   </label>
                   <input
                     type="text"
-                    autoComplete="off"
                     className="w-full p-2 mt-2 rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600"
                     name="fullName"
                     id="fullName"
-                    placeholder="Your Full Name"
-                    value={userData.fullName ? userData.fullName : ""}
+                    autoComplete="off"
+                    placeholder={userData.fullName && userData.fullName}
+                    value={formInputs.fullName}
+                    onChange={(e) => handleChange(e)}
                   />
+                  {errors.fullName && <p className="text-xs font-bold text-red-500">{errors.fullName}</p>}
                 </div>
                 <div className="my-1">
                   <label htmlFor="username" className="font-semibold">
@@ -65,7 +106,7 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                     name="username"
                     id="username"
                     placeholder="username"
-                    value={userData.username ? userData.username : ""}
+                    value={userData.username && userData.username}
                     disabled
                   />
                 </div>
@@ -75,12 +116,12 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                   </label>
                   <input
                     type="email"
-                    autoComplete="off"
                     className="w-full p-2 mt-2 rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600"
                     name="email"
                     id="email"
+                    autoComplete="off"
                     placeholder="example@xyz.com"
-                    value={userData.email ? userData.email : ""}
+                    value={userData.email && userData.email}
                     disabled
                   />
                 </div>
@@ -94,8 +135,11 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                     className="w-full p-2 mt-2 rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600"
                     name="department"
                     id="department"
-                    value={userData.college ? userData.college : ""}
+                    placeholder={userData.department && userData.department}
+                    value={formInputs.department}
+                    onChange={(e) => handleChange(e)}
                   />
+                  {errors.department && <p className="text-xs font-bold text-red-500">{errors.department}</p>}
                 </div>
                 <div className="my-1">
                   <label htmlFor="level" className="font-semibold">
@@ -108,7 +152,8 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                     name="level"
                     id="level"
                     placeholder="100 - 700"
-                    value={userData.level ? userData.level : ""}
+                    value={userData.level && userData.level}
+                    disabled
                   />
                 </div>
                 <div className="my-1">
@@ -121,8 +166,12 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                     className="w-full p-2 mt-2 rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600"
                     name="phoneNumber"
                     id="phoneNumber"
-                    placeholder="+234..."
+                    placeholder="0..."
+                    value={formInputs.phoneNumber}
+                    onChange={(e) => handleChange(e)}
+                    maxLength={11}
                   />
+                  {errors.phoneNumber && <p className="text-xs font-bold text-red-500">{errors.phoneNumber}</p>}
                 </div>
                 <div className="my-1" style={{ gridColumn: "1 / 3" }}>
                   <label htmlFor="bio" className="font-semibold">
@@ -134,7 +183,9 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                     rows={4}
                     className="w-full p-2 mt-2 rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed"
                     placeholder="A short description of yourself"
-                    maxLength={420}
+                    maxLength={1024}
+                    value={formInputs.bio}
+                    onChange={(e) => handleChange(e)}
                   ></textarea>
                 </div>
               </div>

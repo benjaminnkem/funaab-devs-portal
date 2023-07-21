@@ -8,8 +8,10 @@ export type ExistingUserStructure = {
   phoneNumber: number;
   bio: string;
   department: string;
-  college: string;
 };
 
 export type NewUserStructure = Omit<ExistingUserStructure, "bio" | "phoneNumber">;
-export type UpdateUserStructure = Omit<ExistingUserStructure, "username" | "email" | "password" | "repeatedPassword">;
+export type UpdateUserStructure = Omit<
+  ExistingUserStructure,
+  "username" | "email" | "level" | "password" | "repeatedPassword"
+>;

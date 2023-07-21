@@ -34,7 +34,7 @@ const Profile = ({ userData }: UserDataProps) => {
 
         <div className="min-h-screen">
           <div className={`mt-4 overflow-hidden mx-5 max-w-5xl`}>
-            <div className="flex space-x-5 justify-center font-semibold mb-4">
+            <div className="flex justify-center mb-4 space-x-5 font-semibold">
               <Link href={`/${username}`}>
                 <p
                   className={`py-1 duration-200  border-b-2 ${pathName === `/${username}` ? "border-b-purple-600" : "dark:border-gray-400"}`}
@@ -92,7 +92,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       fullName: user.fullName,
       username: user.username,
       level: user.level,
-      college: user.college,
       department: user.department,
       email: user.email,
       phoneNumber: "",

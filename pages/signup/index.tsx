@@ -27,7 +27,6 @@ const NewUserSignUp = () => {
     repeatedPassword: "",
     level: "",
     department: "",
-    college: "",
   });
   const [errors, setErrors] = useState<NewUserStructure>({} as NewUserStructure);
 
@@ -50,7 +49,6 @@ const NewUserSignUp = () => {
     ) {
       error.level = "Invalid Level";
     }
-    if (!formInputs.college) error.college = "College is required";
     if (!formInputs.email) {
       error.email = "Email is required";
     } else if (formInputs.email.substring(formInputs.email.indexOf("@") + 1, formInputs.email.length).length === 0) {
@@ -87,8 +85,7 @@ const NewUserSignUp = () => {
         fullName: formInputs.fullName,
         email: formInputs.email,
         department: formInputs.department,
-        level: formInputs.level, // Comeback to this convert string/int
-        college: formInputs.college,
+        level: formInputs.level,
         password: formInputs.password,
       };
 
@@ -114,7 +111,6 @@ const NewUserSignUp = () => {
         repeatedPassword: "",
         level: "",
         department: "",
-        college: "",
       });
       setFormStatus({ loading: false, success: true });
       setSuccessMessage("Your account was created successfully 🎉");
@@ -264,7 +260,7 @@ const NewUserSignUp = () => {
                   </div>
                   <div className="my-3">
                     <label htmlFor="department" className="text-lg font-medium">
-                      Department
+                    College/Faculty/Department
                     </label>
                     <input
                       type="text"
@@ -299,25 +295,6 @@ const NewUserSignUp = () => {
                       required
                     />
                     {errors.level && <p className="py-1 text-xs font-bold text-red-500">{errors.level}</p>}
-                  </div>
-                  <div className="my-3">
-                    <label htmlFor="college" className="text-lg font-medium">
-                      College/Faculty
-                    </label>
-                    <input
-                      type="text"
-                      id="college"
-                      name="college"
-                      className={`w-full p-2 bg-transparent border-b focus:outline-none ${
-                        errors.college ? "border-red-600" : "border-purple-200"
-                      }`}
-                      placeholder="College e.g COLPHYS"
-                      value={formInputs.college}
-                      onChange={(e) => handleUpdate(e)}
-                      autoComplete="off"
-                      required
-                    />
-                    {errors.college && <p className="py-1 text-xs font-bold text-red-500">{errors.username}</p>}
                   </div>
                   <div className="my-3">
                     <label htmlFor="password" className="text-lg font-medium">
