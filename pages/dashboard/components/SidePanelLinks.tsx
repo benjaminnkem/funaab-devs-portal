@@ -155,7 +155,7 @@ const SidePanelLinks = () => {
           </Link>
         </div>
 
-        <div className="sticky mt-10 text-center bottom-2">
+        <div className="sticky hidden mt-10 text-center bottom-2 sm:block">
           <p className="text-xs text-gray-500 bottom-3 left-1/2 right-1/2">Created by #FunaabsDevTeam</p>
         </div>
       </aside>

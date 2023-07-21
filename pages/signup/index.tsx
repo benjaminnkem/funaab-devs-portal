@@ -4,17 +4,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "../../components/Navbar";
-
-type NewUserStructure = {
-  username: string;
-  fullName: string;
-  email: string;
-  password: string;
-  repeatedPassword: string;
-  level: string;
-  department: string;
-  college: string;
-};
+import { NewUserStructure } from "../../types/NewUsers,types";
 
 // Omitting repeated password: Not necessary when storing in DB after validation
 type NewUserReady = Omit<NewUserStructure, "repeatedPassword">;
@@ -38,7 +28,7 @@ const NewUserSignUp = () => {
     level: "",
     department: "",
     college: "",
-  } as NewUserStructure);
+  });
   const [errors, setErrors] = useState<NewUserStructure>({} as NewUserStructure);
 
   const handleUpdate = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

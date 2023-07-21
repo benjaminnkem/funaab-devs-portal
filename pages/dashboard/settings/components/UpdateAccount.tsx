@@ -1,9 +1,26 @@
 import { useSession } from "next-auth/react";
 import { UserDataProps } from "../../../types/UserData.types";
 import DateFormatter from "../../../../components/DateFormatter";
+import Alert from "../../../../components/ui/Alert";
+import { useState } from "react";
+import { UpdateUserStructure } from "../../../../types/NewUsers,types";
 
 const UpdateAccount = ({ userData }: UserDataProps) => {
   const { status } = useSession();
+  const [formStatus, setFormStatus] = useState<{ loading: boolean; success: boolean }>({
+    loading: false,
+    success: false,
+  });
+
+  const [formInputs, setFormInputs] = useState<UpdateUserStructure>({
+    fullName: "",
+    level: "",
+    department: "",
+    college: "",
+    phoneNumber: 0,
+    bio: "",
+  });
+  const [errors, setErrors] = useState<UpdateUserStructure>({} as UpdateUserStructure);
 
   if (status === "unauthenticated") {
     return null;
@@ -17,10 +34,11 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
     return (
       <>
         <div className="shadow-md">
+          {/* <Alert text="Updated Successfully" /> */}
           <div className="p-6 bg-white border rounded-md dark:bg-gray-800 dark:border-gray-700">
             <h1 className="mb-4 text-2xl font-semibold text-gray-600">Update Profile</h1>
 
-            <form onClick={e => handleUpdate(e)}>
+            <form onClick={(e) => handleUpdate(e)}>
               <div className="grid grid-cols-3 gap-3">
                 <div className="my-1">
                   <label htmlFor="fullName" className="font-semibold">
@@ -48,6 +66,7 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                     id="username"
                     placeholder="username"
                     value={userData.username ? userData.username : ""}
+                    disabled
                   />
                 </div>
                 <div className="my-1">
@@ -62,6 +81,7 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                     id="email"
                     placeholder="example@xyz.com"
                     value={userData.email ? userData.email : ""}
+                    disabled
                   />
                 </div>
                 <div className="my-1">
@@ -120,7 +140,7 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
               </div>
 
               <p className="float-right mt-4 text-sm font-bold">
-                Date Joined: <DateFormatter dateAsString={userData.dateCreated}/>
+                Date Joined: <DateFormatter dateAsString={userData.dateCreated} />
               </p>
 
               <div className="flex items-center space-x-3">

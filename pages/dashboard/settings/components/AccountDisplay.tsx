@@ -5,6 +5,7 @@ import Link from "next/link";
 
 const AccountDisplay = ({ userData }: UserDataProps) => {
   const { status, data: session } = useSession();
+
   if (status === "unauthenticated") return null;
   if (status === "authenticated") {
     return (

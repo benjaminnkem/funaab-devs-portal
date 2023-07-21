@@ -1,0 +1,20 @@
+.success {
+  opacity: 0;
+  transform: scale(1.5);
+  animation: show 2s ease-in-out;
+}
+
+@keyframes show {
+  10% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  90% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
