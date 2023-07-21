@@ -17,10 +17,10 @@ const SidePanelLinks = () => {
 
   if (status === "authenticated")
     return (
-      <aside className="overflow-x-hidden bg-white dark:bg-gray-800 dark:text-gray-50 text-gray-900 h-full fixed lg:w-[320px] md:w-[280px] w-[80px] duration-200 z-10">
+      <aside className="overflow-x-hidden bg-white dark:bg-gray-800 dark:text-gray-50 text-gray-900 h-full fixed lg:w-[320px] md:w-[280px] w-[65px] duration-200 z-10">
         <div className="px-6">
           <div className="flex items-center justify-between py-3">
-            <h1 className="hidden text-2xl sm:inline-block font-bold">
+            <h1 className="hidden text-2xl font-bold sm:inline-block">
               FDev<span className="text-gray-500">.</span>
             </h1>
             <Link href={"/"}>
@@ -35,7 +35,7 @@ const SidePanelLinks = () => {
                 width={100}
                 height={100}
                 title="Profile Image"
-                className="mx-auto rounded-full aspect-square border-4 border-white shadow-xl"
+                className="mx-auto border-4 border-white rounded-full shadow-xl aspect-square"
                 draggable="false"
               ></Image>
               <div className="absolute w-5 h-5 bottom-0 bg-[#23f634] rounded-full right-[5.5rem] border-2 border-[#36ff46]"></div>
@@ -119,19 +119,19 @@ const SidePanelLinks = () => {
           </Link>
 
           {/* About dropdown */}
-          <div className={`overflow-x-hidden duration-200 ${accountDrop ? "h-24" : "h-[.05px]"}`}>
+          <div className={`overflow-x-hidden duration-200 ${accountDrop ? "h-24" : "h-[.05px]"} hidden sm:block`}>
             <Link href={`/${session.user.name}`}>
-              <div className="bg-purple-300 py-1 hover:bg-purple-400 dark:bg-transparent dark:hover:bg-gray-700 duration-200 text-start pl-24 flex items-center space-x-4">
+              <div className="flex items-center py-1 pl-24 space-x-4 duration-200 bg-purple-300 hover:bg-purple-400 dark:bg-transparent dark:hover:bg-gray-700 text-start">
                 <i className="ri-user-2-fill"></i> <span>Profile</span>
               </div>
             </Link>
             <Link href={`${session.user.name}?tab=settings`}>
-              <div className="bg-purple-300 py-1 hover:bg-purple-400 dark:bg-transparent dark:hover:bg-gray-700 duration-200 text-start pl-24 flex items-center space-x-4">
+              <div className="flex items-center py-1 pl-24 space-x-4 duration-200 bg-purple-300 hover:bg-purple-400 dark:bg-transparent dark:hover:bg-gray-700 text-start">
                 <i className="ri-settings-2-line"></i> <span>Settings</span>
               </div>
             </Link>
             <Link href={`${session.user.name}?tab=update`}>
-              <div className="bg-purple-300 py-1 hover:bg-purple-400 dark:bg-transparent dark:hover:bg-gray-700 duration-200 text-start pl-24 flex items-center space-x-4">
+              <div className="flex items-center py-1 pl-24 space-x-4 duration-200 bg-purple-300 hover:bg-purple-400 dark:bg-transparent dark:hover:bg-gray-700 text-start">
                 <i className="ri-key-2-line"></i> <span>Change Password</span>
               </div>
             </Link>

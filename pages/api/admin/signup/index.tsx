@@ -13,8 +13,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       const requestBody = req.body;
       const defaultImgPath = "/images/users/default.png";
 
-      console.log(requestBody);
-
       // Hashing password before sending to database
       const hashedPassword = await bcryptjs.hash(requestBody.password, 12);
 

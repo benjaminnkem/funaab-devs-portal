@@ -92,7 +92,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       fullName: user.fullName,
       username: user.username,
       level: user.level,
-      colFalc: user.colFalc,
+      college: user.college,
       department: user.department,
       email: user.email,
       phoneNumber: "",

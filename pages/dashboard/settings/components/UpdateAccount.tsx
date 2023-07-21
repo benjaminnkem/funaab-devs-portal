@@ -1,29 +1,26 @@
 import { useSession } from "next-auth/react";
 import { UserDataProps } from "../../../types/UserData.types";
-import { useState } from "react";
+import DateFormatter from "../../../../components/DateFormatter";
 
 const UpdateAccount = ({ userData }: UserDataProps) => {
   const { status } = useSession();
-  const [allDisabled, setAllDisabled] = useState(true);
 
   if (status === "unauthenticated") {
     return null;
   }
 
   if (status === "authenticated") {
-    // const handleEdit = (event: React.MouseEventHandler<HTMLButtonElement>) => {
-    //   event.preventDefault();
-    //   setAllDisabled(false);
-    //   event.target.classList!.add("hidden");
-    // };
+    const handleUpdate = (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+    };
 
     return (
       <>
         <div className="shadow-md">
-          <div className="bg-white rounded-md dark:bg-gray-800 p-6 border dark:border-gray-700">
-            <h1 className="text-2xl text-gray-600 mb-4 font-semibold">Update Profile</h1>
+          <div className="p-6 bg-white border rounded-md dark:bg-gray-800 dark:border-gray-700">
+            <h1 className="mb-4 text-2xl font-semibold text-gray-600">Update Profile</h1>
 
-            <form>
+            <form onClick={e => handleUpdate(e)}>
               <div className="grid grid-cols-3 gap-3">
                 <div className="my-1">
                   <label htmlFor="fullName" className="font-semibold">
@@ -32,12 +29,11 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                   <input
                     type="text"
                     autoComplete="off"
-                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600 mt-2 p-2"
+                    className="w-full p-2 mt-2 rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600"
                     name="fullName"
                     id="fullName"
                     placeholder="Your Full Name"
                     value={userData.fullName ? userData.fullName : ""}
-                    disabled={userData.fullName && allDisabled ? true : false}
                   />
                 </div>
                 <div className="my-1">
@@ -47,12 +43,11 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                   <input
                     type="text"
                     autoComplete="off"
-                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600 mt-2 p-2"
+                    className="w-full p-2 mt-2 rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600"
                     name="username"
                     id="username"
                     placeholder="username"
                     value={userData.username ? userData.username : ""}
-                    disabled={userData.username && allDisabled ? true : false}
                   />
                 </div>
                 <div className="my-1">
@@ -62,12 +57,11 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                   <input
                     type="email"
                     autoComplete="off"
-                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600 mt-2 p-2"
+                    className="w-full p-2 mt-2 rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600"
                     name="email"
                     id="email"
                     placeholder="example@xyz.com"
                     value={userData.email ? userData.email : ""}
-                    disabled={userData.email && allDisabled ? true : false}
                   />
                 </div>
                 <div className="my-1">
@@ -77,11 +71,10 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                   <input
                     type="text"
                     autoComplete="off"
-                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed mt-2 p-2 disabled:bg-gray-300 dark:disabled:bg-gray-600"
+                    className="w-full p-2 mt-2 rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600"
                     name="department"
                     id="department"
-                    value={userData.colFalc ? userData.colFalc : ""}
-                    disabled
+                    value={userData.college ? userData.college : ""}
                   />
                 </div>
                 <div className="my-1">
@@ -91,12 +84,11 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                   <input
                     type="text"
                     autoComplete="off"
-                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600 mt-2 p-2"
+                    className="w-full p-2 mt-2 rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600"
                     name="level"
                     id="level"
                     placeholder="100 - 700"
                     value={userData.level ? userData.level : ""}
-                    disabled={userData.level && allDisabled ? true : false}
                   />
                 </div>
                 <div className="my-1">
@@ -106,11 +98,10 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                   <input
                     type="text"
                     autoComplete="off"
-                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600 mt-2 p-2"
+                    className="w-full p-2 mt-2 rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed disabled:bg-gray-300 dark:disabled:bg-gray-600"
                     name="phoneNumber"
                     id="phoneNumber"
                     placeholder="+234..."
-                    disabled={userData.phoneNumber && allDisabled ? true : false}
                   />
                 </div>
                 <div className="my-1" style={{ gridColumn: "1 / 3" }}>
@@ -121,18 +112,19 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
                     name="bio"
                     id="bio"
                     rows={4}
-                    className="w-full rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed mt-2 p-2"
+                    className="w-full p-2 mt-2 rounded-md outline-1 dark:bg-transparent outline-gray-400 outline-dashed"
                     placeholder="A short description of yourself"
                     maxLength={420}
-                    disabled={userData.bio && allDisabled ? true : false}
                   ></textarea>
                 </div>
               </div>
 
-              <p className="font-mono float-right text-sm font-bold mt-4">Date Joined: {new Date().toLocaleString()}</p>
+              <p className="float-right mt-4 text-sm font-bold">
+                Date Joined: <DateFormatter dateAsString={userData.dateCreated}/>
+              </p>
 
               <div className="flex items-center space-x-3">
-                <button className="bg-purple-700 text-purple-50 px-4 py-2 rounded-md mt-4 hover:bg-purple-600 duration-200 hover:animate-pulse">
+                <button className="px-4 py-2 mt-4 duration-200 bg-purple-700 rounded-md text-purple-50 hover:bg-purple-600 hover:animate-pulse">
                   Update ✍
                 </button>
               </div>

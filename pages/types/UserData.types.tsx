@@ -3,7 +3,7 @@ export type UserDataProps = {
     fullName: string;
     username: string;
     level: number;
-    colFalc: string;
+    college: string;
     department: string;
     email: string;
     phoneNumber: string;
