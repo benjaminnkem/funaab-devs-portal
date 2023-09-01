@@ -44,7 +44,7 @@ const UserLogin = () => {
     }
 
     if (!email.includes("@")) {
-      setEmailErrorText("Please, re-check your email address 🙏");
+      setEmailErrorText("Invalid email address");
       emailErrStop();
       return;
     }
@@ -90,8 +90,8 @@ const UserLogin = () => {
                     <i className="text-2xl md:text-3xl ri-user-3-fill"></i>
                   </div>
                   <form onSubmit={(e) => handleLogin(e)}>
-                    {loginError && <p className="text-sm text-red-500 font-semibold text-center">{loginErrorText}</p>}
-                    {emailErr && <p className="text-sm text-red-500 font-semibold text-center">{emailErrorText}</p>}
+                    {loginError && <p className="text-sm font-semibold text-center text-red-500">{loginErrorText}</p>}
+                    {emailErr && <p className="text-sm font-semibold text-center text-red-500">{emailErrorText}</p>}
                     <div className="space-y-3">
                       <div>
                         <label className="block font-semibold" htmlFor="email">
@@ -113,7 +113,7 @@ const UserLogin = () => {
                         <label className="block font-semibold" htmlFor="password">
                           Password:
                         </label>
-                        <div className="border-b border-purple-600 p-2 flex items-center justify-between">
+                        <div className="flex items-center justify-between p-2 border-b border-purple-600">
                           <input
                             type={passwordVisibility ? "text" : "password"}
                             id="password"
@@ -139,7 +139,7 @@ const UserLogin = () => {
                           disabled={loading}
                         />
 
-                        <div className="text-center my-4 text-sm font-semibold  text-purple-100 md:my-2">
+                        <div className="my-4 text-sm font-semibold text-center text-purple-100 md:my-2">
                           <span>A Fresh Dev?</span>{" "}
                           <Link
                             href="/signup"

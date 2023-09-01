@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react";
 import { UserDataProps } from "../../../types/UserData.types";
-import DateFormatter from "../../../../components/DateFormatter";
+import DateFormatter from "../../../../components/Common/Others/DateFormatter";
 import Link from "next/link";
 
 const AccountDisplay = ({ userData }: UserDataProps) => {

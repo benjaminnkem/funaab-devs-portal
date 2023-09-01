@@ -1,8 +1,8 @@
 import { useSession } from "next-auth/react";
 import { UserDataProps } from "../../../types/UserData.types";
-import DateFormatter from "../../../../components/DateFormatter";
+import DateFormatter from "../../../../components/Common/Others/DateFormatter";
 import Alert from "../../../../components/ui/Alert";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UpdateUserStructure } from "../../../../types/NewUsers,types";
 
 const UpdateAccount = ({ userData }: UserDataProps) => {
@@ -11,6 +11,7 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
     loading: false,
     success: false,
   });
+  const [formProcessed, setFormProcessed] = useState<boolean>(false);
 
   const [formInputs, setFormInputs] = useState<UpdateUserStructure>({
     fullName: "",
@@ -20,8 +21,11 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
   });
   const [errors, setErrors] = useState<UpdateUserStructure>({} as UpdateUserStructure);
 
-  if (status === "unauthenticated") return null;
+  useEffect(() => {
+    setTimeout(() => setFormProcessed(false), 2000);
+  }, [formProcessed]);
 
+  if (status === "unauthenticated") return null;
   if (status === "authenticated") {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       setFormInputs({ ...formInputs, [e.target.name]: e.target.value });
@@ -46,6 +50,7 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
       setErrors(gottenErr);
 
       setFormStatus({ ...formStatus, loading: true, success: false });
+      if (Object.keys(errors).length > 0) return;
 
       if (Object.keys(errors).length === 0) {
         const updateData = {
@@ -63,9 +68,11 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
         });
 
         if (!res.ok) {
+          setFormProcessed(true);
           setFormStatus({ ...formStatus, loading: false, success: false });
         }
 
+        setFormProcessed(true);
         setFormStatus({ ...formStatus, loading: false, success: true });
       }
     };
@@ -73,7 +80,7 @@ const UpdateAccount = ({ userData }: UserDataProps) => {
     return (
       <>
         <div className="shadow-md">
-          {/* <Alert text="Updated Successfully" /> */}
+          {formProcessed && <Alert text="Updated Successfully" />}
           <div className="p-6 bg-white border rounded-md dark:bg-gray-800 dark:border-gray-700">
             <h1 className="mb-4 text-2xl font-semibold text-gray-600">Update Profile</h1>
 

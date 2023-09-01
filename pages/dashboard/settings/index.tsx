@@ -1,5 +1,5 @@
 import Head from "next/head";
-import DashboardLayout from "../../../components/DashboardLayout";
+import DashboardLayout from "../../../components/Layouts/Dashboard/DashboardLayout";
 import AccountDisplay from "./components/AccountDisplay";
 import { useRouter } from "next/router";
 import { signIn, useSession } from "next-auth/react";

@@ -3,7 +3,7 @@ import { signIn, useSession } from "next-auth/react";
 import { useState } from "react";
 import Image from "next/image";
 import CurrentTimeDisplay from "./components/TimeDisplay";
-import DashboardLayout from "../../components/DashboardLayout";
+import DashboardLayout from "@/components/Layouts/Dashboard/DashboardLayout";
 
 const DashboardHome = () => {
   const { data: session, status } = useSession();
@@ -23,6 +23,14 @@ const DashboardHome = () => {
     { title: "Receipt", description: "All Students", img: "/svgs/printing.svg", url: "" },
   ]);
 
+  if (status === "loading") {
+    return (
+      <>
+        <h1>Verifying... Please hold</h1>
+      </>
+    );
+  }
+
   if (!session && status === "unauthenticated") {
     signIn();
   }
@@ -41,17 +49,17 @@ const DashboardHome = () => {
 
         <div className="px-4 my-10 md:px-6">
           <div className="mb-10 space-y-4">
-            <h2 className="text-gray-700 dark:text-gray-300 font-bold md:text-3xl text-xl">Actions</h2>
-            <div className="grid gap-2 lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+            <h2 className="text-xl font-bold text-gray-700 dark:text-gray-300 md:text-3xl">Actions</h2>
+            <div className="grid grid-cols-1 gap-2 lg:grid-cols-3 md:grid-cols-2">
               {actionsList.map((action, index) => (
                 <div
                   key={index}
                   className="px-8 py-6 duration-200 z-10 dark:bg-gray-600 dark:hover:animate-pulse border-2 border-gray-500 relative min-h-[120px] rounded-md shadow-md select-none hover:shadow-lg dark:text-gray-50 text-gray-800 bg-gray-200 hover:cursor-pointer"
                 >
                   <Image src={action.img} alt="Fresh Student Illustration" width={160} height={160} />
-                  <div className="absolute top-0 left-0 w-full h-full dark:bg-black bg-white dark:bg-opacity-70 bg-opacity-75 flex items-center px-4">
+                  <div className="absolute top-0 left-0 flex items-center w-full h-full px-4 bg-white bg-opacity-75 dark:bg-black dark:bg-opacity-70">
                     <div>
-                      <h3 className="font-bold text-lg">{action.title}</h3>
+                      <h3 className="text-lg font-bold">{action.title}</h3>
                       <p className="text-sm font-light">{action.description}</p>
                     </div>
                   </div>
@@ -61,7 +69,7 @@ const DashboardHome = () => {
           </div>
 
           <div>
-            <h2 className="text-gray-700 dark:text-gray-300 font-bold md:text-3xl text-xl mb-5">Your Stats</h2>
+            <h2 className="mb-5 text-xl font-bold text-gray-700 dark:text-gray-300 md:text-3xl">Your Stats</h2>
             <div className="grid gap-2 sm:grid-cols-2 md:grid-cols-3">
               <div className="px-8 py-6 duration-200 bg-green-600 rounded-md shadow-md select-none hover:shadow-2xl text-green-50 hover:bg-green-500 hover:cursor-pointer">
                 <div className="flex flex-col justify-between h-full space-y-4">
@@ -141,7 +149,5 @@ const DashboardHome = () => {
 DashboardHome.getLayout = function getLayout(page) {
   return <DashboardLayout>{page}</DashboardLayout>;
 };
-
-
 
 export default DashboardHome;
